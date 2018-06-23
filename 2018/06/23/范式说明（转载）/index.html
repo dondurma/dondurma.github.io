@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  范式说明（转载） |   山禾以谓 </title>
+
+ 
+  
+    <link rel="icon" href="http://pa79syut2.bkt.clouddn.com/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <!-- <a class="header-logo" href="/"></a> -->
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		范式说明（转载）
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		6月 23, 2018
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			2499
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<blockquote>
+<p>原文转载自<a href="https://blog.csdn.net/htq__/article/details/50926836" target="_blank" rel="noopener">https://blog.csdn.net/htq__/article/details/50926836</a></p>
+</blockquote>
+<h1 id="第一范式-1NF"><a href="#第一范式-1NF" class="headerlink" title="第一范式(1NF)"></a>第一范式(1NF)</h1><p>&nbsp;&nbsp;无重复的列<br></p>
+<p>&nbsp;&nbsp;所谓第一范式（1NF）是指数据库表的每一列都是不可分割的基本数据项，同一列中不能同时有多个值，即实体中的某个属性不能有多个值或者不能有重复的属性。如果出现重复的属性，就可能需要定义一个新的实体，新的实体由重复的属性构成，新实体与原实体之间为一对多关系。在第一范式（1NF）中表的每一行只包含一个实例的信息。简而言之，第一范式就是无重复的列。<br></p>
+<p>&nbsp;&nbsp;在任何一个关系数据库中，第一范式（1NF）是对关系模式的基本要求，不满足第一范式（1NF）的数据库就不是关系数据库。在当前的任何关系数据库管理系统（DBMS）中，不可能做出不符合第一范式的数据库，因为这些DBMS不允许你把数据库表的一列再分成二列或多列。因此，你想在现有的DBMS中设计出不符合第一范式的数据库都是不可能的。<br></p>
+<p>&nbsp;&nbsp;举个栗子：<br></p>
+<p>&nbsp;&nbsp;一张学生表Student(stuNo,stuName,age,age,sex)是不符合第一范式的，因为有重复列age属性。去除重复列age以后的Student(stuNo,stuName,age,sex)是符合第一范式的。<br></p>
+<h1 id="第二范式-3NF"><a href="#第二范式-3NF" class="headerlink" title="第二范式(3NF)"></a>第二范式(3NF)</h1><p>&nbsp;&nbsp;属性完全依赖于主键（消除部分子函数依赖）<br></p>
+<p>&nbsp;&nbsp;第二范式（2NF）是在第一范式（1NF）的基础上建立起来的，即满足第二范式（2NF）必须先满足第一范式（1NF）。第二范式（2NF）要求数据库表中的每个实例或行必须可以被唯一地区分。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。例如员工信息表中加上了员工编号（emp_id）列，因为每个员工的员工编号是唯一的，因此每个员工可以被唯一区分。这个唯一属性列被称为主关键字或主键、主码。<br></p>
+<p>&nbsp;&nbsp;第二范式（2NF）要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性，如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。简而言之，第二范式就是属性完全依赖于主键。<br></p>
+<p>&nbsp;&nbsp;这里说的主关键字可能不只有一个，有些情况下是存在联合主键的，就是主键有多个属性。<br></p>
+<p>&nbsp;&nbsp;举个栗子：<br></p>
+<p>&nbsp;&nbsp;以学生选课为例，每个学生都可以选课，并且有这一门课程的成绩，那么如果将这些信息都放在一张表StuGrade(stuNo,stuName,age,sex,courseNo,courseName,credit,score)。<br></p>
+<p><img src="http://p9uaajhtk.bkt.clouddn.com/%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F%E4%B8%BE%E4%BE%8B.png" alt="第二范式举例"></p>
+<p>&nbsp;&nbsp;如果不仔细看，我们会以为这张表的主键是stuNo，但是当我们看到最后一个score属性以后，在想想如果没有课程信息，那么哪里有学生成绩信息呢。所以这张表的主键是一个联合主键(stuNo,corseNo)，这个联合属性能够唯一确定score属性。那么再看其他信息，比如stuName只需要stuNo就能够唯一确定，courseName只需要courseNo就能够唯一确定，因此这样就存在了部分依赖，不符合第二范式。如果要让学生课程成绩信息满足第二范式，那么久需要将这张表拆分成多张表，一张学生表Studnet(stuNo,stuName,age,sex)，一张课程表Course(courseNo,courseName,credit)，还有最后一张学生课程成绩表StuGrade(stuNo,courseNo,score)。<br></p>
+<p><img src="http://p9uaajhtk.bkt.clouddn.com/%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F%E4%B8%BE%E4%BE%8B2.png" alt="第二范式举例2"></p>
+<p>&nbsp;&nbsp;这样就符合第二范式了。<br></p>
+<h1 id="第三范式-3NF"><a href="#第三范式-3NF" class="headerlink" title="第三范式(3NF)"></a>第三范式(3NF)</h1><p>&nbsp;&nbsp;属性不依赖于其它非主属性（消除传递依赖）<br></p>
+<p>&nbsp;&nbsp;满足第三范式（3NF）必须先满足第二范式（2NF）。简而言之，第三范式（3NF）要求一个数据库表中不包含已在其它表中已包含的非主关键字信息。<br></p>
+<p>&nbsp;&nbsp;举个栗子：<br></p>
+<p>&nbsp;&nbsp;每一个员工都有一个所属部门，假如有一个员工信息表Employee(emp_id,emp_name,emp_age,dept_id,dept_name,dept_info)。<br></p>
+<p><img src="http://p9uaajhtk.bkt.clouddn.com/%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F%E4%B8%BE%E4%BE%8B.png" alt="第三范式举例"></p>
+<p>&nbsp;&nbsp;这张员工信息表的主键是emp_id，因为这个属性能够唯一确定其他所有属性，比如知道员工编号emp_id以后，肯定能够知道员工姓名，所属部门编号，部门名称和部门介绍。所以这里dept_id不是主属性，而是非主属性。但是，我们又可以发现dept_name,dept_info这两个属性也可以由dept_id这个非主属性决定，即dept_name依赖dept_id，而dept_id依赖emp_id，这样就存在了传递依赖。而且我们可以看出传递依赖的一个明显缺点就是数据冗余非常严重。<br></p>
+<p>&nbsp;&nbsp;那么如何解决传递依赖问题，其实非常简单，我们只需要将dept_name,dept_info这连个属性删除就可以了，即Employee(emp_id,emp_name,emp_age,dept_id)，然后再创建一个部门表Dept(dept_id,dept_name,dept_info)。<br></p>
+<p><img src="http://p9uaajhtk.bkt.clouddn.com/%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F%E4%B8%BE%E4%BE%8B2.png" alt="第三范式举例2"></p>
+<p>&nbsp;&nbsp;这样如果要搜索某一个员工的部门信息dept_info，可以通过数据库连接来实现，查询语句如下：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select e.emp_id,e.emp_name,d.dept_name from Employee e,Dept d where e.dept_id=d.dept_id</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;注意点：</p>
+<ol>
+<li>数据库连接会带来一部分的性能损失</li>
+<li>并不是数据库范式越高越好</li>
+<li>有时会在数据冗余与范式之间做出权衡，在实际的数据库开发过程中，往往会允许一部分的数据冗余来减少数据库连接。</li>
+</ol>
+  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/数据库-范式/">数据库 范式</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar" src="http://pa79syut2.bkt.clouddn.com/header.png">
+      <p class="pf-des">悟已往之不谏，知来者之可追</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+        
+
+
+
+
+<span class="donate-btn">
+	<span class="iconfont icon-donate"></span>
+</span>
+
+
+<div id="donate-box" class="sildeUpMin">
+
+	<span class="donate-cancel iconfont icon-cancel"></span>
+
+	<div class="donate-img-box">
+		<img id="donate-qr-wechat" class="noLazyLoad donate-img lazyload" src="/images/placeholder.png" alt="No Donate Image!" data-src="/images/donate1.png">	
+		<img id="donate-qr-alipay" class="noLazyLoad donate-img lazyload" src="/images/placeholder.png" alt="No Donate Image!" data-src="http://pa79syut2.bkt.clouddn.com/donate2.png">	
+	</div>
+
+	<span class="donate-word">悟已往之不谏，知来者之可追</span>
+
+	<div class="donate-list">
+		<span class="iconfont icon-donate-wechat"></span>
+		<span class="iconfont icon-donate-alipay"></span>
+	</div>
+
+</div>
+
+ 
+        
+      </div>  
+    <nav class="pf-paginator">
+           
+        
+      
+        
+        <a href="/2018/06/21/往事如烟/" data-hover="往事如烟"> 下一篇</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    
+    <div id="disqus_thread"></div>
+
+    <script>
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://'+'lemonreds'+'.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());    
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+
+    <noscript>Please enable JavaScript to view the  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+
+
+	
+</article>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+
+        
+        <div class="search-container sildeUpMin">
+
+
+            <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+          
+            </div>
+              
+            <div id="search-result" class="search-result"></div>
+
+        </div>
+ 
+
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="http://pa79syut2.bkt.clouddn.com/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?71b138b713396442e9dbe50e51f0a779"; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+		
+		2018		
+	
+		山禾以谓
+		<br>
+
+		Theme By
+		<a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>	
+		</div>			
+	 
+</footer>   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>
