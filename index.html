@@ -116,7 +116,8 @@
     
 	<div class="article-excerpt">	
 		 
-			<h1 id="EventBus使用笔记"><a href="#EventBus使用笔记" class="headerlink" title="EventBus使用笔记"></a>EventBus使用笔记</h1><h2 id="关于EventBus"><a href="#关于EventBus" class="headerlink" title="关于EventBus"></a>关于EventBus</h2><ul>
+			<p>[TOC]</p>
+<h1 id="EventBus使用笔记"><a href="#EventBus使用笔记" class="headerlink" title="EventBus使用笔记"></a>EventBus使用笔记</h1><h2 id="关于EventBus"><a href="#关于EventBus" class="headerlink" title="关于EventBus"></a>关于EventBus</h2><ul>
 <li>EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。</li>
 <li>github地址：<ul>
 <li><code>https://github.com/greenrobot/EventBus</code><h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><h3 id="一，添加依赖"><a href="#一，添加依赖" class="headerlink" title="一，添加依赖"></a>一，添加依赖</h3></li>
@@ -185,7 +186,8 @@
     
 	<div class="article-excerpt">	
 		 
-			<h1 id="ButterKnife依赖注入框架配置"><a href="#ButterKnife依赖注入框架配置" class="headerlink" title="ButterKnife依赖注入框架配置"></a>ButterKnife依赖注入框架配置</h1><h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><ol>
+			<p>[TOC]</p>
+<h1 id="ButterKnife依赖注入框架配置"><a href="#ButterKnife依赖注入框架配置" class="headerlink" title="ButterKnife依赖注入框架配置"></a>ButterKnife依赖注入框架配置</h1><h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><ol>
 <li>在项目的build.gradle的dependencies中添加<code>classpath&#39;com.neenbedankt.gradle.plugins:android-apt:1.8&#39;</code></li>
 <li>在app的build.gradle文件中的顶部添加<code>apply plugin:&#39;android-apt&#39;</code>，dependencies中配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compile &apos;com.jakewharton:butterknife:8.0.1&apos;</span><br><span class="line">apt &apos;com.jakewharton:butterknife-compiler:8.0.1&apos;</span><br></pre></td></tr></table></figure>
 </li>
@@ -237,7 +239,8 @@
     
 	<div class="article-excerpt">	
 		 
-			<h1 id="ARouter使用笔记"><a href="#ARouter使用笔记" class="headerlink" title="ARouter使用笔记"></a>ARouter使用笔记</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+			<p>[TOC]</p>
+<h1 id="ARouter使用笔记"><a href="#ARouter使用笔记" class="headerlink" title="ARouter使用笔记"></a>ARouter使用笔记</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
 <li>ARouter是阿里在github上面的一个开源项目，github地址为：<a href="https://github.com/alibaba/ARouter" target="_blank" rel="noopener">https://github.com/alibaba/ARouter</a>。官方给出的解释是<code>Android平台中对页面、服务提供路由功能的中间件，我的目标是 —— 简单且够用。</code><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2></li>
 <li>ARouter详细使用方式官方已经给出，这里只是摘取部分，共日常开放使用。<h2 id="使用前配置"><a href="#使用前配置" class="headerlink" title="使用前配置"></a>使用前配置</h2></li>
 <li><p>在app的build.gradle中配置</p>
