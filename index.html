@@ -92,6 +92,49 @@
 	   
 	<div class="article-header">
 	    
+	     <a class="article-title" href="/2018/07/02/记一次Android8-0安装更新遇到的坑/">记一次Android8.0安装更新遇到的坑</a>  
+	       
+		 
+
+		<div class="article-meta">
+		
+		7月 02, 2018
+
+		
+			<span class="iconfont icon-star"></span>		 
+			            
+			<a class="article-tag" href="/tags/Android8-0/">Android8.0</a>           
+			
+		
+		</div>
+
+	</div>
+
+
+	
+
+    
+	<div class="article-excerpt">	
+		 
+			<p>&nbsp;&nbsp;公司的项目最近上线了一个活动，为提高参与度，需要推动到旧版本用户上提示更新。于是在测试服务器上先例常测试，却发现有的手机可以正常下载并跳转安装apk页面安装，有的手机却不行，下载成功后，一闪而过，也没有log报错日志，奇怪了，这部分更新的代码没有更新过啊？什么原因呢？<br><br>&nbsp;&nbsp;经分析，发现都是Android8.0的机型出了问题，会不会是Android8.0的某些权限问题呢？于是在网上搜索，发现了许多和我一样的问题，原来是Android8.0以后移除了“允许位置来源”的开关，需要在每次安装的时候手动授予安装权限，解决方法是在Manifest中添加一句权限:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.REQUEST_INSTALL_PACKAGES&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;经测试，OK !<br></p>
+<p>&nbsp;&nbsp;后记<br><br>&nbsp;&nbsp;以前也在Android7.0的手机出现过类似的问题，解决android7.0以上版本安装不成功的方法如下 :<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">File file = new File(filePath);</span><br><span class="line">                     Uri uri = Uri.fromFile(file);</span><br><span class="line">                     Intent intent = new Intent(Intent.ACTION_VIEW);</span><br><span class="line">                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">                     //判断是否是Android7.0以及更高的版本</span><br><span class="line">                     if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.N) &#123;</span><br><span class="line">                         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);</span><br><span class="line">                         FileProvider7.setIntentDataAndType(context, intent, &quot;application/vnd.android.package-archive&quot;, file, true);</span><br><span class="line">                     &#125; else &#123;</span><br><span class="line">                         intent.setDataAndType(uri, &quot;application/vnd.android.package-archive&quot;);</span><br><span class="line">                     &#125;</span><br><span class="line">                     context.startActivity(intent);</span><br></pre></td></tr></table></figure></p>
+
+		  	  
+	</div>
+
+	<div class="article-bottom">
+		<a class="article-readmore" href="/2018/07/02/记一次Android8-0安装更新遇到的坑/">阅读更多</a> 	</div>	
+    
+</article>     
+     	
+      	  	
+
+  		
+    	<article class="article">		
+	   
+	<div class="article-header">
+	    
 	     <a class="article-title" href="/2018/06/25/EventBus使用笔记/">EventBus使用笔记</a>  
 	       
 		 
