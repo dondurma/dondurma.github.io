@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>EventBus使用笔记 | 山禾以谓</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="EventBus使用笔记关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
+  <meta name="description" content="关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
 <meta name="keywords" content="Andriod,EventBus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EventBus使用笔记">
 <meta property="og:url" content="http://yoursite.com/2018/06/25/EventBus使用笔记/index.html">
 <meta property="og:site_name" content="山禾以谓">
-<meta property="og:description" content="EventBus使用笔记关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
+<meta property="og:description" content="关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-12T02:28:46.030Z">
+<meta property="og:updated_time" content="2018-07-12T08:36:02.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EventBus使用笔记">
-<meta name="twitter:description" content="EventBus使用笔记关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
+<meta name="twitter:description" content="关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
   
     <link rel="alternative" href="/atom.xml" title="山禾以谓" type="application/atom+xml">
   
@@ -180,7 +180,7 @@
 	<div id="toc-article" class="toc-article">
 	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
 		<strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#EventBus使用笔记"><span class="toc-number">1.</span> <span class="toc-text">EventBus使用笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于EventBus"><span class="toc-number">1.1.</span> <span class="toc-text">关于EventBus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤"><span class="toc-number">1.2.</span> <span class="toc-text">使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一，添加依赖"><span class="toc-number">1.2.1.</span> <span class="toc-text">一，添加依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二，自定义一个类，可以是空类"><span class="toc-number">1.2.2.</span> <span class="toc-text">二，自定义一个类，可以是空类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三，在接收消息页面注册与注销"><span class="toc-number">1.2.3.</span> <span class="toc-text">三，在接收消息页面注册与注销</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四，发送消息"><span class="toc-number">1.2.4.</span> <span class="toc-text">四，发送消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五，接收消息"><span class="toc-number">1.2.5.</span> <span class="toc-text">五，接收消息</span></a></li></ol></li></ol></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于EventBus"><span class="toc-number">1.</span> <span class="toc-text">关于EventBus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用步骤"><span class="toc-number">2.</span> <span class="toc-text">使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一，添加依赖"><span class="toc-number">2.1.</span> <span class="toc-text">一，添加依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二，自定义一个类，可以是空类"><span class="toc-number">2.2.</span> <span class="toc-text">二，自定义一个类，可以是空类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三，在接收消息页面注册与注销"><span class="toc-number">2.3.</span> <span class="toc-text">三，在接收消息页面注册与注销</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四，发送消息"><span class="toc-number">2.4.</span> <span class="toc-text">四，发送消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五，接收消息"><span class="toc-number">2.5.</span> <span class="toc-text">五，接收消息</span></a></li></ol></li></ol>
          </div>
    <script type="text/javascript">
 	function showToc(){
@@ -200,7 +200,7 @@
 <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="EventBus使用笔记"><a href="#EventBus使用笔记" class="headerlink" title="EventBus使用笔记"></a>EventBus使用笔记</h1><h2 id="关于EventBus"><a href="#关于EventBus" class="headerlink" title="关于EventBus"></a>关于EventBus</h2><ul>
+        <h1 id="关于EventBus"><a href="#关于EventBus" class="headerlink" title="关于EventBus"></a>关于EventBus</h1><ul>
 <li>EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。</li>
 </ul>
 <a id="more"></a>
@@ -210,17 +210,17 @@
 </ul>
 </li>
 </ul>
-<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><h3 id="一，添加依赖"><a href="#一，添加依赖" class="headerlink" title="一，添加依赖"></a>一，添加依赖</h3><ul>
+<h1 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h1><h2 id="一，添加依赖"><a href="#一，添加依赖" class="headerlink" title="一，添加依赖"></a>一，添加依赖</h2><ul>
 <li>在app的build.gradle中添加依赖<ul>
 <li><code>compile &#39;org.greenrobot:eventbus:3.0.0&#39;</code></li>
 </ul>
 </li>
 </ul>
-<h3 id="二，自定义一个类，可以是空类"><a href="#二，自定义一个类，可以是空类" class="headerlink" title="二，自定义一个类，可以是空类"></a>二，自定义一个类，可以是空类</h3><ul>
+<h2 id="二，自定义一个类，可以是空类"><a href="#二，自定义一个类，可以是空类" class="headerlink" title="二，自定义一个类，可以是空类"></a>二，自定义一个类，可以是空类</h2><ul>
 <li>例如：发送一个String类型的消息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class EventMsg &#123;</span><br><span class="line"></span><br><span class="line">    private String msg;</span><br><span class="line"></span><br><span class="line">    public EventMsg(String msg) &#123;</span><br><span class="line">        this.msg = msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getMsg() &#123;</span><br><span class="line">        return msg;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="三，在接收消息页面注册与注销"><a href="#三，在接收消息页面注册与注销" class="headerlink" title="三，在接收消息页面注册与注销"></a>三，在接收消息页面注册与注销</h3><ul>
+<h2 id="三，在接收消息页面注册与注销"><a href="#三，在接收消息页面注册与注销" class="headerlink" title="三，在接收消息页面注册与注销"></a>三，在接收消息页面注册与注销</h2><ul>
 <li><p>在onCreate方法中注册</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().register(this);</span><br></pre></td></tr></table></figure>
 </li>
@@ -228,11 +228,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().unregister(this);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="四，发送消息"><a href="#四，发送消息" class="headerlink" title="四，发送消息"></a>四，发送消息</h3><ul>
+<h2 id="四，发送消息"><a href="#四，发送消息" class="headerlink" title="四，发送消息"></a>四，发送消息</h2><ul>
 <li>在发送消息的Activity中发送消息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().post(new EventMsg(&quot;This is a message!&quot;));</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="五，接收消息"><a href="#五，接收消息" class="headerlink" title="五，接收消息"></a>五，接收消息</h3><ul>
+<h2 id="五，接收消息"><a href="#五，接收消息" class="headerlink" title="五，接收消息"></a>五，接收消息</h2><ul>
 <li>在接收消息的Activity中创建一个接收消息的方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Subscribe</span><br><span class="line">public void getEventMsg(EventMsg msg)&#123;</span><br><span class="line">    String msg1 = msg.getMsg();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -361,7 +361,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#EventBus使用笔记"><span class="toc-number">1.</span> <span class="toc-text">EventBus使用笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于EventBus"><span class="toc-number">1.1.</span> <span class="toc-text">关于EventBus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤"><span class="toc-number">1.2.</span> <span class="toc-text">使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一，添加依赖"><span class="toc-number">1.2.1.</span> <span class="toc-text">一，添加依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二，自定义一个类，可以是空类"><span class="toc-number">1.2.2.</span> <span class="toc-text">二，自定义一个类，可以是空类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三，在接收消息页面注册与注销"><span class="toc-number">1.2.3.</span> <span class="toc-text">三，在接收消息页面注册与注销</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四，发送消息"><span class="toc-number">1.2.4.</span> <span class="toc-text">四，发送消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五，接收消息"><span class="toc-number">1.2.5.</span> <span class="toc-text">五，接收消息</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于EventBus"><span class="toc-number">1.</span> <span class="toc-text">关于EventBus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用步骤"><span class="toc-number">2.</span> <span class="toc-text">使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一，添加依赖"><span class="toc-number">2.1.</span> <span class="toc-text">一，添加依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二，自定义一个类，可以是空类"><span class="toc-number">2.2.</span> <span class="toc-text">二，自定义一个类，可以是空类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三，在接收消息页面注册与注销"><span class="toc-number">2.3.</span> <span class="toc-text">三，在接收消息页面注册与注销</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四，发送消息"><span class="toc-number">2.4.</span> <span class="toc-text">四，发送消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五，接收消息"><span class="toc-number">2.5.</span> <span class="toc-text">五，接收消息</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -373,13 +373,33 @@
 
 
   
+	
+	
+	<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNzk4OS8xNDUxOQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+	
   
   
 
   
 
   
-
   
 
 
@@ -508,22 +528,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ARouter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ButterKnife</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">古镇</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Andriod</a>
               </li>
              
@@ -532,11 +536,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回忆</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">高中</a>
+                <a href="javascript:void(0)" class="js-tag color3">古镇</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,7 +548,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回忆</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">高中</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android8.0</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ButterKnife</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ARouter</a>
               </li>
             
             <div class="clearfix"></div>
