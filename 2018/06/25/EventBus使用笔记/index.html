@@ -9,14 +9,14 @@
   <title>EventBus使用笔记 | 山禾以谓</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
-<meta name="keywords" content="Andriod,EventBus">
+<meta name="keywords" content="技术,Android,EventBus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EventBus使用笔记">
 <meta property="og:url" content="http://yoursite.com/2018/06/25/EventBus使用笔记/index.html">
 <meta property="og:site_name" content="山禾以谓">
 <meta property="og:description" content="关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-12T08:36:02.178Z">
+<meta property="og:updated_time" content="2018-07-16T08:00:56.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EventBus使用笔记">
 <meta name="twitter:description" content="关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
@@ -245,7 +245,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Andriod</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -299,18 +303,7 @@
         </div>
         
         
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于EventBus"><span class="toc-number">1.</span> <span class="toc-text">关于EventBus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用步骤"><span class="toc-number">2.</span> <span class="toc-text">使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一，添加依赖"><span class="toc-number">2.1.</span> <span class="toc-text">一，添加依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二，自定义一个类，可以是空类"><span class="toc-number">2.2.</span> <span class="toc-text">二，自定义一个类，可以是空类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三，在接收消息页面注册与注销"><span class="toc-number">2.3.</span> <span class="toc-text">三，在接收消息页面注册与注销</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四，发送消息"><span class="toc-number">2.4.</span> <span class="toc-text">四，发送消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五，接收消息"><span class="toc-number">2.5.</span> <span class="toc-text">五，接收消息</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
+
         
     </div>
 </aside>
@@ -473,6 +466,10 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
@@ -481,19 +478,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ButterKnife</a>
+                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebView相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回忆</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">高中</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,15 +494,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android8.0</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Andriod</a>
+                <a href="javascript:void(0)" class="js-tag color3">回忆</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
+                <a href="javascript:void(0)" class="js-tag color3">高中</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android8.0适配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ButterKnife</a>
               </li>
             
             <div class="clearfix"></div>

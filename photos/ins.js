@@ -119,9 +119,9 @@
           var minSrc = 'http://pa79syut2.bkt.clouddn.com/' + data.link[i];
           var src = 'http://pa79syut2.bkt.clouddn.com/' + data.link[i];
           var type = data.type[i];
-          var target = src + (type === 'video' ? '.mp4' : '.jpg':'.png');
+          var target = src + (type === 'video' ? '.mp4' : '.jpg');
 					
-					src += (type === 'video' ? '.mp4' : '.jpg':'.png');
+					src += '';
 					
           liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
                 <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + target + '">\
