@@ -20,7 +20,7 @@
     <link rel="alternative" href="/atom.xml" title="山禾以谓" type="application/atom+xml">
   
   
-    <link rel="icon" href="http://pa79syut2.bkt.clouddn.com/favicon.png">
+    <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
@@ -32,6 +32,16 @@
   
 
   
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?71b138b713396442e9dbe50e51f0a779";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 </head>
 
@@ -58,7 +68,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/photos">相册</a></li>
+				<li><a href="/tags/技术/">技术</a></li>
+	        
+				<li><a href="/tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -69,6 +81,8 @@
     			
             
     			
+            
+    			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
@@ -76,7 +90,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="weibo" target="_blank" href="https://weibo.com/2933035235/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="weibo" target="_blank" href="https://weibo.com/2933035235/profile?topnav=1&wvr=6" title="weibo"><i class="icon-weibo"></i></a>
 		        
 					<a class="jianshu" target="_blank" href="https://www.jianshu.com/u/b0199aa97173" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
@@ -110,12 +124,14 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="weibo" target="_blank" href="https://weibo.com/2933035235/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo"><i class="icon-weibo"></i></a>
+						<a class="weibo" target="_blank" href="https://weibo.com/2933035235/profile?topnav=1&wvr=6" title="weibo"><i class="icon-weibo"></i></a>
 			        
 						<a class="jianshu" target="_blank" href="https://www.jianshu.com/u/b0199aa97173" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
@@ -123,12 +139,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/photos">相册</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/技术/">技术</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -186,6 +204,10 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ButterKnife</a>
         		</li>
       		
@@ -211,25 +233,22 @@
         </div>
       </div>
       <footer id="footer">
-
-</span>
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
     		&copy; 2018 山禾以谓
     	</div>
       	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yili</a> by Litten
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="#" target="_blank" onclick="return false">Yilia</a> by Litten
       	</div>
     </div>
   </div>
 	
-	
-<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+	<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
 <script>
     var now = new Date(); 
     function createtime() { 
-        var grt= new Date("06/15/2018 8:00:00");//此处修改你的建站时间或者网站上线时间 
+        var grt= new Date("06/21/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
         now.setTime(now.getTime()+250); 
         days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
         hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
@@ -242,7 +261,6 @@
     } 
 setInterval("createtime()",250);
 </script>
-
 </footer>
     </div>
     <script>
@@ -254,10 +272,10 @@ setInterval("createtime()",250);
 		isTag: true,
 		isCategory: false,
 		open_in_new: false,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/",
 		innerArchive: true,
-		showTags: true
+		showTags: false
 	}
 </script>
 
@@ -298,6 +316,8 @@ MathJax.Hub.Queue(function() {
       
     
       
+    
+      
       
       
     
@@ -308,6 +328,8 @@ MathJax.Hub.Queue(function() {
     
       
       <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
       
         
       
@@ -340,11 +362,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ARouter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
+                <a href="javascript:void(0)" class="js-tag color2">ButterKnife</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">横竖屏切换</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -360,6 +390,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android8.0适配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -372,11 +406,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android8.0适配</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ButterKnife</a>
+                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
               </li>
             
             <div class="clearfix"></div>
@@ -427,7 +457,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">山禾以谓&lt;br&gt;&lt;br&gt;(shanheyiwei.cn)&lt;br&gt;&lt;br&gt;有一颗墨水心的程序猿(Android开发)。</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">山禾以谓&lt;br&gt;&lt;br&gt;www.shanheyiwei.cn&lt;br&gt;有一颗墨水心的Android开发</div>
   	  	
     	</section>
     
