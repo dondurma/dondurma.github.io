@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的相册 | 山禾以谓</title>
+  <title>Android开发中的一些小技巧 | 山禾以谓</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Photos    图片正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild($scr">
-<meta name="keywords" content="生活，随笔，Android">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的相册">
-<meta property="og:url" content="http://yoursite.com/photos/index.html">
+  <meta name="description" content="日常开发过程中常用到的一些方法或属性">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发中的一些小技巧">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/Android开发中的一些小技巧/index.html">
 <meta property="og:site_name" content="山禾以谓">
-<meta property="og:description" content="Photos    图片正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild($scr">
+<meta property="og:description" content="日常开发过程中常用到的一些方法或属性">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-02T02:36:55.542Z">
+<meta property="og:updated_time" content="2018-07-24T09:03:40.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的相册">
-<meta name="twitter:description" content="Photos    图片正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild($scr">
+<meta name="twitter:title" content="Android开发中的一些小技巧">
+<meta name="twitter:description" content="日常开发过程中常用到的一些方法或属性">
   
     <link rel="alternative" href="/atom.xml" title="山禾以谓" type="application/atom+xml">
   
@@ -171,20 +171,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-Android开发中的一些小技巧" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      我的相册
+      Android开发中的一些小技巧
     </h1>
   
 
         
-        <a href="/photos/index.html" class="archive-article-date">
-  	<time datetime="2017-12-18T04:50:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-18</time>
+        <a href="/2018/07/24/Android开发中的一些小技巧/" class="archive-article-date">
+  	<time datetime="2018-07-24T09:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
 </a>
         
       </header>
@@ -192,27 +192,86 @@ var _hmt = _hmt || [];
 		
 		<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#去掉Android5-0以后button自带阴影效果"><span class="toc-number">1.</span> <span class="toc-text">去掉Android5.0以后button自带阴影效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#改变editttext光标的颜色"><span class="toc-number">2.</span> <span class="toc-text">改变editttext光标的颜色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#取消listview点击的背景颜色"><span class="toc-number">3.</span> <span class="toc-text">取消listview点击的背景颜色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一个简单的json格式文件"><span class="toc-number">4.</span> <span class="toc-text">一个简单的json格式文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取屏幕状态栏的高度的方法"><span class="toc-number">5.</span> <span class="toc-text">获取屏幕状态栏的高度的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将dp转换为像素的方法"><span class="toc-number">6.</span> <span class="toc-text">将dp转换为像素的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决-在scrollview与嵌套listview的页面中-一进入不是最上面-在最外层布局添加该属性"><span class="toc-number">7.</span> <span class="toc-text">解决 在scrollview与嵌套listview的页面中 一进入不是最上面 在最外层布局添加该属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决ScorllView嵌套ListView只显示一行的问题-注意：该方法调用要“listview-setAdapter-适配器-”之后"><span class="toc-number">8.</span> <span class="toc-text">解决ScorllView嵌套ListView只显示一行的问题(注意：该方法调用要“listview.setAdapter(适配器)”之后)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#去掉edittext的获取焦点（禁止已进入有edittext的activity中-自动弹出输入法）"><span class="toc-number">9.</span> <span class="toc-text">去掉edittext的获取焦点（禁止已进入有edittext的activity中 自动弹出输入法）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决-listview的item的长按监听与点击监听的冲突"><span class="toc-number">10.</span> <span class="toc-text">解决 listview的item的长按监听与点击监听的冲突</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将bitmap转化为二进制流"><span class="toc-number">11.</span> <span class="toc-text">将bitmap转化为二进制流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图片转成string"><span class="toc-number">12.</span> <span class="toc-text">图片转成string</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#string转成bitmap"><span class="toc-number">13.</span> <span class="toc-text">string转成bitmap</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将dp转换为像素的方法-1"><span class="toc-number">14.</span> <span class="toc-text">将dp转换为像素的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#返回按钮的监听事件"><span class="toc-number">15.</span> <span class="toc-text">返回按钮的监听事件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#生成随机数字和字母"><span class="toc-number">16.</span> <span class="toc-text">生成随机数字和字母</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将bitmap转换为-png格式的图片"><span class="toc-number">17.</span> <span class="toc-text">将bitmap转换为.png格式的图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将dp转换为像素的方法-2"><span class="toc-number">18.</span> <span class="toc-text">将dp转换为像素的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除文件"><span class="toc-number">19.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断当前指定路径中的指定某个文件是否存在的方法"><span class="toc-number">20.</span> <span class="toc-text">判断当前指定路径中的指定某个文件是否存在的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将从list集合中获得的数据以逗号拼接字符串"><span class="toc-number">21.</span> <span class="toc-text">将从list集合中获得的数据以逗号拼接字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将以逗号拼接的字符串，以逗号切割-并加到List集合中"><span class="toc-number">22.</span> <span class="toc-text">将以逗号拼接的字符串，以逗号切割 并加到List集合中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可以让textView上的字可以被选中-复制-等操作"><span class="toc-number">23.</span> <span class="toc-text">可以让textView上的字可以被选中 复制 等操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JAVA截取字符串后几位"><span class="toc-number">24.</span> <span class="toc-text">JAVA截取字符串后几位</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EditText多行输入"><span class="toc-number">25.</span> <span class="toc-text">EditText多行输入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity去掉状态栏"><span class="toc-number">26.</span> <span class="toc-text">Activity去掉状态栏</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      
 <!-- 目录内容结束 -->
 		
     <div class="article-entry" itemprop="articleBody">
       
-        <p><link rel="stylesheet" href="./ins.css"></p>
-<p><link rel="stylesheet" href="./photoswipe.css"> </p>
-<p><link rel="stylesheet" href="./default-skin/default-skin.css"> </p>
-<div class="photos-btn-wrap"><br>    <a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="noopener">Photos</a><br></div><br><div class="instagram itemscope"><br>    <a href="https://raincal.top" target="_blank" class="open-ins">图片正在加载中…</a><br></div>
-
-<script>
-  (function() {
-    var loadScript = function(path) {
-      var $script = document.createElement('script')
-      document.getElementsByTagName('body')[0].appendChild($script)
-      $script.setAttribute('src', path)
-    }
-    setTimeout(function() {
-        loadScript('./ins.js')
-    }, 0)
-  })()
-</script>
+        <blockquote>
+<p>日常开发过程中常用到的一些方法或属性</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="去掉Android5-0以后button自带阴影效果"><a href="#去掉Android5-0以后button自带阴影效果" class="headerlink" title="去掉Android5.0以后button自带阴影效果"></a>去掉Android5.0以后button自带阴影效果</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">style=&quot;?android:attr/borderlessButtonStyle&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="改变editttext光标的颜色"><a href="#改变editttext光标的颜色" class="headerlink" title="改变editttext光标的颜色"></a>改变editttext光标的颜色</h1><ul>
+<li>在资源文件drawable文件夹下新建一个光标控件color_cursor.xml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:shape=&quot;rectangle&quot;&gt;</span><br><span class="line">    &lt;size android:width=&quot;1dp&quot; /&gt;</span><br><span class="line">    &lt;solid android:color=&quot;#008000&quot;  /&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置EditText:android:textCursorDrawable=”@drawable/color_cursor”</li>
+</ul>
+<h1 id="取消listview点击的背景颜色"><a href="#取消listview点击的背景颜色" class="headerlink" title="取消listview点击的背景颜色"></a>取消listview点击的背景颜色</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:listSelector=&quot;#00000000&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="一个简单的json格式文件"><a href="#一个简单的json格式文件" class="headerlink" title="一个简单的json格式文件"></a>一个简单的json格式文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;张三&quot;,</span><br><span class="line">    &quot;job&quot;: &quot;总经理&quot;,</span><br><span class="line">    &quot;phone&quot;: &quot;13987654321&quot;,</span><br><span class="line">    &quot;email&quot;: &quot;13245@163.com&quot;,</span><br><span class="line">    &quot;Companyname&quot;: &quot;杭州阿狸科技有限公司&quot;,</span><br><span class="line">    &quot;commpanyaddress&quot;: &quot;杭州市西湖区&quot;,</span><br><span class="line">    &quot;industry&quot;: &quot;IT软件&quot;,</span><br><span class="line">    &quot;hobby&quot;: &quot;爬山&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="获取屏幕状态栏的高度的方法"><a href="#获取屏幕状态栏的高度的方法" class="headerlink" title="获取屏幕状态栏的高度的方法"></a>获取屏幕状态栏的高度的方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public void onWindowFocusChanged(boolean hasFocus) &#123;</span><br><span class="line">       super.onWindowFocusChanged(hasFocus);</span><br><span class="line">       Rect frame = new Rect();</span><br><span class="line">       getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);</span><br><span class="line">       // 状态栏高度</span><br><span class="line">       statusBarHeight = frame.top;</span><br><span class="line">       View v = getWindow().findViewById(Window.ID_ANDROID_CONTENT);</span><br><span class="line">       int contentTop = v.getTop();</span><br><span class="line">       // statusBarHeight是上面所求的状态栏的高度</span><br><span class="line">       int titleBarHeight = contentTop - statusBarHeight;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="将dp转换为像素的方法"><a href="#将dp转换为像素的方法" class="headerlink" title="将dp转换为像素的方法"></a>将dp转换为像素的方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static int dip2px(Context context, float dpValue) &#123;</span><br><span class="line">       final float scale = context.getResources().getDisplayMetrics().density;</span><br><span class="line">       return (int) (dpValue * scale + 0.5f);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="解决-在scrollview与嵌套listview的页面中-一进入不是最上面-在最外层布局添加该属性"><a href="#解决-在scrollview与嵌套listview的页面中-一进入不是最上面-在最外层布局添加该属性" class="headerlink" title="解决 在scrollview与嵌套listview的页面中 一进入不是最上面 在最外层布局添加该属性"></a>解决 在scrollview与嵌套listview的页面中 一进入不是最上面 在最外层布局添加该属性</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">android:descendantFocusability=&quot;blocksDescendants&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="解决ScorllView嵌套ListView只显示一行的问题-注意：该方法调用要“listview-setAdapter-适配器-”之后"><a href="#解决ScorllView嵌套ListView只显示一行的问题-注意：该方法调用要“listview-setAdapter-适配器-”之后" class="headerlink" title="解决ScorllView嵌套ListView只显示一行的问题(注意：该方法调用要“listview.setAdapter(适配器)”之后)"></a>解决ScorllView嵌套ListView只显示一行的问题(注意：该方法调用要“listview.setAdapter(适配器)”之后)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public void setListViewHeightBasedOnChildren(ListView listView) &#123;</span><br><span class="line">       ListAdapter listAdapter = listView.getAdapter();</span><br><span class="line">       if (listAdapter == null) &#123;</span><br><span class="line">           return;</span><br><span class="line">       &#125;</span><br><span class="line">       int totalHeight = 0;</span><br><span class="line">       for (int i = 0; i &lt; listAdapter.getCount(); i++) &#123;</span><br><span class="line">           View listItem = listAdapter.getView(i, null, listView);</span><br><span class="line">           listItem.measure(0, 0);</span><br><span class="line">           totalHeight += listItem.getMeasuredHeight();</span><br><span class="line">       &#125;</span><br><span class="line">       ViewGroup.LayoutParams params = listView.getLayoutParams();</span><br><span class="line">       params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));</span><br><span class="line">       listView.setLayoutParams(params);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="去掉edittext的获取焦点（禁止已进入有edittext的activity中-自动弹出输入法）"><a href="#去掉edittext的获取焦点（禁止已进入有edittext的activity中-自动弹出输入法）" class="headerlink" title="去掉edittext的获取焦点（禁止已进入有edittext的activity中 自动弹出输入法）"></a>去掉edittext的获取焦点（禁止已进入有edittext的activity中 自动弹出输入法）</h1><ul>
+<li>在最外层布局中加上</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:focusable=&quot;true&quot;     </span><br><span class="line">android:focusableInTouchMode=&quot;true&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="解决-listview的item的长按监听与点击监听的冲突"><a href="#解决-listview的item的长按监听与点击监听的冲突" class="headerlink" title="解决 listview的item的长按监听与点击监听的冲突"></a>解决 listview的item的长按监听与点击监听的冲突</h1><ul>
+<li>listveiew 的长按监听事件返回值有false 改为true</li>
+</ul>
+<h1 id="将bitmap转化为二进制流"><a href="#将bitmap转化为二进制流" class="headerlink" title="将bitmap转化为二进制流"></a>将bitmap转化为二进制流</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public byte[] getBitmapByte(Bitmap bitmap)&#123;</span><br><span class="line">       ByteArrayOutputStream out = new ByteArrayOutputStream();</span><br><span class="line">       bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);</span><br><span class="line">       try &#123;</span><br><span class="line">           out.flush();</span><br><span class="line">           out.close();</span><br><span class="line">       &#125; catch (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">       return out.toByteArray();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="图片转成string"><a href="#图片转成string" class="headerlink" title="图片转成string"></a>图片转成string</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static String convertIconToString(Bitmap bitmap)  </span><br><span class="line">    &#123;  </span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();// outputstream  </span><br><span class="line">        bitmap.compress(CompressFormat.PNG, 100, baos);  </span><br><span class="line">        byte[] appicon = baos.toByteArray();// 转为byte数组  </span><br><span class="line">        return Base64.encodeToString(appicon, Base64.DEFAULT);  </span><br><span class="line">  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="string转成bitmap"><a href="#string转成bitmap" class="headerlink" title="string转成bitmap"></a>string转成bitmap</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public static Bitmap convertStringToIcon(String st)  </span><br><span class="line">    &#123;  </span><br><span class="line">        // OutputStream out;  </span><br><span class="line">        Bitmap bitmap = null;  </span><br><span class="line">        try  </span><br><span class="line">        &#123;  </span><br><span class="line">            // out = new FileOutputStream(&quot;/sdcard/aa.jpg&quot;);  </span><br><span class="line">            byte[] bitmapArray;  </span><br><span class="line">            bitmapArray = Base64.decode(st, Base64.DEFAULT);  </span><br><span class="line">            bitmap =  </span><br><span class="line">                    BitmapFactory.decodeByteArray(bitmapArray, 0,  </span><br><span class="line">                            bitmapArray.length);  </span><br><span class="line">            // bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);  </span><br><span class="line">            return bitmap;  </span><br><span class="line">        &#125;  </span><br><span class="line">        catch (Exception e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            return null;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="将dp转换为像素的方法-1"><a href="#将dp转换为像素的方法-1" class="headerlink" title="将dp转换为像素的方法"></a>将dp转换为像素的方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static int dip2px(Context context, float dpValue) &#123;</span><br><span class="line">       final float scale = context.getResources().getDisplayMetrics().density;</span><br><span class="line">       return (int) (dpValue * scale + 0.5f);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="返回按钮的监听事件"><a href="#返回按钮的监听事件" class="headerlink" title="返回按钮的监听事件"></a>返回按钮的监听事件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Override</span><br><span class="line">    public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</span><br><span class="line">        if (keyCode == KeyEvent.KEYCODE_BACK &amp;&amp; event.getRepeatCount() == 0) &#123;</span><br><span class="line">     </span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="生成随机数字和字母"><a href="#生成随机数字和字母" class="headerlink" title="生成随机数字和字母"></a>生成随机数字和字母</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static String getStringRandom(int length) &#123;  </span><br><span class="line">          </span><br><span class="line">        String val = &quot;&quot;;  </span><br><span class="line">        Random random = new Random();  </span><br><span class="line">          </span><br><span class="line">        //参数length，表示生成几位随机数  </span><br><span class="line">        for(int i = 0; i &lt; length; i++) &#123;  </span><br><span class="line">              </span><br><span class="line">            String charOrNum = random.nextInt(2) % 2 == 0 ? &quot;char&quot; : &quot;num&quot;;  </span><br><span class="line">            //输出字母还是数字  </span><br><span class="line">            if( &quot;char&quot;.equalsIgnoreCase(charOrNum) ) &#123;  </span><br><span class="line">                //输出是大写字母还是小写字母  </span><br><span class="line">                int temp = random.nextInt(2) % 2 == 0 ? 65 : 97;  </span><br><span class="line">                val += (char)(random.nextInt(26) + temp);  </span><br><span class="line">            &#125; else if( &quot;num&quot;.equalsIgnoreCase(charOrNum) ) &#123;  </span><br><span class="line">                val += String.valueOf(random.nextInt(10));  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        return val;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="将bitmap转换为-png格式的图片"><a href="#将bitmap转换为-png格式的图片" class="headerlink" title="将bitmap转换为.png格式的图片"></a>将bitmap转换为.png格式的图片</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static void savePNG_After(Bitmap bitmap, String name) &#123;</span><br><span class="line">        File file = new File(name);</span><br><span class="line">        try &#123;</span><br><span class="line">            FileOutputStream out = new FileOutputStream(file);</span><br><span class="line">            if (bitmap.compress(Bitmap.CompressFormat.PNG, 30, out)) &#123;</span><br><span class="line">                out.flush();</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="将dp转换为像素的方法-2"><a href="#将dp转换为像素的方法-2" class="headerlink" title="将dp转换为像素的方法"></a>将dp转换为像素的方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static int dip2px(Context context, float dpValue) &#123;</span><br><span class="line">        final float scale = context.getResources().getDisplayMetrics().density;</span><br><span class="line">        return (int) (dpValue * scale + 0.5f);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void delFile(String fileName)&#123;</span><br><span class="line">        File file = new File(&quot;sdcard/&quot; + fileName);</span><br><span class="line">        if(file.isFile())&#123;</span><br><span class="line">            file.delete();</span><br><span class="line">        &#125;</span><br><span class="line">        file.exists();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="判断当前指定路径中的指定某个文件是否存在的方法"><a href="#判断当前指定路径中的指定某个文件是否存在的方法" class="headerlink" title="判断当前指定路径中的指定某个文件是否存在的方法"></a>判断当前指定路径中的指定某个文件是否存在的方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public boolean fileIsExists()&#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            File f=new File(&quot;storage/emulated/0/bluetooth/baojia.xls&quot;);</span><br><span class="line">            if(!f.exists())&#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="将从list集合中获得的数据以逗号拼接字符串"><a href="#将从list集合中获得的数据以逗号拼接字符串" class="headerlink" title="将从list集合中获得的数据以逗号拼接字符串"></a>将从list集合中获得的数据以逗号拼接字符串</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public String ListToString(List&lt;String&gt; tempSelcetGoodsList) &#123;</span><br><span class="line">        if (tempSelcetGoodsList == null) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        boolean flag = false;</span><br><span class="line">        for (String string : tempSelcetGoodsList) &#123;</span><br><span class="line">            if (flag) &#123;</span><br><span class="line">                sb.append(&quot;，&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                flag = true;</span><br><span class="line">            &#125;</span><br><span class="line">            sb.append(string);</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="将以逗号拼接的字符串，以逗号切割-并加到List集合中"><a href="#将以逗号拼接的字符串，以逗号切割-并加到List集合中" class="headerlink" title="将以逗号拼接的字符串，以逗号切割 并加到List集合中"></a>将以逗号拼接的字符串，以逗号切割 并加到List集合中</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String str=&quot;a,b,c,d&quot;;</span><br><span class="line"></span><br><span class="line">String strs[] = str.split(&quot;,&quot;);</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; strList = Arrays.asList(strs);</span><br></pre></td></tr></table></figure>
+<h1 id="可以让textView上的字可以被选中-复制-等操作"><a href="#可以让textView上的字可以被选中-复制-等操作" class="headerlink" title="可以让textView上的字可以被选中 复制 等操作"></a>可以让textView上的字可以被选中 复制 等操作</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:textIsSelectable=&quot;true&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="JAVA截取字符串后几位"><a href="#JAVA截取字符串后几位" class="headerlink" title="JAVA截取字符串后几位"></a>JAVA截取字符串后几位</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String str = &quot;1234567890111&quot;;</span><br><span class="line">int n = 4;</span><br><span class="line">System.out.println(str.substring(str.length()-n));</span><br></pre></td></tr></table></figure>
+<h1 id="EditText多行输入"><a href="#EditText多行输入" class="headerlink" title="EditText多行输入"></a>EditText多行输入</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">android:inputType=&quot;textMultiLine&quot;//可以显示多行</span><br><span class="line">android:gravity=&quot;left|top&quot;//输入时光标左上角</span><br><span class="line">android:minLines=&quot;6&quot; //最小显示6行</span><br></pre></td></tr></table></figure>
+<h1 id="Activity去掉状态栏"><a href="#Activity去掉状态栏" class="headerlink" title="Activity去掉状态栏"></a>Activity去掉状态栏</h1><ul>
+<li>在styles.xml文件中添加样式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;style name=&quot;AppTheme.NoBar&quot;&gt;  </span><br><span class="line">        &lt;item name=&quot;windowNoTitle&quot;&gt;true&lt;/item&gt;  </span><br><span class="line">        &lt;item name=&quot;android:windowFullscreen&quot;&gt;true&lt;/item&gt;  </span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在需要去掉状态栏的acitivity的Manifest文件中添加</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:theme=&quot;@style/AppTheme.NoBar&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Glide加载时等比例缩放图片至屏幕宽度<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Glide.with(activity).load(yourUrl).asBitmap().into(new SimpleTarget&lt;Bitmap&gt;(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) &#123;  </span><br><span class="line">                    @Override  </span><br><span class="line">                    public void onResourceReady(Bitmap resource, GlideAnimation&lt;? super Bitmap&gt; glideAnimation) &#123;  </span><br><span class="line">                        int imageWidth = resource.getWidth();  </span><br><span class="line">                        int imageHeight = resource.getHeight();  </span><br><span class="line">                        int height = ScreenUtils.getScreenWidth() * imageHeight / imageWidth;  </span><br><span class="line">                        ViewGroup.LayoutParams para = imageView.getLayoutParams();  </span><br><span class="line">                        para.height = height;  </span><br><span class="line">                        para.width = ScreenUtils.getScreenWidth();  </span><br><span class="line">                        imageView.setImageBitmap(resource);  </span><br><span class="line">                    &#125;  </span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
 
@@ -221,6 +280,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -232,6 +302,16 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/24/TextView中部分文本点击可跳转/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">TextView中部分文本点击可跳转</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -325,7 +405,7 @@ setInterval("createtime()",250);
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
