@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>tags | 山禾以谓</title>
+  <title>TextView中部分文本点击可跳转 | 山禾以谓</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="生活，随笔，Android">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="以前在项目中遇到了一个需求就是，在一段文段的最后加上“查看图片”四个字，并点击该字可以进行查看图片的相应操作，解决方案如下…">
+<meta name="keywords" content="技术,Android,TextView">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TextView中部分文本点击可跳转">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/TextView中部分文本点击可跳转/index.html">
 <meta property="og:site_name" content="山禾以谓">
+<meta property="og:description" content="以前在项目中遇到了一个需求就是，在一段文段的最后加上“查看图片”四个字，并点击该字可以进行查看图片的相应操作，解决方案如下…">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-15T05:33:49.373Z">
+<meta property="og:image" content="http://p9uaajhtk.bkt.clouddn.com/textView.png">
+<meta property="og:updated_time" content="2018-07-24T07:50:53.587Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="TextView中部分文本点击可跳转">
+<meta name="twitter:description" content="以前在项目中遇到了一个需求就是，在一段文段的最后加上“查看图片”四个字，并点击该字可以进行查看图片的相应操作，解决方案如下…">
+<meta name="twitter:image" content="http://p9uaajhtk.bkt.clouddn.com/textView.png">
   
     <link rel="alternative" href="/atom.xml" title="山禾以谓" type="application/atom+xml">
   
@@ -168,20 +173,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="tags-" class="article article-type-tags " itemscope itemprop="blogPost">
+            <article id="post-TextView中部分文本点击可跳转" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      TextView中部分文本点击可跳转
     </h1>
   
 
         
-        <a href="/tags/index.html" class="archive-article-date">
-  	<time datetime="2018-06-15T05:32:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-15</time>
+        <a href="/2018/07/24/TextView中部分文本点击可跳转/" class="archive-article-date">
+  	<time datetime="2018-07-24T07:49:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
 </a>
         
       </header>
@@ -189,11 +194,44 @@ var _hmt = _hmt || [];
 		
 		<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#最终效果"><span class="toc-number">1.</span> <span class="toc-text">最终效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体步骤"><span class="toc-number">2.</span> <span class="toc-text">具体步骤</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      
 <!-- 目录内容结束 -->
 		
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <blockquote>
+<p>以前在项目中遇到了一个需求就是，在一段文段的最后加上“查看图片”四个字，并点击该字可以进行查看图片的相应操作，解决方案如下…</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h1><p><img src="http://p9uaajhtk.bkt.clouddn.com/textView.png" alt="textView"></p>
+<h1 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h1><ul>
+<li>s1为从后台获取的数据<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String s1 = bean.getContent();</span><br><span class="line">final String content = s1 + &quot;查看图片&gt;&quot;;</span><br><span class="line">Spannable spannable = Spannable.Factory.getInstance().newSpannable(content);</span><br><span class="line">          spannable.setSpan(new ClickableSpan() &#123;</span><br><span class="line">          @Override</span><br><span class="line">          public void onClick(View widget) &#123;</span><br><span class="line">              //相关跳转操作</span><br><span class="line">             &#125;</span><br><span class="line">    &#125;, content.length() - 5, content.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);</span><br><span class="line">tvText.setText(spannable);</span><br><span class="line">tvText.setMovementMethod(LinkMovementMethod.getInstance());</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
 
       
@@ -201,6 +239,25 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">TextView</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -212,6 +269,16 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/24/json数据转换成数组/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">json数据转换成数组</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -305,7 +372,7 @@ setInterval("createtime()",250);
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

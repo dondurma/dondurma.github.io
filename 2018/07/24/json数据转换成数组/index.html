@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="山禾以谓">
 <meta property="og:description" content="最近在优化项目，之前是手写的popupWindow弹框，不是特别美观，看到了别人写的更好的，想拿来用，于是问题来了，他接收的数据是数组类型，有一维数组和二维数组，而公司项目后台是返回的json格式的数据，怎么将json格式转换成他要的数组呢？最后经过一番折腾，解决了…">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-24T07:19:27.041Z">
+<meta property="og:updated_time" content="2018-07-24T07:30:37.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="json数据转换成数组">
 <meta name="twitter:description" content="最近在优化项目，之前是手写的popupWindow弹框，不是特别美观，看到了别人写的更好的，想拿来用，于是问题来了，他接收的数据是数组类型，有一维数组和二维数组，而公司项目后台是返回的json格式的数据，怎么将json格式转换成他要的数组呢？最后经过一番折腾，解决了…">
@@ -192,6 +192,30 @@ var _hmt = _hmt || [];
 		
 		<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#后台返回的json数据"><span class="toc-number">1.</span> <span class="toc-text">后台返回的json数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#通过GsonFromt生成一个名为DesignClassBean的类"><span class="toc-number">2.</span> <span class="toc-text">通过GsonFromt生成一个名为DesignClassBean的类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将Json数据转换成一维数组"><span class="toc-number">3.</span> <span class="toc-text">将Json数据转换成一维数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将Json数据转换成二维数组"><span class="toc-number">4.</span> <span class="toc-text">将Json数据转换成二维数组</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      
 <!-- 目录内容结束 -->
 		
     <div class="article-entry" itemprop="articleBody">
@@ -278,6 +302,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/07/24/TextView中部分文本点击可跳转/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          TextView中部分文本点击可跳转
+        
+      </div>
+    </a>
   
   
     <a href="/2018/07/19/未选择的路/" id="article-nav-older" class="article-nav-link-wrap">
@@ -495,6 +528,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">TextView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">WebView相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -519,19 +560,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android8.0适配</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WebView相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">范式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android8.0适配</a>
               </li>
             
             <div class="clearfix"></div>
