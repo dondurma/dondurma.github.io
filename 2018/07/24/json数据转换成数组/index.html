@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Android | 山禾以谓</title>
+  <title>json数据转换成数组 | 山禾以谓</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="生活，随笔，Android">
-<meta property="og:type" content="website">
-<meta property="og:title" content="山禾以谓">
-<meta property="og:url" content="http://yoursite.com/tags/Android/index.html">
+  <meta name="description" content="最近在优化项目，之前是手写的popupWindow弹框，不是特别美观，看到了别人写的更好的，想拿来用，于是问题来了，他接收的数据是数组类型，有一维数组和二维数组，而公司项目后台是返回的json格式的数据，怎么将json格式转换成他要的数组呢？最后经过一番折腾，解决了…">
+<meta name="keywords" content="技术,java,数组,集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="json数据转换成数组">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/json数据转换成数组/index.html">
 <meta property="og:site_name" content="山禾以谓">
+<meta property="og:description" content="最近在优化项目，之前是手写的popupWindow弹框，不是特别美观，看到了别人写的更好的，想拿来用，于是问题来了，他接收的数据是数组类型，有一维数组和二维数组，而公司项目后台是返回的json格式的数据，怎么将json格式转换成他要的数组呢？最后经过一番折腾，解决了…">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-24T07:19:27.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="山禾以谓">
+<meta name="twitter:title" content="json数据转换成数组">
+<meta name="twitter:description" content="最近在优化项目，之前是手写的popupWindow弹框，不是特别美观，看到了别人写的更好的，想拿来用，于是问题来了，他接收的数据是数组类型，有一维数组和二维数组，而公司项目后台是返回的json格式的数据，怎么将json格式转换成他要的数组呢？最后经过一番折腾，解决了…">
   
     <link rel="alternative" href="/atom.xml" title="山禾以谓" type="application/atom+xml">
   
@@ -167,36 +171,78 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-json数据转换成数组" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      json数据转换成数组
+    </h1>
+  
+
+        
+        <a href="/2018/07/24/json数据转换成数组/" class="archive-article-date">
+  	<time datetime="2018-07-24T07:16:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
+</a>
+        
+      </header>
     
+		
+		<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+		
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>最近在优化项目，之前是手写的popupWindow弹框，不是特别美观，看到了别人写的更好的，想拿来用，于是问题来了，他接收的数据是数组类型，有一维数组和二维数组，而公司项目后台是返回的json格式的数据，怎么将json格式转换成他要的数组呢？最后经过一番折腾，解决了…</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="后台返回的json数据"><a href="#后台返回的json数据" class="headerlink" title="后台返回的json数据"></a>后台返回的json数据</h1><ul>
+<li>如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;head&quot;: &#123;</span><br><span class="line">		&quot;respCode&quot;: &quot;0000000&quot;,</span><br><span class="line">		&quot;respContent&quot;: &quot;执行成功&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;body&quot;: &#123;</span><br><span class="line">		&quot;sortList&quot;: [&#123;</span><br><span class="line">			&quot;name&quot;: &quot;最新&quot;,</span><br><span class="line">			&quot;value&quot;: 1</span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			&quot;name&quot;: &quot;点赞&quot;,</span><br><span class="line">			&quot;value&quot;: 2</span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			&quot;name&quot;: &quot;销量&quot;,</span><br><span class="line">			&quot;value&quot;: 3</span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			&quot;name&quot;: &quot;热度&quot;,</span><br><span class="line">			&quot;value&quot;: 4</span><br><span class="line">		&#125;],</span><br><span class="line">		&quot;bigCategorys&quot;: [&#123;</span><br><span class="line">			&quot;smallCategorys&quot;: [&#123;</span><br><span class="line">				&quot;id&quot;: &quot;196B759A8E2B11E7AB4600163E0EB16B&quot;,</span><br><span class="line">				&quot;name&quot;: &quot;动物模型&quot;</span><br><span class="line">			&#125;, &#123;</span><br><span class="line">				&quot;id&quot;: &quot;1F2FCFD18E2B11E7AB4600163E0EB16B&quot;,</span><br><span class="line">				&quot;name&quot;: &quot;植物模型&quot;</span><br><span class="line">			&#125;, &#123;</span><br><span class="line">				&quot;id&quot;: &quot;2DADE1FF8E2B11E7AB4600163E0EB16B&quot;,</span><br><span class="line">				&quot;name&quot;: &quot;飞禽&quot;</span><br><span class="line">			&#125;, &#123;</span><br><span class="line">				&quot;id&quot;: &quot;3300833A8E2B11E7AB4600163E0EB16B&quot;,</span><br><span class="line">				&quot;name&quot;: &quot;奇异生物&quot;</span><br><span class="line">			&#125;, &#123;</span><br><span class="line">				&quot;id&quot;: &quot;E827044F8E2B11E7AB4600163E0EB16B&quot;,</span><br><span class="line">				&quot;name&quot;: &quot;水生生物&quot;</span><br><span class="line">			&#125;],</span><br><span class="line">			&quot;name&quot;: &quot;动物植物&quot;,</span><br><span class="line">			&quot;id&quot;: &quot;E3BAF9708E2A11E7AB4600163E0EB16B&quot;</span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			&quot;smallCategorys&quot;: [&#123;</span><br><span class="line">				&quot;id&quot;: &quot;4A21F21A8E2B11E7AB4600163E0EB16B&quot;,</span><br><span class="line">				&quot;name&quot;: &quot;办公工具&quot;</span><br><span class="line">			&#125;, &#123;</span><br><span class="line">				&quot;id&quot;: &quot;156AC3D98E3111E7AB4600163E0EB16B&quot;,</span><br><span class="line">				&quot;name&quot;: &quot;机械工具&quot;</span><br><span class="line">			&#125;, &#123;</span><br><span class="line">				&quot;id&quot;: &quot;1B02B2EF8E3111E7AB4600163E0EB16B&quot;,</span><br><span class="line">				&quot;name&quot;: &quot;手工工具&quot;</span><br><span class="line">			&#125;],</span><br><span class="line">			&quot;name&quot;: &quot;工具用具&quot;,</span><br><span class="line">			&quot;id&quot;: &quot;F0A71C2A8E2A11E7AB4600163E0EB16B&quot;</span><br><span class="line">		&#125;]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="通过GsonFromt生成一个名为DesignClassBean的类"><a href="#通过GsonFromt生成一个名为DesignClassBean的类" class="headerlink" title="通过GsonFromt生成一个名为DesignClassBean的类"></a>通过GsonFromt生成一个名为DesignClassBean的类</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DesignClassBean designClassBean = new Gson().fromJson(response, DesignClassBean.class);</span><br></pre></td></tr></table></figure>
+<h1 id="将Json数据转换成一维数组"><a href="#将Json数据转换成一维数组" class="headerlink" title="将Json数据转换成一维数组"></a>将Json数据转换成一维数组</h1><ul>
+<li><p>一维数组的list集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;DesignClassBean.BodyBean.SortListBean&gt; oneList = designClassBean.getBody().getSortList();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个ArrayList集合，并遍历得到其中的name字段值，并加到ArrayList集合中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; oneArrayList = new ArrayList&lt;String&gt;();</span><br><span class="line">for (int i = 0; i &lt; oneList.size(); i++) &#123;</span><br><span class="line">     String name = oneList.get(i).getName();</span><br><span class="line">     oneArrayList.add(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将ArrayList集合转换成一维数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String[] oneArrays = oneArrayList.toArray(new String[oneArrayList.size()]);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>即oneArrays就是我们要得到的一维数组</p>
+</li>
+</ul>
+<h1 id="将Json数据转换成二维数组"><a href="#将Json数据转换成二维数组" class="headerlink" title="将Json数据转换成二维数组"></a>将Json数据转换成二维数组</h1><ul>
+<li><p>二维数组的list集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;DesignClassBean.BodyBean.BigCategorysBean&gt; twoList = designClassBean.getBody().getBigCategorys();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个ArrayList集合twoArrayList</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; twoArrayList = new ArrayList&lt;String&gt;();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个空二维数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String[][] twoArray = new String[twoList.size()][];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套for循环将值放入二维数组中</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt; twoList.size(); i++) &#123;</span><br><span class="line">            String name = twoList.get(i).getName();</span><br><span class="line">            twoArrayList.add(name);</span><br><span class="line">            ArrayList&lt;String&gt; threeArrayList = new ArrayList&lt;String&gt;();</span><br><span class="line">            List&lt;DesignClassBean.BodyBean.BigCategorysBean.SmallCategorysBean&gt; smallCategorys = bigCategorys.get(i).getSmallCategorys();</span><br><span class="line">            for (int j = 0; j &lt; smallCategorys.size(); j++) &#123;</span><br><span class="line">                String smallname = smallCategorys.get(j).getName();</span><br><span class="line">                threeArrayList.add(smallname);</span><br><span class="line">            &#125;</span><br><span class="line">            twoArray[i] = threeArrayList.toArray(new String[threeArrayList.size()]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>twoArray即为我们需要的二维数组</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/18/Android横竖屏切换时不销毁当前Activity/" class="archive-article-date">
-  	<time datetime="2018-07-18T02:19:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/18/Android横竖屏切换时不销毁当前Activity/">Android横竖屏切换时不销毁当前Activity</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -206,233 +252,94 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">横竖屏切换</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">集合</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/13/WebView小结/" class="archive-article-date">
-  	<time datetime="2018-07-13T02:33:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/19/未选择的路/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">未选择的路</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+	
+	<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNzk4OS8xNDUxOQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+	
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/13/WebView小结/">WebView小结</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebView相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/25/EventBus使用笔记/" class="archive-article-date">
-  	<time datetime="2018-06-25T01:32:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/EventBus使用笔记/">EventBus使用笔记</a>
-    </h1>
+	
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">EventBus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/25/ButterKnife依赖注入框架配置/" class="archive-article-date">
-  	<time datetime="2018-06-25T01:32:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/ButterKnife依赖注入框架配置/">ButterKnife依赖注入框架配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ButterKnife</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/25/ARouter使用笔记/" class="archive-article-date">
-  	<time datetime="2018-06-25T01:31:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/ARouter使用笔记/">ARouter使用笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ARouter</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -473,9 +380,9 @@ setInterval("createtime()",250);
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: false,
