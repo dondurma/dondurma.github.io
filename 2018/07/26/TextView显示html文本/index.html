@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="山禾以谓">
 <meta property="og:description" content="以前在项目中遇到一个需求就是，在Activity要展示后台返回的html文本，网上找了下相关方法并测试可行，不久就发现了新问题，显示的图片太小了，并且比例不协调。最后经过一番折腾解决了…">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-26T08:23:09.551Z">
+<meta property="og:updated_time" content="2018-07-26T08:28:26.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TextView显示html文本">
 <meta name="twitter:description" content="以前在项目中遇到一个需求就是，在Activity要展示后台返回的html文本，网上找了下相关方法并测试可行，不久就发现了新问题，显示的图片太小了，并且比例不协调。最后经过一番折腾解决了…">
@@ -238,7 +238,7 @@ var _hmt = _hmt || [];
 <h2 id="获取手机屏幕的宽度width"><a href="#获取手机屏幕的宽度width" class="headerlink" title="获取手机屏幕的宽度width"></a>获取手机屏幕的宽度width</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">int width = wm.getDefaultDisplay().getWidth();</span><br></pre></td></tr></table></figure>
 <h2 id="得到html中当前图片的宽和高"><a href="#得到html中当前图片的宽和高" class="headerlink" title="得到html中当前图片的宽和高"></a>得到html中当前图片的宽和高</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int intrinsicWidth = drawable.getIntrinsicWidth();</span><br><span class="line">int intrinsicHeight = drawable.getIntrinsicHeight();</span><br></pre></td></tr></table></figure>
 <h2 id="过滤是否是表情符"><a href="#过滤是否是表情符" class="headerlink" title="过滤是否是表情符"></a>过滤是否是表情符</h2><blockquote>
-<p>经测试，当图片的宽小于10的时候，多半都是表情符，所以增加一个判断是表情符的情况下，将该表情符的宽高均设置为50</p>
+<p>经测试，当图片的宽小于10的时候，多半都是表情符，所以增加一个判断是否是表情符，并将该表情符的宽高均设置为50</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (intrinsicWidth &lt; 10) &#123;</span><br><span class="line"> drawable.setBounds(0, 0, 50, 50);</span><br><span class="line">&#125; else &#123;</span><br><span class="line"> //(略)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="对图片进行比例设置"><a href="#对图片进行比例设置" class="headerlink" title="对图片进行比例设置"></a>对图片进行比例设置</h2><ul>
@@ -472,11 +472,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,11 +496,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">TextView</a>
+                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
+                <a href="javascript:void(0)" class="js-tag color4">TextView</a>
               </li>
              
               <li class="article-tag-list-item">
