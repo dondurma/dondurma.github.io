@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title>Android开发中，实现对Home按键的监听</title>
+      <link href="/2018/11/10/Android%E5%BC%80%E5%8F%91%E4%B8%AD%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%AF%B9Home%E6%8C%89%E9%94%AE%E7%9A%84%E7%9B%91%E5%90%AC/"/>
+      <content type="html"><![CDATA[<h1 id="Android开发中，实现Home按键的监听"><a href="#Android开发中，实现Home按键的监听" class="headerlink" title="Android开发中，实现Home按键的监听"></a>Android开发中，实现Home按键的监听</h1><blockquote><p>最近在项目中遇到需要监听用户点击Back以及Home按键，并作出相应操作。开始以为很简单，先实现了点击Back按键的监听，继而开始实现Home按键的监听，一次，二次都失败了，网上查看了多篇博客，都差强人意，实际运行后都实现不了，直到最后发现了一篇博客,特记录一下。<br>原文地址:<a href="https://blog.csdn.net/csdn_aiyang/article/details/76154374" target="_blank" rel="noopener">https://blog.csdn.net/csdn_aiyang/article/details/76154374</a></p></blockquote><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        //在setContentView之前添加,未添加的话home键监听无效，设置窗体属性</span><br><span class="line">        this.getWindow().setFlags(0x80000000, 0x80000000);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        //创建广播</span><br><span class="line">        InnerRecevier innerReceiver = new InnerRecevier();</span><br><span class="line">        //动态注册广播</span><br><span class="line">        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);</span><br><span class="line">        //启动广播</span><br><span class="line">        registerReceiver(innerReceiver, intentFilter);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    class InnerRecevier extends BroadcastReceiver &#123;</span><br><span class="line">        final String SYSTEM_DIALOG_REASON_KEY = &quot;reason&quot;;</span><br><span class="line">        final String SYSTEM_DIALOG_REASON_RECENT_APPS = &quot;recentapps&quot;;</span><br><span class="line">        final String SYSTEM_DIALOG_REASON_HOME_KEY = &quot;homekey&quot;;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line">            String action = intent.getAction();</span><br><span class="line">            if (Intent.ACTION_CLOSE_SYSTEM_DIALOGS.equals(action)) &#123;</span><br><span class="line">                String reason = intent.getStringExtra(SYSTEM_DIALOG_REASON_KEY);</span><br><span class="line">                if (reason != null) &#123;</span><br><span class="line">                    if (reason.equals(SYSTEM_DIALOG_REASON_HOME_KEY)) &#123;</span><br><span class="line">                        Toast.makeText(MainActivity.this, &quot;Home键被监听&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125; else if (reason.equals(SYSTEM_DIALOG_REASON_RECENT_APPS)) &#123;</span><br><span class="line">                        Toast.makeText(MainActivity.this, &quot;多任务键被监听&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>一首小诗</title>
       <link href="/2018/10/15/%E4%B8%80%E9%A6%96%E5%B0%8F%E8%AF%97/"/>
       <content type="html"><![CDATA[<h1 id="相信未来"><a href="#相信未来" class="headerlink" title="相信未来"></a>相信未来</h1><p>现代·食指 <br></p><p>当蜘蛛网无情地查封了我的炉台<br></p><p>当灰烬的余烟叹息着贫困的悲哀<br></p><a id="more"></a><p>我依然固执地铺平失望的灰烬<br></p><p>用美丽的雪花写下：相信未来<br></p><p>当我的紫葡萄化为深秋的露水<br></p><p>当我的鲜花依偎在别人的情怀<br></p><p>我依然固执地用凝霜的枯藤<br></p><p>在凄凉的大地上写下：相信未来<br></p><p>我要用手指那涌向天边的排浪<br></p><p>我要用手掌那托住太阳的大海<br></p><p>摇曳着曙光那枝温暖漂亮的笔杆<br></p><p>用孩子的笔体写下：相信未来<br></p><p>我之所以坚定地相信未来<br></p><p>是我相信未来人们的眼睛<br></p><p>她有拨开历史风尘的睫毛<br></p><p>她有看透岁月篇章的瞳孔<br></p><p>不管人们对于我们腐烂的皮肉<br></p><p>那些迷途的惆怅、失败的苦痛<br></p><p>是寄予感动的热泪、深切的同情<br></p><p>还是给以轻蔑的微笑、辛辣的嘲讽<br></p><p>我坚信人们对于我们的脊骨<br></p><p>那无数次的探索、迷途、失败和成功<br></p><p>一定会给予热情、客观、公正的评定<br></p><p>是的，我焦急地等待着他们的评定<br></p><p>朋友，坚定地相信未来吧<br></p><p>相信不屈不挠的努力<br></p><p>相信战胜死亡的年轻<br></p><p>相信未来、热爱生命<br></p><p>1968年 北京<br></p>]]></content>
@@ -144,9 +158,9 @@
       
         <tags>
             
-            <tag> 技术 </tag>
-            
             <tag> Android </tag>
+            
+            <tag> 技术 </tag>
             
             <tag> TextView </tag>
             
@@ -198,9 +212,9 @@
       
         <tags>
             
-            <tag> 技术 </tag>
-            
             <tag> Android </tag>
+            
+            <tag> 技术 </tag>
             
             <tag> 基础 </tag>
             
@@ -218,9 +232,9 @@
       
         <tags>
             
-            <tag> 技术 </tag>
-            
             <tag> Android </tag>
+            
+            <tag> 技术 </tag>
             
             <tag> 基础 </tag>
             
@@ -256,9 +270,9 @@
       
         <tags>
             
-            <tag> 技术 </tag>
-            
             <tag> Android </tag>
+            
+            <tag> 技术 </tag>
             
             <tag> 基础 </tag>
             
@@ -276,9 +290,9 @@
       
         <tags>
             
-            <tag> 技术 </tag>
-            
             <tag> Android </tag>
+            
+            <tag> 技术 </tag>
             
             <tag> 基础 </tag>
             
@@ -296,9 +310,9 @@
       
         <tags>
             
-            <tag> 技术 </tag>
-            
             <tag> Android </tag>
+            
+            <tag> 技术 </tag>
             
             <tag> 基础 </tag>
             
