@@ -9,17 +9,19 @@
   <title>Android开发中，实现对Home按键的监听 | 山禾以谓</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Android开发中，实现Home按键的监听 最近在项目中遇到需要监听用户点击Back以及Home按键，并作出相应操作。开始以为很简单，先实现了点击Back按键的监听，继而开始实现Home按键的监听，一次，二次都失败了，网上查看了多篇博客，都差强人意，实际运行后都实现不了，直到最后发现了一篇博客,特记录一下。原文地址:https://blog.csdn.net/csdn_aiyang/articl">
-<meta name="keywords" content="技术,Android">
+<meta name="keywords" content="Android,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android开发中，实现对Home按键的监听">
 <meta property="og:url" content="http://yoursite.com/2018/11/10/Android开发中，实现对Home按键的监听/index.html">
 <meta property="og:site_name" content="山禾以谓">
 <meta property="og:description" content="Android开发中，实现Home按键的监听 最近在项目中遇到需要监听用户点击Back以及Home按键，并作出相应操作。开始以为很简单，先实现了点击Back按键的监听，继而开始实现Home按键的监听，一次，二次都失败了，网上查看了多篇博客，都差强人意，实际运行后都实现不了，直到最后发现了一篇博客,特记录一下。原文地址:https://blog.csdn.net/csdn_aiyang/articl">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-12T03:40:43.454Z">
+<meta property="og:image" content="http://p9uaajhtk.bkt.clouddn.com/%E5%AE%9E%E7%8E%B0%E5%AF%B9Home%E9%94%AE%E7%9B%91%E5%90%AC.png">
+<meta property="og:updated_time" content="2018-11-15T07:38:24.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发中，实现对Home按键的监听">
 <meta name="twitter:description" content="Android开发中，实现Home按键的监听 最近在项目中遇到需要监听用户点击Back以及Home按键，并作出相应操作。开始以为很简单，先实现了点击Back按键的监听，继而开始实现Home按键的监听，一次，二次都失败了，网上查看了多篇博客，都差强人意，实际运行后都实现不了，直到最后发现了一篇博客,特记录一下。原文地址:https://blog.csdn.net/csdn_aiyang/articl">
+<meta name="twitter:image" content="http://p9uaajhtk.bkt.clouddn.com/%E5%AE%9E%E7%8E%B0%E5%AF%B9Home%E9%94%AE%E7%9B%91%E5%90%AC.png">
   
     <link rel="alternative" href="/atom.xml" title="山禾以谓" type="application/atom+xml">
   
@@ -205,7 +207,11 @@ var _hmt = _hmt || [];
 <p>最近在项目中遇到需要监听用户点击Back以及Home按键，并作出相应操作。开始以为很简单，先实现了点击Back按键的监听，继而开始实现Home按键的监听，一次，二次都失败了，网上查看了多篇博客，都差强人意，实际运行后都实现不了，直到最后发现了一篇博客,特记录一下。<br>原文地址:<a href="https://blog.csdn.net/csdn_aiyang/article/details/76154374" target="_blank" rel="noopener">https://blog.csdn.net/csdn_aiyang/article/details/76154374</a></p>
 </blockquote>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">	InnerRecevier innerReceiver;</span><br><span class="line">	</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        //在setContentView之前添加,未添加的话home键监听无效，设置窗体属性</span><br><span class="line">        this.getWindow().setFlags(0x80000000, 0x80000000);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        //创建广播</span><br><span class="line">        innerReceiver = new InnerRecevier();</span><br><span class="line">        //动态注册广播</span><br><span class="line">        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);</span><br><span class="line">        //启动广播</span><br><span class="line">        registerReceiver(innerReceiver, intentFilter);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	 @Override</span><br><span class="line">    protected void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">		</span><br><span class="line">        if (innerReceiver != null) &#123;</span><br><span class="line">			</span><br><span class="line">            unregisterReceiver(innerReceiver);</span><br><span class="line">            innerReceiver=null;</span><br><span class="line">			</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    class InnerRecevier extends BroadcastReceiver &#123;</span><br><span class="line">        final String SYSTEM_DIALOG_REASON_KEY = &quot;reason&quot;;</span><br><span class="line">        final String SYSTEM_DIALOG_REASON_RECENT_APPS = &quot;recentapps&quot;;</span><br><span class="line">        final String SYSTEM_DIALOG_REASON_HOME_KEY = &quot;homekey&quot;;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line">			</span><br><span class="line">            String action = intent.getAction();</span><br><span class="line">            if (Intent.ACTION_CLOSE_SYSTEM_DIALOGS.equals(action)) &#123;</span><br><span class="line">				</span><br><span class="line">                String reason = intent.getStringExtra(SYSTEM_DIALOG_REASON_KEY);</span><br><span class="line">                if (reason != null) &#123;</span><br><span class="line">					</span><br><span class="line">                    if (reason.equals(SYSTEM_DIALOG_REASON_HOME_KEY)) &#123;</span><br><span class="line">                        Toast.makeText(MainActivity.this, &quot;Home键被监听&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125; else if (reason.equals(SYSTEM_DIALOG_REASON_RECENT_APPS)) &#123;</span><br><span class="line">                        Toast.makeText(MainActivity.this, &quot;多任务键被监听&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://p9uaajhtk.bkt.clouddn.com/%E5%AE%9E%E7%8E%B0%E5%AF%B9Home%E9%94%AE%E7%9B%91%E5%90%AC.png" alt="http://p9uaajhtk.bkt.clouddn.com/%E5%AE%9E%E7%8E%B0%E5%AF%B9Home%E9%94%AE%E7%9B%91%E5%90%AC.png"></p>
+<ul>
+<li>注:因原主题代码显示不太美观，以后尽量用这种图片的形式展示。</li>
+</ul>
+
       
 
       
@@ -218,11 +224,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -433,11 +439,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -445,15 +451,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ARouter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">横竖屏切换</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ButterKnife</a>
+                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,7 +463,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
+                <a href="javascript:void(0)" class="js-tag color2">ButterKnife</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ARouter</a>
               </li>
              
               <li class="article-tag-list-item">
