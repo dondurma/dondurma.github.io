@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title>棠梨煎雪</title>
+      <link href="/2018/11/16/%E6%A3%A0%E6%A2%A8%E7%85%8E%E9%9B%AA/"/>
+      <content type="html"><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28188427&auto=0&height=66"></iframe><p>作曲 : 灰原穷<br><br>作词 : 商连<br></p><a id="more"></a><p>青鲤来时遥闻春溪声声碎<br><br>嗅得手植棠梨初发轻黄蕊<br><br>待小暑悄过 新梨渐垂<br><br>来邀东邻女伴撷果缓缓归<br></p><p>旧岁采得枝头细雪<br><br>今朝飘落胭脂梨叶<br><br>轻挼草色二三入卷<br><br>细呷春酒淡始觉甜<br></p><p>依旧是<br><br>偏爱枕惊鸿二字入梦的时节<br><br>烛火惺忪却可与她漫聊彻夜<br><br>早春暮春 酒暖花深<br><br>便好似一生心事只得一人来解<br></p><p>岁岁花藻檐下共将棠梨煎雪<br><br>自总角至你我某日辗转天边<br><br>天淡天青 宿雨沾襟<br><br>一年一会信笺却只见寥寥数言<br></p><p>旧岁采得枝头细雪<br><br>今朝飘落胭脂梨叶<br><br>轻挼草色二三入卷<br><br>细呷春酒淡始觉甜<br></p><p>依旧是<br><br>偏爱枕惊鸿二字入梦的时节<br><br>烛火惺忪却可与她漫聊彻夜<br><br>早春暮春 酒暖花深<br><br>便好似一生心事只得一人来解<br></p><p>岁岁花藻檐下共将棠梨煎雪<br><br>自总角至你我某日辗转天边<br><br>天淡天青 宿雨沾襟<br><br>一年一会信笺却只见寥寥数言<br></p><p>雨中灯市欲眠 原已萧萧数年<br><br>似有故人轻叩 再将棠梨煎雪<br><br>能否消得<br><br>你一路而来的半生风雪<br></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Android开发中，实现对Home按键的监听</title>
       <link href="/2018/11/10/Android%E5%BC%80%E5%8F%91%E4%B8%AD%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%AF%B9Home%E6%8C%89%E9%94%AE%E7%9A%84%E7%9B%91%E5%90%AC/"/>
       <content type="html"><![CDATA[<h1 id="Android开发中，实现Home按键的监听"><a href="#Android开发中，实现Home按键的监听" class="headerlink" title="Android开发中，实现Home按键的监听"></a>Android开发中，实现Home按键的监听</h1><blockquote><p>最近在项目中遇到需要监听用户点击Back以及Home按键，并作出相应操作。开始以为很简单，先实现了点击Back按键的监听，继而开始实现Home按键的监听，一次，二次都失败了，网上查看了多篇博客，都差强人意，实际运行后都实现不了，直到最后发现了一篇博客,特记录一下。<br>原文地址:<a href="https://blog.csdn.net/csdn_aiyang/article/details/76154374" target="_blank" rel="noopener">https://blog.csdn.net/csdn_aiyang/article/details/76154374</a></p></blockquote><a id="more"></a><p><img src="http://p9uaajhtk.bkt.clouddn.com/%E5%AE%9E%E7%8E%B0%E5%AF%B9Home%E9%94%AE%E7%9B%91%E5%90%AC.png" alt="http://p9uaajhtk.bkt.clouddn.com/%E5%AE%9E%E7%8E%B0%E5%AF%B9Home%E9%94%AE%E7%9B%91%E5%90%AC.png"></p><ul><li>注:因原主题代码显示不太美观，以后尽量用这种图片的形式展示。</li></ul>]]></content>
@@ -10,9 +24,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> 技术 </tag>
+            
+            <tag> Android </tag>
             
             <tag> 转载 </tag>
             
@@ -162,9 +176,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> 技术 </tag>
+            
+            <tag> Android </tag>
             
             <tag> TextView </tag>
             
@@ -216,9 +230,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> 技术 </tag>
+            
+            <tag> Android </tag>
             
             <tag> 基础 </tag>
             
@@ -236,9 +250,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> 技术 </tag>
+            
+            <tag> Android </tag>
             
             <tag> 基础 </tag>
             
@@ -274,9 +288,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> 技术 </tag>
+            
+            <tag> Android </tag>
             
             <tag> 基础 </tag>
             
@@ -294,9 +308,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> 技术 </tag>
+            
+            <tag> Android </tag>
             
             <tag> 基础 </tag>
             
@@ -314,9 +328,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> 技术 </tag>
+            
+            <tag> Android </tag>
             
             <tag> 基础 </tag>
             
