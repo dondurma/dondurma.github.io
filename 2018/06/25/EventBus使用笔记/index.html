@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="山禾以谓">
 <meta property="og:description" content="关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-18T02:25:16.703Z">
+<meta property="og:updated_time" content="2018-11-27T03:08:10.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EventBus使用笔记">
 <meta name="twitter:description" content="关于EventBus EventBus是一款针对Android优化发布/订阅事件的总线，通俗的来说就是各个activity之间或activity与fragment之间消息的传递，主要功能替换了Intent,Handler,Brodcast在activity，service,线程之间传递消息，优点是在某些复杂情况下的数据传递，并且开销小，代码更优雅，以及将发送者和接收者解耦。">
@@ -309,17 +309,17 @@
 </li>
 </ul>
 <h2 id="三，在接收消息页面注册与注销"><a href="#三，在接收消息页面注册与注销" class="headerlink" title="三，在接收消息页面注册与注销"></a>三，在接收消息页面注册与注销</h2><ul>
-<li><p>在onCreate方法中注册</p>
+<li>在onCreate方法中注册</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().register(this);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在onDestroy方法中注销</p>
+<ul>
+<li>在onDestroy方法中注销</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().unregister(this);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
 <h2 id="四，发送消息"><a href="#四，发送消息" class="headerlink" title="四，发送消息"></a>四，发送消息</h2><ul>
-<li>在发送消息的Activity中发送消息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().post(new EventMsg(&quot;This is a message!&quot;));</span><br></pre></td></tr></table></figure>
-</li>
+<li>在发送消息的Activity中发送消息</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().post(new EventMsg(&quot;This is a message!&quot;));</span><br></pre></td></tr></table></figure>
 <h2 id="五，接收消息"><a href="#五，接收消息" class="headerlink" title="五，接收消息"></a>五，接收消息</h2><ul>
 <li>在接收消息的Activity中创建一个接收消息的方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Subscribe</span><br><span class="line">public void getEventMsg(EventMsg msg)&#123;</span><br><span class="line">    String msg1 = msg.getMsg();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -335,7 +335,7 @@
         <p><span>本文标题:</span><a href="/2018/06/25/EventBus使用笔记/">EventBus使用笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">山禾以谓</a></p>
         <p><span>发布时间:</span>2018-06-25, 09:32:23</p>
-        <p><span>最后更新:</span>2018-07-18, 10:25:16</p>
+        <p><span>最后更新:</span>2018-11-27, 11:08:10</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/06/25/EventBus使用笔记/" title="EventBus使用笔记">http://yoursite.com/2018/06/25/EventBus使用笔记/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/25/EventBus使用笔记/　　作者: 山禾以谓" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
