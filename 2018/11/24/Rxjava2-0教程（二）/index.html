@@ -23,20 +23,13 @@
 <meta property="og:site_name" content="山禾以谓">
 <meta property="og:description" content="Rxjava2.0教程(二) 本文只作为转载，著作权归原作者(Season_zlc)所有，原文地址:https://www.jianshu.com/p/8818b98c44e2">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pimtk270m.bkt.clouddn.com/rxjava10.png">
-<meta property="og:image" content="http://pimtk270m.bkt.clouddn.com/rxjava11.png">
-<meta property="og:image" content="http://pimtk270m.bkt.clouddn.com/rxjava12.png">
-<meta property="og:image" content="http://pimtk270m.bkt.clouddn.com/rxjava13.png">
-<meta property="og:image" content="http://pimtk270m.bkt.clouddn.com/rxjava14.png">
-<meta property="og:image" content="http://pimtk270m.bkt.clouddn.com/rxjava15.png">
-<meta property="og:image" content="http://pimtk270m.bkt.clouddn.com/rxjava16.png">
-<meta property="og:image" content="http://pimtk270m.bkt.clouddn.com/rxjava17.png">
-<meta property="og:image" content="http://pimtk270m.bkt.clouddn.com/rxjava18.png">
-<meta property="og:updated_time" content="2018-11-24T09:25:01.528Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava6.png">
+<meta property="og:updated_time" content="2018-11-27T02:26:50.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rxjava2.0教程（二）">
 <meta name="twitter:description" content="Rxjava2.0教程(二) 本文只作为转载，著作权归原作者(Season_zlc)所有，原文地址:https://www.jianshu.com/p/8818b98c44e2">
-<meta name="twitter:image" content="http://pimtk270m.bkt.clouddn.com/rxjava10.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava5.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -305,21 +298,21 @@
 <h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><ul>
 <li>还是之前的例子，两个水管:</li>
 </ul>
-<p><img src="http://pimtk270m.bkt.clouddn.com/rxjava10.png" alt="http://pimtk270m.bkt.clouddn.com/rxjava10.png"></p>
+<p><div align="center"><img src="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava5.png" alt="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava5.png"></div></p>
 <ul>
 <li>正常情况下，上游和下游是工作在同一个线程中的，也就是说上游在哪个线程发送事件，下游就在哪个线程中接收事件</li>
 <li>如何去理解呢？以Android为例，一个Activity的所有动作默认都是在主线程中运行的，比如我们在onCreate中打出当前线程的名字:</li>
 </ul>
-<p><img src="http://pimtk270m.bkt.clouddn.com/rxjava11.png" alt="http://pimtk270m.bkt.clouddn.com/rxjava11.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line"> protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">     super.onCreate(savedInstanceState);</span><br><span class="line">     setContentView(R.layout.activity_second);</span><br><span class="line">     Log.d(TAG, Thread.currentThread().getName());</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>打印结果:</p>
+<li>打印结果:</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D/TAG: main</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>回到Rxjava中，当我们在主线程中去创建一个上游的<code>Observable</code>来发送事件，则这个上游默认就在主线程发送事件</p>
-</li>
+<ul>
+<li>回到Rxjava中，当我们在主线程中去创建一个上游的<code>Observable</code>来发送事件，则这个上游默认就在主线程发送事件</li>
 <li>当我们在主线程中去创建一个下游<code>Observer</code>来接收事件，则这个下游默认就在主线程中接收事件，来看段代码:</li>
 </ul>
-<p><img src="http://pimtk270m.bkt.clouddn.com/rxjava12.png" alt="http://pimtk270m.bkt.clouddn.com/rxjava12.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_second);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 上游</span><br><span class="line">     */</span><br><span class="line">    Observable&lt;Integer&gt; observable = Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void subscribe(ObservableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">            Log.d(TAG, &quot;Observable thread is :&quot; + Thread.currentThread().getName());</span><br><span class="line"></span><br><span class="line">            Log.d(TAG, &quot;emit 1&quot;);</span><br><span class="line"></span><br><span class="line">            e.onNext(1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 下游</span><br><span class="line">     */</span><br><span class="line">    Consumer&lt;Integer&gt; consumer = new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">            Log.d(TAG, &quot;Observer thread is :&quot; + Thread.currentThread().getName());</span><br><span class="line"></span><br><span class="line">            Log.d(TAG, &quot;onNext:&quot; + integer);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    observable.subscribe(consumer);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>在主线程中分别创建上游和下游，然后将他们连接再一起，同时分别打印出它们所在的线程，运行结果为:</li>
 </ul>
@@ -328,14 +321,12 @@
 <li>这就验证了刚才所说，上下游默认是在同一个线程工作</li>
 <li>这样肯定满足不了我们的需求，我们更多想要的是这么一种情况，在子线程中做耗时的操作，然后回到主线程中来操作UI，用图片来描述就是下面这个图片</li>
 </ul>
-<p><img src="http://pimtk270m.bkt.clouddn.com/rxjava13.png" alt="http://pimtk270m.bkt.clouddn.com/rxjava13.png"></p>
+<p><div align="center"><img src="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava6.png" alt="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava6.png"></div></p>
 <ul>
-<li><p>在这个图片中，我们用黄色水管表示子线程，深蓝色水管表示主线程</p>
-</li>
-<li><p>要达到这个目的，我们需要先改变上游发送事件的线程，让它去子线程中发送事件，然后再改变下游的线程，让它去主线程接收事件，通过Rxjava内置的线程调度器可以很轻松的做到这一点，接下来看一段代码:</p>
-</li>
+<li>在这个图片中，我们用黄色水管表示子线程，深蓝色水管表示主线程</li>
+<li>要达到这个目的，我们需要先改变上游发送事件的线程，让它去子线程中发送事件，然后再改变下游的线程，让它去主线程接收事件，通过Rxjava内置的线程调度器可以很轻松的做到这一点，接下来看一段代码:</li>
 </ul>
-<p><img src="http://pimtk270m.bkt.clouddn.com/rxjava14.png" alt="http://pimtk270m.bkt.clouddn.com/rxjava14.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_second2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Observable&lt;Integer&gt; observable = Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void subscribe(ObservableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">            Log.d(TAG, &quot;Observable thread is:&quot; + Thread.currentThread().getName());</span><br><span class="line">            Log.d(TAG, &quot;emit 1&quot;);</span><br><span class="line">            e.onNext(1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Consumer&lt;Integer&gt; consumer = new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">            Log.d(TAG, &quot;Observer thread is:&quot; + Thread.currentThread().getName());</span><br><span class="line">            Log.d(TAG, &quot;onNext:&quot; + integer);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    observable</span><br><span class="line">            //上游水管开启一个新的子线程</span><br><span class="line">            .subscribeOn(Schedulers.newThread())</span><br><span class="line">            //下游水管在主线程中接收</span><br><span class="line">            .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">            .subscribe(consumer);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>还是刚才的例子，只不过添加了点东西，先来看看运行的效果:</li>
 </ul>
@@ -348,18 +339,15 @@
 <ul>
 <li>简单来说，<code>subscribeOn()</code>指的是上游发送事件的线程，<code>observeOn()</code>指的是下游接收事件的线程</li>
 <li>多次指定上游的线程只有第一次指定有效，也就是说多次调用<code>subscribeOn()</code>只有第一次有效，其余的会被忽略</li>
-<li><p>多次指定下游的线程是可以的，也就是说每调用一次<code>observeOn()</code>下游的线程就会切换一次</p>
-</li>
-<li><p>在Rxjava中，已经内置了很多线程选项供我们选择，例如有</p>
-<ul>
+<li>多次指定下游的线程是可以的，也就是说每调用一次<code>observeOn()</code>下游的线程就会切换一次</li>
+<li>在Rxjava中，已经内置了很多线程选项供我们选择，例如有<ul>
 <li><code>Schedulers.io()</code>代表io操作的线程，通常用于网络，读写文件等io密集型的操作</li>
 <li><code>Schedulers.computation()</code>代表CUP计算机密集型的操作，例如需要大量计算的操作</li>
 <li><code>Schedulers.newThread()</code>代表一个常规的新线程</li>
 <li><code>AndroidSchedulers.mainThread()</code>代表Android的主线程</li>
 </ul>
 </li>
-<li><p>这些内置的Scheduler已经足够我们开发的需求，因此我们应该使用内置的这些选项，在Rxjava内部使用的是线程池来维护这些线程，所以效率也比较高</p>
-</li>
+<li>这些内置的Scheduler已经足够我们开发的需求，因此我们应该使用内置的这些选项，在Rxjava内部使用的是线程池来维护这些线程，所以效率也比较高</li>
 </ul>
 <h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><ul>
 <li>对于我们Android开发人员来说，经常会将一些耗时的操作放在后台，比如网络请求或者读取文件，操作数据库等等，等到操作完之后回到主线程中去更新UI,有了上面这些基础，那么现在我们就可以轻松的去做到这样一些操作。</li>
@@ -368,32 +356,28 @@
 <p>该网络请求例子转载自简书，原文地址: <a href="https://www.jianshu.com/p/56f15db86ed3" target="_blank" rel="noopener">https://www.jianshu.com/p/56f15db86ed3</a></p>
 </blockquote>
 <h3 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h3><ul>
-<li><p>下面用Retrofit2.0+Rxjava2.0实现一个网络请求的例子</p>
-</li>
-<li><p>(一)使用前Retrofit前，先添加Gradle配置</p>
-</li>
+<li>下面用Retrofit2.0+Rxjava2.0实现一个网络请求的例子</li>
+<li>(一)使用前Retrofit前，先添加Gradle配置</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">compile &apos;io.reactivex.rxjava2:rxjava:2.0.7&apos;</span><br><span class="line">compile &apos;io.reactivex.rxjava2:rxandroid:2.0.1&apos;</span><br><span class="line">compile &apos;com.squareup.retrofit2:retrofit:2.2.0&apos;</span><br><span class="line">compile &apos;com.squareup.retrofit2:converter-gson:2.2.0&apos;</span><br><span class="line">compile &apos;com.squareup.retrofit2:adapter-rxjava2:2.2.0&apos;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>api接口<a href="http://api.laifudao.com/open/xiaohua.json" target="_blank" rel="noopener">http://api.laifudao.com/open/xiaohua.json</a></p>
-</li>
-<li><p>(二) 获取api接口返回的json数据，用GsonFormat自动生成的一个实体类<code>MyJoke</code></p>
-</li>
+<li>api接口<a href="http://api.laifudao.com/open/xiaohua.json" target="_blank" rel="noopener">http://api.laifudao.com/open/xiaohua.json</a></li>
+<li>(二) 获取api接口返回的json数据，用GsonFormat自动生成的一个实体类<code>MyJoke</code></li>
 </ul>
-<p><img src="http://pimtk270m.bkt.clouddn.com/rxjava15.png" alt="http://pimtk270m.bkt.clouddn.com/rxjava15.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class MyJoke &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private String title;</span><br><span class="line">    private String content;</span><br><span class="line">    private String poster;</span><br><span class="line">    private String url;</span><br><span class="line"></span><br><span class="line">    public String getTitle() &#123;</span><br><span class="line">        return title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setTitle(String title) &#123;</span><br><span class="line">        this.title = title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getContent() &#123;</span><br><span class="line">        return content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setContent(String content) &#123;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getPoster() &#123;</span><br><span class="line">        return poster;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPoster(String poster) &#123;</span><br><span class="line">        this.poster = poster;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getUrl() &#123;</span><br><span class="line">        return url;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUrl(String url) &#123;</span><br><span class="line">        this.url = url;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>(三)创建一个名为Api的接口<br><img src="http://pimtk270m.bkt.clouddn.com/rxjava16.png" alt="http://pimtk270m.bkt.clouddn.com/rxjava16.png"></p>
-</li>
-<li><p>这里需要注意的是，与Retrofit相比不再是<code>Call&lt;List&lt;MyJoke&gt;&gt;</code>，而是使用了Rxjava的<code>Observable&lt;List&lt;MyJoke&gt;&gt; getData();</code></p>
-</li>
-<li><p>接下来对网络请求进行一下简单的封装<code>HttpMethods.java</code>，如下:</p>
-</li>
+<li>(三)创建一个名为Api的接口</li>
 </ul>
-<p><img src="http://pimtk270m.bkt.clouddn.com/rxjava17.png" alt="http://pimtk270m.bkt.clouddn.com/rxjava17.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface Api &#123;</span><br><span class="line"></span><br><span class="line">    @GET(&quot;xiaohua.json&quot;)</span><br><span class="line">    Observable&lt;List&lt;MyJoke&gt;&gt; getData();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里需要注意的是，与Retrofit相比不再是<code>Call&lt;List&lt;MyJoke&gt;&gt;</code>，而是使用了Rxjava的<code>Observable&lt;List&lt;MyJoke&gt;&gt; getData();</code></li>
+<li>接下来对网络请求进行一下简单的封装<code>HttpMethods.java</code>，如下:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">public class HttpMethods &#123;</span><br><span class="line"></span><br><span class="line">    private static final String BASE_URL = &quot;http://api.laifudao.com/open/&quot;;</span><br><span class="line"></span><br><span class="line">    private static final int TIME_OUT = 4;</span><br><span class="line"></span><br><span class="line">    private Retrofit retrofit;</span><br><span class="line"></span><br><span class="line">    private Api api;</span><br><span class="line"></span><br><span class="line">    private HttpMethods() &#123;</span><br><span class="line">        /**</span><br><span class="line">         * 构造函数私有化</span><br><span class="line">         * 并在构造函数中进行retrofit的初始化</span><br><span class="line">         */</span><br><span class="line"></span><br><span class="line">        OkHttpClient client = new OkHttpClient();</span><br><span class="line">        client.newBuilder().connectTimeout(TIME_OUT, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 由于retrofit底层是通过okhttp实现的，所以可以通过okhttp来设置一些连接参数，如超时等</span><br><span class="line">         */</span><br><span class="line">        retrofit = new Retrofit.Builder()</span><br><span class="line">                .baseUrl(BASE_URL)</span><br><span class="line">                .client(client)</span><br><span class="line">                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .build();</span><br><span class="line">        api = retrofit.create(Api.class);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static class singleInstance &#123;</span><br><span class="line">        public static final HttpMethods instance = new HttpMethods();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static HttpMethods getInstance() &#123;</span><br><span class="line">        return singleInstance.instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void getJoke(Observer&lt;List&lt;MyJoke&gt;&gt; observer) &#123;</span><br><span class="line">        api.getData()</span><br><span class="line">                .subscribeOn(Schedulers.io())</span><br><span class="line">                .unsubscribeOn(Schedulers.io())</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                .subscribe(observer);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>在<code>HttpMethods</code>方法中，将构造函数私有化是为了实现单例，并向外提供一个请求方法<code>getJoke</code>，该方法的参数是一个观察者，接下来看一下MainActivity文件</li>
 </ul>
-<p><img src="http://pimtk270m.bkt.clouddn.com/rxjava18.png" alt="http://pimtk270m.bkt.clouddn.com/rxjava18.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    private String TAG = &quot;TAG&quot;;</span><br><span class="line"></span><br><span class="line">    private List&lt;MyJoke&gt; jokes = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        getData();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取网络请求</span><br><span class="line">     */</span><br><span class="line">    private void getData() &#123;</span><br><span class="line">        HttpMethods.getInstance().getJoke(new Observer&lt;List&lt;MyJoke&gt;&gt;() &#123;</span><br><span class="line">            Disposable d;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onSubscribe(Disposable d) &#123;</span><br><span class="line">                this.d = d;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onNext(List&lt;MyJoke&gt; myJokes) &#123;</span><br><span class="line">                jokes = myJokes;</span><br><span class="line">                Log.d(TAG, jokes.size() + &quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable e) &#123;</span><br><span class="line">                //切断下游水管</span><br><span class="line">                d.dispose();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onComplete() &#123;</span><br><span class="line">                //切断下游水管</span><br><span class="line">                d.dispose();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -405,7 +389,7 @@
         <p><span>本文标题:</span><a href="/2018/11/24/Rxjava2-0教程（二）/">Rxjava2.0教程（二）</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">山禾以谓</a></p>
         <p><span>发布时间:</span>2018-11-24, 17:23:58</p>
-        <p><span>最后更新:</span>2018-11-24, 17:25:01</p>
+        <p><span>最后更新:</span>2018-11-27, 10:26:50</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/11/24/Rxjava2-0教程（二）/" title="Rxjava2.0教程（二）">http://yoursite.com/2018/11/24/Rxjava2-0教程（二）/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/11/24/Rxjava2-0教程（二）/　　作者: 山禾以谓" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
