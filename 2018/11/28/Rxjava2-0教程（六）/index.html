@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="山禾以谓" />
+
+
+
+<meta name="description" content="Rxjava2.0教程(六) 本文只作为转载，著作权归原作者(Season_zlc)所有，原文地址:https://www.jianshu.com/p/e4c6d7989356  前言 在上一节中, 我们找到了上下游流速不均衡的源头 , 在这一节里我们将学习如何去治理它 . 可能很多看过其他人写的文章的朋友都会觉得只有Flowable才能解决 , 所以大家对这个Flowable都抱有很大的期许 ,">
+<meta name="keywords" content="技术,转载,Rxjava">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rxjava2.0教程（六）">
+<meta property="og:url" content="http://yoursite.com/2018/11/28/Rxjava2-0教程（六）/index.html">
+<meta property="og:site_name" content="山禾以谓">
+<meta property="og:description" content="Rxjava2.0教程(六) 本文只作为转载，著作权归原作者(Season_zlc)所有，原文地址:https://www.jianshu.com/p/e4c6d7989356  前言 在上一节中, 我们找到了上下游流速不均衡的源头 , 在这一节里我们将学习如何去治理它 . 可能很多看过其他人写的文章的朋友都会觉得只有Flowable才能解决 , 所以大家对这个Flowable都抱有很大的期许 ,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava20.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava21.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava22.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava23.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava24.gif">
+<meta property="og:updated_time" content="2018-11-28T06:14:43.643Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rxjava2.0教程（六）">
+<meta name="twitter:description" content="Rxjava2.0教程(六) 本文只作为转载，著作权归原作者(Season_zlc)所有，原文地址:https://www.jianshu.com/p/e4c6d7989356  前言 在上一节中, 我们找到了上下游流速不均衡的源头 , 在这一节里我们将学习如何去治理它 . 可能很多看过其他人写的文章的朋友都会觉得只有Flowable才能解决 , 所以大家对这个Flowable都抱有很大的期许 ,">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava20.gif">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="山禾以谓" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Rxjava2.0教程（六） | 山禾以谓</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: false,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?71b138b713396442e9dbe50e51f0a779";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="https://avatars1.githubusercontent.com/u/21188545?s=460&amp;v=4" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">山禾以谓</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">临渊羡鱼，不如退而结网</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/2933035235/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/people/141220427/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/b0199aa97173" title="简书"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARouter/">ARouter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android8-0适配/">Android8.0适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ButterKnife/">ButterKnife</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventBus/">EventBus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/">Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TextView/">TextView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView相关/">WebView相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web前端/">Web前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/横竖屏切换/">横竖屏切换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/歌词/">歌词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/现代诗/">现代诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/范式/">范式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗歌/">诗歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高中/">高中</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">专注于Android</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">山禾以谓</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="https://avatars1.githubusercontent.com/u/21188545?s=460&amp;v=4" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">山禾以谓</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">临渊羡鱼，不如退而结网</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/2933035235/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/people/141220427/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/b0199aa97173" title="简书"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Rxjava2-0教程（六）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/28/Rxjava2-0教程（六）/" class="article-date">
+      <time datetime="2018-11-28T06:13:21.000Z" itemprop="datePublished">2018-11-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Rxjava2.0教程（六）
+    </h1>
+  
+
+		
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Rxjava2-0教程-六"><a href="#Rxjava2-0教程-六" class="headerlink" title="Rxjava2.0教程(六)"></a>Rxjava2.0教程(六)</h1><blockquote>
+<p>本文只作为转载，<strong>著作权归原作者(Season_zlc)所有</strong>，原文地址:<a href="https://www.jianshu.com/p/e4c6d7989356" target="_blank" rel="noopener">https://www.jianshu.com/p/e4c6d7989356</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>在上一节中, 我们找到了上下游流速不均衡的源头 , 在这一节里我们将学习如何去治理它 . 可能很多看过其他人写的文章的朋友都会觉得只有<code>Flowable</code>才能解决 , 所以大家对这个<code>Flowable</code>都抱有很大的期许 , 其实呐 , 你们毕竟图样图森破 , 今天我们先抛开<code>Flowable</code>, 仅仅依靠我们自己的 <strong>双手和智慧</strong> , 来看看我们如何去治理 , 通过本节的学习之后我们再来看<code>Flowable</code>, 你会发现它其实并没有想象中那么牛叉, 它只是被其他人过度神化了.</li>
+</ul>
+<a id="more"></a>
+<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><ul>
+<li>我们接着来看上一节的这个例子:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void subscribe(ObservableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">        for (int i = 0; ; i++) &#123;</span><br><span class="line">            e.onNext(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).subscribeOn(Schedulers.io())</span><br><span class="line">        .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">        .subscribe(new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, &quot;&quot; + integer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上一节中我们看到了它的运行结果是直接爆掉了内存, 也明白它为什么就爆掉了内存, 那么我们能做些什么, 才能不让这种情况发生呢.</li>
+<li>之前我们说了, 上游发送的所有事件都放到水缸里了, 所以瞬间水缸就满了, 那我们可以只放我们需要的事件到水缸里呀, 只放一部分数据到水缸里, 这样不就不会溢出来了吗, 因此, 我们把上面的代码修改一下:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">     @Override</span><br><span class="line">     public void subscribe(ObservableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">         for (int i = 0; ; i++) &#123;</span><br><span class="line">             e.onNext(i);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;).subscribeOn(Schedulers.io())</span><br><span class="line">         .filter(new Predicate&lt;Integer&gt;() &#123;</span><br><span class="line">             @Override</span><br><span class="line">             public boolean test(Integer integer) throws Exception &#123;</span><br><span class="line">                 return integer % 10 == 0;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;)</span><br><span class="line">         .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">         .subscribe(new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">             @Override</span><br><span class="line">             public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">                 Log.d(TAG, &quot;&quot; + integer);</span><br><span class="line"></span><br><span class="line">             &#125;</span><br><span class="line">         &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在这段代码中我们增加了一个<code>filter</code>, 只允许能被10整除的事件通过, 再来看看运行结果:<br><div align="center"><img src="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava20.gif" alt="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava20.gif"></div></li>
+<li>可以看到, 虽然内存依然在增长, 但是增长速度相比之前, 已经减少了太多了, 至少在我录完GIF之前还没有爆掉内存, 大家可以试着改成能被100整除试试.</li>
+<li>可以看到, 通过减少进入水缸的事件数量的确可以缓解上下游流速不均衡的问题, 但是力度还不够, 我们再来看一段代码:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void subscribe(ObservableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">        for (int i = 0; ; i++) &#123;</span><br><span class="line">            e.onNext(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).subscribeOn(Schedulers.io())</span><br><span class="line">        //Sample取样</span><br><span class="line">        .sample(2, TimeUnit.SECONDS)</span><br><span class="line">        .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">        .subscribe(new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, &quot;&quot; + integer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>这里用了一个<code>sample</code>操作符, 简单做个介绍, 这个操作符每隔指定的时间就从上游中取出一个事件发送给下游. 这里我们让它每隔2秒取一个事件给下游, 来看看这次的运行结果吧:<br><div align="center"><img src="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava21.gif" alt="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava21.gif"></div></p>
+</li>
+<li><p>这次我们可以看到, 虽然上游仍然一直在不停的发事件, 但是我们只是每隔一定时间取一个放进水缸里, 并没有全部放进水缸里, 因此这次内存仅仅只占用了5M.</p>
+<blockquote>
+<p>大家以后可以出去吹牛逼了: 我曾经通过技术手段去优化一个程序, 最终使得内存占用从300多M变成不到5M. (≧▽≦)/</p>
+</blockquote>
+</li>
+<li>前面这两种方法归根到底其实就是减少放进水缸的事件的数量, 是以 <strong>数量</strong>取胜, 但是这个方法有个 <strong>缺点</strong>, 就是 <strong>丢失了大部分的事件</strong>.</li>
+<li>那么我们换一个角度来思考, 既然上游发送事件的速度太快, 那我们就适当减慢发送事件的速度, 从 <strong>速度</strong>上取胜, 听上去不错, 我们来试试:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void subscribe(ObservableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">        for (int i = 0; ; i++) &#123;</span><br><span class="line">            e.onNext(i);</span><br><span class="line">            Thread.sleep(2000);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).subscribeOn(Schedulers.io())</span><br><span class="line">        .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">        .subscribe(new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, &quot;&quot; + integer);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>这次我们让上游每次发送完事件后都延迟2秒，来看看运行效果:<br><div align="center"><img src="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava22.gif" alt="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava22.gif"></div></p>
+</li>
+<li><p>完美 ! 一切都是那么完美 !</p>
+</li>
+<li>可以看到, 我们给上游加上延时了之后, 瞬间一头发情的公牛就变得跟只小绵羊一样, 如此温顺, 如此平静, 如此平稳的内存线, 美妙极了. 而且事件也没有丢失, 上游通过适当的延时, 不但减缓了事件进入水缸的速度, 也可以让下游有充足的时间从水缸里取出事件来处理 , 这样一来, 就不至于导致大量的事件涌进水缸, 也就不会OOM啦.</li>
+<li>到目前为止, 我们没有依靠任何其他的工具, 就轻易解决了上下游流速不均衡的问题.</li>
+<li>因此我们总结一下, 本节中的治理的办法就两种:<ul>
+<li>一是从数量上进行治理, 减少发送进水缸里的事件</li>
+<li>二是从速度上进行治理, 减缓事件发送进水缸的速度</li>
+</ul>
+</li>
+<li>大家一定没忘记, 在上一节还有个Zip的例子, 这个例子也爆了我们的内存, 现学现用, 我们用刚学到的办法来试试能不能惩奸除恶, 先来看看第一种办法.</li>
+<li>先来减少进入水缸的事件的数量:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">Observable&lt;Integer&gt; observable1 = Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void subscribe(ObservableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">        for (int i = 0; ; i++) &#123;</span><br><span class="line">            e.onNext(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).subscribeOn(Schedulers.io())</span><br><span class="line">        //进行Sample采样</span><br><span class="line">        .sample(2, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">Observable&lt;String&gt; observable2 = Observable.create(new ObservableOnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void subscribe(ObservableEmitter&lt;String&gt; e) throws Exception &#123;</span><br><span class="line">        e.onNext(&quot;A&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).subscribeOn(Schedulers.io());</span><br><span class="line"></span><br><span class="line">Observable.zip(observable1, observable2, new BiFunction&lt;Integer, String, String&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String apply(Integer integer, String s) throws Exception &#123;</span><br><span class="line">        return integer + s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">        .subscribe(new Consumer&lt;String&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void accept(String s) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, s);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, new Consumer&lt;Throwable&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void accept(Throwable throwable) throws Exception &#123;</span><br><span class="line">                Log.w(TAG, throwable);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>来看看运行效果:<br><div align="center"><img src="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava23.gif" alt="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava23.gif"></div></p>
+</li>
+<li><p>哈哈, 成功了吧, 再来用第二种办法试试.</p>
+</li>
+<li>这次我们来减缓速度:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Observable&lt;Integer&gt;observable1=Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">       @Override</span><br><span class="line">       public void subscribe(ObservableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">           for (int i = 0; ; i++) &#123;</span><br><span class="line">               e.onNext(i);</span><br><span class="line">               Thread.sleep(2000);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;).subscribeOn(Schedulers.io());</span><br><span class="line"></span><br><span class="line">   Observable&lt;String&gt;observable2=Observable.create(new ObservableOnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">       @Override</span><br><span class="line">       public void subscribe(ObservableEmitter&lt;String&gt; e) throws Exception &#123;</span><br><span class="line">           e.onNext(&quot;A&quot;);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;).subscribeOn(Schedulers.io());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   Observable.zip(observable1, observable2, new BiFunction&lt;Integer, String, String&gt;() &#123;</span><br><span class="line">       @Override</span><br><span class="line">       public String apply(Integer integer, String s) throws Exception &#123;</span><br><span class="line">           return integer+s;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer&lt;String&gt;() &#123;</span><br><span class="line">       @Override</span><br><span class="line">       public void accept(String s) throws Exception &#123;</span><br><span class="line">           Log.d(TAG, s);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;, new Consumer&lt;Throwable&gt;() &#123;</span><br><span class="line">       @Override</span><br><span class="line">       public void accept(Throwable throwable) throws Exception &#123;</span><br><span class="line">           Log.w(TAG,throwable);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>来看看运行结果吧:<br><div align="center"><img src="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava24.gif" alt="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava24.gif"></div></p>
+</li>
+<li><p>果然也成功了, 这里只打印出了下游收到的事件, 所以只有一个. 如果你对这个结果看不懂, 请自觉掉头看前面几篇文章.</p>
+</li>
+<li>通过本节的学习, 大家应该对如何处理上下游流速不均衡已经有了基本的认识了, 大家也可以看到, 我们并没有使用<code>Flowable</code>, 所以很多时候仔细去分析问题, 找到问题的原因, 从源头去解决才是最根本的办法. 后面我们讲到<code>Flowable</code>的时候, 大家就会发现它其实没什么神秘的, 它用到的办法和我们本节所讲的基本上是一样的, 只是它稍微做了点封装.</li>
+<li>好了, 今天的教程就到这里吧, 下一节中我们就会来学习你们喜闻乐见的<code>Flowable</code>.</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/11/28/Rxjava2-0教程（六）/">Rxjava2.0教程（六）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">山禾以谓</a></p>
+        <p><span>发布时间:</span>2018-11-28, 14:13:21</p>
+        <p><span>最后更新:</span>2018-11-28, 14:14:43</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/28/Rxjava2-0教程（六）/" title="Rxjava2.0教程（六）">http://yoursite.com/2018/11/28/Rxjava2-0教程（六）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/11/28/Rxjava2-0教程（六）/　　作者: 山禾以谓" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/11/28/Rxjava2-0教程（五）/">
+                    Rxjava2.0教程（五）
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Rxjava2-0教程-六"><span class="toc-number">1.</span> <span class="toc-text">Rxjava2.0教程(六)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正题"><span class="toc-number">1.2.</span> <span class="toc-text">正题</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Rxjava2.0教程（六）　| 山禾以谓　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+	
+		<section id="comments" style="margin: 2em; padding: 2em; background: rgba(255, 255, 255, 0.5)">
+    <div id="vcomment" class="comment"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@1.2.0-beta1/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+        el: '#vcomment',
+        notify: '13517217687@163.com',
+        verify: 'false',
+        app_id: "0Vk6y1rIHiNeTroPPN7y3LpJ-gzGzoHsz",
+        app_key: "8Qqw6MW3FLfXKi06zeNyC8Vy",
+        placeholder: "Just do it !",
+        avatar: "wavatar"
+      });
+    </script>
+</section>
+	
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/11/28/Rxjava2-0教程（五）/" title="下一篇: Rxjava2.0教程（五）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/Rxjava2-0教程（六）/">Rxjava2.0教程（六）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/Rxjava2-0教程（五）/">Rxjava2.0教程（五）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/Rxjava2-0教程（四）/">Rxjava2.0教程（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/27/Rxjava2-0教程（三）/">Rxjava2.0教程（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/24/Rxjava2-0教程（二）/">Rxjava2.0教程（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/24/Rxjava2-0教程（一）/">Rxjava2.0教程（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/写在二十七岁/">写在二十七岁</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/棠梨煎雪/">棠梨煎雪</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/10/Android开发中，实现对Home按键的监听/">Android开发中，实现对Home按键的监听</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/15/相信未来/">相信未来</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/『前端学习笔记（四）』/">『前端学习笔记（四）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/22/『前端学习笔记（三）』/">『前端学习笔记（三）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/『前端学习笔记（二）』/">『前端学习笔记（二）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/20/『前端学习笔记（一）』/">『前端学习笔记（一）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/TextView显示html文本/">TextView显示html文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/Android开发中的一些小技巧/">Android开发中的一些小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/TextView中部分文本点击可跳转/">TextView中部分文本点击可跳转</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/json数据转换成数组/">json数据转换成数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/未选择的路/">未选择的路</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/18/Android横竖屏切换时不销毁当前Activity/">Android横竖屏切换时不销毁当前Activity</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/13/WebView小结/">WebView小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/记一次Android8-0安装更新遇到的坑/">记一次Android8.0安装更新遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/EventBus使用笔记/">EventBus使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/ButterKnife依赖注入框架配置/">ButterKnife依赖注入框架配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/ARouter使用笔记/">ARouter使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/23/范式说明（转载）/">范式说明（转载）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/往事如烟/">往事如烟</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 山禾以谓
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+		
+		<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("06/21/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+  <!--      
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+         -->
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
+<script type="text/javascript" color=0,104,183 opacity=1 zindex=-1 count=50 src="/resources/particle.js"></script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":100,"height":200,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
