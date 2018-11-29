@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="山禾以谓" />
+
+
+
+<meta name="description" content="本文只作为转载，著作权归原作者(Season_zlc)所有，原文地址:https://www.jianshu.com/p/36e0f7f43a51">
+<meta name="keywords" content="技术,转载,Rxjava">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rxjava2.0教程（九）">
+<meta property="og:url" content="http://yoursite.com/2018/11/29/Rxjava2-0教程（九）/index.html">
+<meta property="og:site_name" content="山禾以谓">
+<meta property="og:description" content="本文只作为转载，著作权归原作者(Season_zlc)所有，原文地址:https://www.jianshu.com/p/36e0f7f43a51">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava32.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava33.png">
+<meta property="og:updated_time" content="2018-11-29T09:29:33.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rxjava2.0教程（九）">
+<meta name="twitter:description" content="本文只作为转载，著作权归原作者(Season_zlc)所有，原文地址:https://www.jianshu.com/p/36e0f7f43a51">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava32.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="山禾以谓" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Rxjava2.0教程（九） | 山禾以谓</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: false,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?71b138b713396442e9dbe50e51f0a779";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="https://avatars1.githubusercontent.com/u/21188545?s=460&amp;v=4" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">山禾以谓</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">临渊羡鱼，不如退而结网</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/2933035235/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/people/141220427/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/b0199aa97173" title="简书"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARouter/">ARouter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android8-0适配/">Android8.0适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ButterKnife/">ButterKnife</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventBus/">EventBus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/">Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TextView/">TextView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView相关/">WebView相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web前端/">Web前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/横竖屏切换/">横竖屏切换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/歌词/">歌词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/现代诗/">现代诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/范式/">范式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗歌/">诗歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高中/">高中</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">专注于Android</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">山禾以谓</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="https://avatars1.githubusercontent.com/u/21188545?s=460&amp;v=4" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">山禾以谓</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">临渊羡鱼，不如退而结网</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/2933035235/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/people/141220427/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/b0199aa97173" title="简书"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Rxjava2-0教程（九）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/29/Rxjava2-0教程（九）/" class="article-date">
+      <time datetime="2018-11-29T09:22:40.000Z" itemprop="datePublished">2018-11-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Rxjava2.0教程（九）
+    </h1>
+  
+
+		
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><blockquote>
+<p>本文只作为转载，<strong>著作权归原作者(Season_zlc)所有</strong>，原文地址:<a href="https://www.jianshu.com/p/36e0f7f43a51" target="_blank" rel="noopener">https://www.jianshu.com/p/36e0f7f43a51</a></p>
+</blockquote>
+<a id="more"></a>
+<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><ul>
+<li>先来回顾一下上上节，我们讲Flowable的时候，说它采用了 <strong>响应式拉</strong>的方式，我们还举了个 <strong>叶问打小日本</strong>的例子，再来回顾一下吧，我们说把 <strong>上游</strong>看成 <strong>小日本</strong>, 把 <strong>下游</strong>当作 <strong>叶问</strong>, 当调用<code>Subscription.request(1)</code>时, <strong>叶问</strong>就说 <strong>我要打一个!</strong> 然后 <strong>小日本</strong>就拿出 <strong>一个鬼子</strong>给叶问, 让他打, 等叶问打死这个鬼子之后, 再次调用<code>request(10)</code>, 叶问就又说 <strong>我要打十个!</strong> 然后小日本又派出 <strong>十个鬼子</strong>给叶问, 然后就在边上看热闹, 看叶问能不能打死十个鬼子, 等叶问打死十个鬼子后再继续要鬼子接着打。</li>
+<li>但是不知道大家有没有发现，在我们前两节中的例子中，我们口中声称的响应式拉并没有完全体现出来，比如这个例子：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void subscribe(FlowableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">        Log.d(TAG, &quot;emit 1&quot;);</span><br><span class="line">        e.onNext(1);</span><br><span class="line"></span><br><span class="line">        Log.d(TAG, &quot;emit 2&quot;);</span><br><span class="line">        e.onNext(2);</span><br><span class="line"></span><br><span class="line">        Log.d(TAG, &quot;emit 3&quot;);</span><br><span class="line">        e.onNext(3);</span><br><span class="line"></span><br><span class="line">        Log.d(TAG, &quot;emit complete&quot;);</span><br><span class="line">        e.onComplete();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, BackpressureStrategy.ERROR).subscribeOn(Schedulers.io())</span><br><span class="line">        .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">        .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                mSucription = s;</span><br><span class="line">                s.request(1);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line"></span><br><span class="line">            public void onNext(Integer integer) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">                mSucription.request(1);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable t) &#123;</span><br><span class="line">                Log.w(TAG, &quot;onError: &quot;, t);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onComplete() &#123;</span><br><span class="line">                Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>虽然我们在下游中是每次处理掉了一个事件之后才调用request(1)去请求下一个事件，也就是说叶问的确是在打死了一个鬼子之后才继续打下一个鬼子，可是上游呢？上游真的是每次当下游请求一个才拿出一个吗？从上上篇文章中我们知道并不是这样的，上游仍然是一开始就发送了所有的事件，也就是说小日本并没有等叶问打死一个才拿出一个，而是一开始就拿出了所有的鬼子，这些鬼子从一开始就在这儿排队等着被打死。</li>
+<li>有个故事是这么说的：<blockquote>
+<p>楚人有卖盾与矛者，先誉其盾之坚，曰：“吾盾之坚，物莫能陷也。”俄而又誉其矛之利，曰：“吾矛之利，万物莫不陷也。”市人诘之曰：”以子之矛陷子之盾，何如？”其人弗能应也。众皆笑之。</p>
+</blockquote>
+</li>
+<li>没错，我们前后所说的就是自相矛盾了，这说明了什么呢，说明我们的实现并不是一个完整的实现，那么，究竟怎样的实现才是完整的呢？</li>
+<li>我们先自己来想一想，在下游中调用Subscription.request(n)就可以告诉上游，下游能够处理多少个事件，那么上游要根据下游的处理能力正确的去发送事件，那么上游是不是应该知道下游的处理能力是多少啊，对吧，不然，一个巴掌拍不响啊，这种事情得你情我愿才行。</li>
+<li>那么上游从哪里得知下游的处理能力呢？我们来看看上游最重要的部分，肯定就是FlowableEmitter了啊，我们就是通过它来发送事件的啊，来看看它的源码吧(别紧张，它的代码灰常简单)：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public interface FlowableEmitter&lt;T&gt; extends Emitter&lt;T&gt; &#123; </span><br><span class="line"> void setDisposable(Disposable s); </span><br><span class="line"> void setCancellable(Cancellable c); </span><br><span class="line"> /** </span><br><span class="line">  * The current outstanding request amount.</span><br><span class="line">  * &lt;p&gt;This method is thread-safe.</span><br><span class="line">  * @return the current outstanding request amount</span><br><span class="line">  */ </span><br><span class="line"> long requested(); </span><br><span class="line"> boolean isCancelled(); </span><br><span class="line"> FlowableEmitter&lt;T&gt; serialize(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>FlowableEmitter是个接口，继承Emitter，Emitter里面就是我们的onNext(),onComplete()和onError()三个方法。我们看到FlowableEmitter中有这么一个方法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">long requested();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>方法注释的意思就是当前外部请求的数量，哇哦，这好像就是我们要找的答案呢. 我们还是实际验证一下吧.</li>
+<li>先来看同步的情况吧：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void subscribe(FlowableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">        Log.d(TAG, &quot;current requested: &quot; + e.requested());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, BackpressureStrategy.ERROR)</span><br><span class="line">        .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onSubscription&quot;);</span><br><span class="line">                mSucription = s;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onNext(Integer integer) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable t) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onError: &quot;, t);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onComplete() &#123;</span><br><span class="line">                Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这个例子中，我们在上游中打印出当前的request数量，下游什么也不做。</li>
+<li>我们先猜测一下结果，下游没有调用request()，说明当前下游的处理能力为0，那么上游得到的requested也应该是0，是不是呢？</li>
+<li>来看看运行结果：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/TAG: onSubscribe</span><br><span class="line">D/TAG: current requested: 0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>哈哈，结果果然是0，说明我们的结论基本上是对的。</li>
+<li>那下游要是调用了request()呢，来看看：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void subscribe(FlowableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">        Log.d(TAG, &quot;current requested: &quot; + e.requested());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, BackpressureStrategy.ERROR).subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">        Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">        mSucription = s;</span><br><span class="line">        //我要打十个</span><br><span class="line">        s.request(10);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onNext(Integer integer) &#123;</span><br><span class="line">        Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onError(Throwable t) &#123;</span><br><span class="line">        Log.w(TAG, &quot;onError: &quot;, t);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onComplete() &#123;</span><br><span class="line">        Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这次在下游中调用了request(10)，告诉上游我要打十个，看看运行结果：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">D/TAG: onSubscribe</span><br><span class="line">D/TAG: current requested: 10</span><br></pre></td></tr></table></figure>
+<ul>
+<li>果然！上游的requested的确是根据下游的请求来决定的，那要是下游多次请求呢？比如这样：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">Flowable</span><br><span class="line">        .create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void subscribe(FlowableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, &quot;current requested: &quot; + e.requested());</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.ERROR).subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">        Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">        mSucription = s;</span><br><span class="line">        //我要打十个</span><br><span class="line">        s.request(10);</span><br><span class="line">        //我要打一百个</span><br><span class="line">        s.request(100);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onNext(Integer integer) &#123;</span><br><span class="line">        Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onError(Throwable t) &#123;</span><br><span class="line">        Log.w(TAG, &quot;onError: &quot;, t);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onComplete() &#123;</span><br><span class="line">        Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下游先调用了request(10), 然后又调用了request(100)，来看看运行结果：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/TAG: onSubscribe</span><br><span class="line">D/TAG: current requested: 110</span><br></pre></td></tr></table></figure>
+<ul>
+<li>看来多次调用也没问题，做了加法。</li>
+<li>诶加法？对哦，只是做加法，那什么时候做减法呢？</li>
+<li>当然是发送事件啦！</li>
+<li>来看个例子吧：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Flowable</span><br><span class="line">        .create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void subscribe(FlowableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, &quot;before emit requested = &quot; + e.requested());</span><br><span class="line"></span><br><span class="line">                Log.d(TAG, &quot;emit 1&quot;);</span><br><span class="line">                e.onNext(1);</span><br><span class="line">                Log.d(TAG, &quot;after emit 1,requested = &quot; + e.requested());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                Log.d(TAG, &quot;emit 2&quot;);</span><br><span class="line">                e.onNext(2);</span><br><span class="line">                Log.d(TAG, &quot;after emit 2,requested =&quot; + e.requested());</span><br><span class="line"></span><br><span class="line">                Log.d(TAG, &quot;emit 3&quot;);</span><br><span class="line">                e.onNext(3);</span><br><span class="line">                Log.d(TAG, &quot;after emit 3,requested =&quot; + e.requested());</span><br><span class="line"></span><br><span class="line">                Log.d(TAG, &quot;emit complete&quot;);</span><br><span class="line">                e.onComplete();</span><br><span class="line"></span><br><span class="line">                Log.d(TAG, &quot;after emit complete ,requested = &quot; + e.requested());</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.ERROR)</span><br><span class="line">        .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                mSucription = s;</span><br><span class="line">                s.request(10);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onNext(Integer integer) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable t) &#123;</span><br><span class="line">                Log.w(TAG, &quot;onError&quot;, t);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onComplete() &#123;</span><br><span class="line">                Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>代码很简单，来看看运行结果：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">D/TAG: onSubscribe </span><br><span class="line">D/TAG: before emit, requested = 10 </span><br><span class="line">D/TAG: emit 1 D/TAG: onNext: 1 </span><br><span class="line">D/TAG: after emit 1, requested = 9 </span><br><span class="line">D/TAG: emit 2 D/TAG: onNext: 2 </span><br><span class="line">D/TAG: after emit 2, requested = 8 </span><br><span class="line">D/TAG: emit 3 D/TAG: onNext: 3 </span><br><span class="line">D/TAG: after emit 3, requested = 7 </span><br><span class="line">D/TAG: emit complete </span><br><span class="line">D/TAG: onComplete </span><br><span class="line">D/TAG: after emit complete, requested = 7</span><br></pre></td></tr></table></figure>
+<ul>
+<li>大家应该能看出端倪了吧，下游调用request(n) 告诉上游它的处理能力，上游每发送一个next事件之后，requested就减一，注意是next事件，complete和error事件不会消耗requested，当减到0时，则代表下游没有处理能力了，这个时候你如果继续发送事件，会发生什么后果呢？当然是MissingBackpressureException啦，试一试：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">Flowable</span><br><span class="line">        .create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void subscribe(FlowableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, &quot;before emit , requested = &quot; + e.requested());</span><br><span class="line"></span><br><span class="line">                Log.d(TAG, &quot;emit 1&quot;);</span><br><span class="line">                e.onNext(1);</span><br><span class="line">                Log.d(TAG, &quot;after emit 1, requested =&quot; + e.requested());</span><br><span class="line"></span><br><span class="line">                Log.d(TAG, &quot;emit 2&quot;);</span><br><span class="line">                e.onNext(2);</span><br><span class="line">                Log.d(TAG, &quot;after emit 2, requested =&quot; + e.requested());</span><br><span class="line"></span><br><span class="line">                Log.d(TAG, &quot;emit 3&quot;);</span><br><span class="line">                e.onNext(3);</span><br><span class="line">                Log.d(TAG, &quot;after emit 3, requested = &quot; + e.requested());</span><br><span class="line"></span><br><span class="line">                Log.d(TAG, &quot;emit complete&quot;);</span><br><span class="line">                e.onComplete();</span><br><span class="line"></span><br><span class="line">                Log.d(TAG, &quot;after emit complete ,requested =&quot; + e.requested());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.ERROR).subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">        Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">        mSucription = s;</span><br><span class="line">        s.request(2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onNext(Integer integer) &#123;</span><br><span class="line">        Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onError(Throwable t) &#123;</span><br><span class="line">        Log.d(TAG, &quot;onError: &quot;, t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onComplete() &#123;</span><br><span class="line">        Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>还是这个例子，只不过这次只request(2), 看看运行结果：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">D/TAG: onSubscribe </span><br><span class="line">D/TAG: before emit, requested = 2 </span><br><span class="line">D/TAG: emit 1 D/TAG: onNext: 1 </span><br><span class="line">D/TAG: after emit 1, requested = 1 </span><br><span class="line">D/TAG: emit 2 </span><br><span class="line">D/TAG: onNext: 2 </span><br><span class="line">D/TAG: after emit 2, requested = 0 </span><br><span class="line">D/TAG: emit 3 </span><br><span class="line">W/TAG: onError: io.reactivex.exceptions.MissingBackpressureException: create: could not emit value due to lack of requests </span><br><span class="line">at io.reactivex.internal.operators.flowable.FlowableCreate$ErrorAsyncEmitter.onOverflow(FlowableCreate.java:411) </span><br><span class="line">at io.reactivex.internal.operators.flowable.FlowableCreate$NoOverflowBaseAsyncEmitter.onNext(FlowableCreate.java:377) </span><br><span class="line">at zlc.season.rxjava2demo.demo.ChapterNine$4.subscribe(ChapterNine.java:80) </span><br><span class="line">at io.reactivex.internal.operators.flowable.FlowableCreate.subscribeActual(FlowableCreate.java:72) </span><br><span class="line">at io.reactivex.Flowable.subscribe(Flowable.java:12218) </span><br><span class="line">at zlc.season.rxjava2demo.demo.ChapterNine.demo2(ChapterNine.java:89) </span><br><span class="line">at zlc.season.rxjava2demo.MainActivity$2.onClick(MainActivity.java:36) </span><br><span class="line">at android.view.View.performClick(View.java:4780) </span><br><span class="line">at android.view.View$PerformClick.run(View.java:19866) </span><br><span class="line">at android.os.Handler.handleCallback(Handler.java:739) </span><br><span class="line">at android.os.Handler.dispatchMessage(Handler.java:95) </span><br><span class="line">at android.os.Looper.loop(Looper.java:135) </span><br><span class="line">at android.app.ActivityThread.main(ActivityThread.java:5254) </span><br><span class="line">at java.lang.reflect.Method.invoke(Native Method) </span><br><span class="line">at java.lang.reflect.Method.invoke(Method.java:372) </span><br><span class="line">at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903) </span><br><span class="line">at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698) </span><br><span class="line">D/TAG: after emit 3, requested = 0 </span><br><span class="line">D/TAG: emit complete </span><br><span class="line">D/TAG: after emit complete, requested = 0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>到目前为止我们一直在说同步的订阅，现在同步说完了，我们先用一张图来总结一下同步的情况：<br><div align="center"><img src="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava32.png" alt="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava32.png"></div></li>
+</ul>
+<ul>
+<li>这张图的意思就是当上下游在同一个线程中的时候，在下游调用request(n)就会直接改变上游中的requested的值，多次调用便会叠加这个值，而上游每发送一个事件之后便会去减少这个值，当这个值减少至0的时候，继续发送事件便会抛异常了。</li>
+<li>我们再来说说异步的情况，异步和同步会有区别吗？会有什么区别呢？带着这个疑问我们继续来探究。</li>
+<li>同样的先来看一个基本的例子：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Flowable</span><br><span class="line">        .create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void subscribe(FlowableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, &quot;current requested: &quot; + e.requested());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.ERROR).subscribeOn(Schedulers.io())</span><br><span class="line">        .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">        .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                mSucription = s;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onNext(Integer integer) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable t) &#123;</span><br><span class="line">                Log.w(TAG, &quot;onError: &quot;, t);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onComplete() &#123;</span><br><span class="line">                Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这次是异步的情况，上游啥也不做，下游也啥也不做，来看看运行结果：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/TAG: onSubscribe</span><br><span class="line">D/TAG: current requested: 128</span><br></pre></td></tr></table></figure>
+<ul>
+<li>哈哈，又是128，看了我前几篇文章的朋友肯定很熟悉这个数字啊！这个数字为什么和我们之前所说的默认的水缸大小一样啊，莫非？</li>
+<li>带着这个疑问我们继续来研究一下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">Flowable</span><br><span class="line">        .create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void subscribe(FlowableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, &quot;current requested: &quot; + e.requested());</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.ERROR)</span><br><span class="line">        .subscribeOn(Schedulers.io())</span><br><span class="line">        .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">        .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                mSucription = s;</span><br><span class="line">                //我要打1000个</span><br><span class="line">                s.request(1000);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onNext(Integer integer) &#123;</span><br><span class="line">                Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable t) &#123;</span><br><span class="line">                Log.w(TAG, &quot;onError: &quot; + t);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onComplete() &#123;</span><br><span class="line">                Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这次我们在下游调用了request（1000）告诉上游我要打1000个，按照之前我们说的，这次的运行结果应该是1000，来看看运行结果：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/TAG: onSubscribe</span><br><span class="line">D/TAG: current requested: 128</span><br></pre></td></tr></table></figure>
+<ul>
+<li>卧槽，你确定你没贴错代码？</li>
+<li>是的，真相就是这样，就是128，蜜汁128。。。</li>
+<li>为了答疑解惑，我就直接上图了：<br><div align="center"><img src="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava33.png" alt="https://raw.githubusercontent.com/dondurma/MygithubPic/master/Rxjava/rxjava33.png"></div></li>
+</ul>
+<ul>
+<li>可以看到，当上下游工作在不同的线程里时，每一个线程里都有一个requested，而我们调用request（1000）时，实际上改变的是下游主线程中的requested，而上游中的requested的值是由RxJava内部调用request(n)去设置的，这个调用会在合适的时候自动触发。</li>
+<li>现在我们就能理解为什么没有调用request，上游中的值是128了，因为下游在一开始就在内部调用了request(128)去设置了上游中的值，因此即使下游没有调用request()，上游也能发送128个事件，这也可以解释之前我们为什么说Flowable中默认的水缸大小是128，其实就是这里设置的。</li>
+<li>刚才同步的时候我们说了，上游每发送一个事件，requested的值便会减一，对于异步来说同样如此，那有人肯定有疑问了，一开始上游的requested的值是128，那这128个事件发送完了不就不能继续发送了吗？</li>
+<li>刚刚说了，设置上游requested的值的这个内部调用会在合适的时候自动触发，那到底什么时候是合适的时候呢？是发完128个事件才去调用吗？还是发送了一半才去调用呢？</li>
+<li>带着这个疑问我们来看下一段代码：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 点击request</span><br><span class="line"> */</span><br><span class="line">public void request(View view) &#123;</span><br><span class="line">    mSucription.request(96);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void testRxjava9() &#123;</span><br><span class="line">    Flowable</span><br><span class="line">            .create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void subscribe(FlowableEmitter&lt;Integer&gt; e) throws Exception &#123;</span><br><span class="line">                    Log.d(TAG, &quot;First requested = &quot; + e.requested());</span><br><span class="line">                    boolean flag;</span><br><span class="line">                    for (int i = 0; ; i++) &#123;</span><br><span class="line">                        flag = false;</span><br><span class="line">                        while (e.requested() == 0) &#123;</span><br><span class="line">                            if (!flag) &#123;</span><br><span class="line">                                Log.d(TAG, &quot;Oh No I can&apos;t emit value!&quot;);</span><br><span class="line">                                flag = true;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        e.onNext(i);</span><br><span class="line">                        Log.d(TAG, &quot;emit &quot; + i + &quot;,requested = &quot; + e.requested());</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, BackpressureStrategy.ERROR)</span><br><span class="line">            .subscribeOn(Schedulers.io())</span><br><span class="line">            .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">            .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                    Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                    mSucription = s;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                @Override</span><br><span class="line">                public void onNext(Integer integer) &#123;</span><br><span class="line">                    Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                @Override</span><br><span class="line">                public void onError(Throwable t) &#123;</span><br><span class="line">                    Log.w(TAG, &quot;onError: &quot;, t);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                @Override</span><br><span class="line">                public void onComplete() &#123;</span><br><span class="line">                    Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这次的上游稍微复杂了一点点，首先仍然是个无限循环发事件，但是是有条件的，只有当上游的requested != 0的时候才会发事件，然后我们调用request（96）去消费96个事件（为什么是96而不是其他的数字先不要管），来看看运行结果吧：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">D/TAG: onSubscribe </span><br><span class="line">D/TAG: First requested = 128 </span><br><span class="line">D/TAG: emit 0 , requested = 127 </span><br><span class="line">D/TAG: emit 1 , requested = 126 </span><br><span class="line">D/TAG: emit 2 , requested = 125</span><br><span class="line"> ... </span><br><span class="line">D/TAG: emit 124 , requested = 3 </span><br><span class="line">D/TAG: emit 125 , requested = 2 </span><br><span class="line">D/TAG: emit 126 , requested = 1 </span><br><span class="line">D/TAG: emit 127 , requested = 0 </span><br><span class="line">D/TAG: Oh no! I can&apos;t emit value!</span><br></pre></td></tr></table></figure>
+<ul>
+<li>首先运行之后上游便会发送完128个事件，之后便不做任何事情，从打印的结果中我们也可以看出这一点。</li>
+<li>然后我们调用request(96)，这会让下游去消费96个事件，来看看运行结果吧：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">D/TAG: onNext: 0 </span><br><span class="line">D/TAG: onNext: 1</span><br><span class="line">... </span><br><span class="line">D/TAG: onNext: 92 </span><br><span class="line">D/TAG: onNext: 93 </span><br><span class="line">D/TAG: onNext: 94 </span><br><span class="line">D/TAG: onNext: 95 </span><br><span class="line">D/TAG: emit 128 , requested = 95 </span><br><span class="line">D/TAG: emit 129 , requested = 94 </span><br><span class="line">D/TAG: emit 130 , requested = 93 </span><br><span class="line">D/TAG: emit 131 , requested = 92</span><br><span class="line">... </span><br><span class="line">D/TAG: emit 219 , requested = 4 </span><br><span class="line">D/TAG: emit 220 , requested = 3 </span><br><span class="line">D/TAG: emit 221 , requested = 2 </span><br><span class="line">D/TAG: emit 222 , requested = 1 </span><br><span class="line">D/TAG: emit 223 , requested = 0 </span><br><span class="line">D/TAG: Oh no! I can&apos;t emit value!</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以看到，当下游消费掉第96个事件之后，上游又开始发事件了，而且可以看到当前上游的requested的值是96(打印出来的95是已经发送了一个事件减一之后的值)，最终发出了第223个事件之后又进入了等待区，而223-127 正好等于 96。</li>
+<li>这是不是说明当下游每消费96个事件便会自动触发内部的request()去设置上游的requested的值啊！没错，就是这样，而这个新的值就是96。</li>
+<li>朋友们可以手动试试请求95个事件，上游是不会继续发送事件的。</li>
+<li>至于这个96是怎么得出来的（肯定不是我猜的蒙的啊），感兴趣的朋友可以自行阅读源码寻找答案，对于初学者而言应该没什么必要，管它内部怎么实现的呢对吧。</li>
+<li>好了今天的教程就到这里了！通过本节的学习，大家应该知道如何正确的去实现一个完整的响应式拉取了，在某一些场景下，可以在发送事件前先判断当前的requested的值是否大于0，若等于0则说明下游处理不过来了，则需要等待。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/11/29/Rxjava2-0教程（九）/">Rxjava2.0教程（九）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">山禾以谓</a></p>
+        <p><span>发布时间:</span>2018-11-29, 17:22:40</p>
+        <p><span>最后更新:</span>2018-11-29, 17:29:33</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/29/Rxjava2-0教程（九）/" title="Rxjava2.0教程（九）">http://yoursite.com/2018/11/29/Rxjava2-0教程（九）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/11/29/Rxjava2-0教程（九）/　　作者: 山禾以谓" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/11/29/Rxjava2-0教程（八）/">
+                    Rxjava2.0教程（八）
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#正题"><span class="toc-number">1.1.</span> <span class="toc-text">正题</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Rxjava2.0教程（九）　| 山禾以谓　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+	
+		<section id="comments" style="margin: 2em; padding: 2em; background: rgba(255, 255, 255, 0.5)">
+    <div id="vcomment" class="comment"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@1.2.0-beta1/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+        el: '#vcomment',
+        notify: '13517217687@163.com',
+        verify: 'false',
+        app_id: "0Vk6y1rIHiNeTroPPN7y3LpJ-gzGzoHsz",
+        app_key: "8Qqw6MW3FLfXKi06zeNyC8Vy",
+        placeholder: "Just do it !",
+        avatar: "wavatar"
+      });
+    </script>
+</section>
+	
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/11/29/Rxjava2-0教程（八）/" title="下一篇: Rxjava2.0教程（八）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/Rxjava2-0教程（九）/">Rxjava2.0教程（九）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/Rxjava2-0教程（八）/">Rxjava2.0教程（八）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/Rxjava2-0教程（七）/">Rxjava2.0教程（七）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/Rxjava2-0教程（六）/">Rxjava2.0教程（六）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/Rxjava2-0教程（五）/">Rxjava2.0教程（五）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/Rxjava2-0教程（四）/">Rxjava2.0教程（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/27/Rxjava2-0教程（三）/">Rxjava2.0教程（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/24/Rxjava2-0教程（二）/">Rxjava2.0教程（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/24/Rxjava2-0教程（一）/">Rxjava2.0教程（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/写在二十七岁/">写在二十七岁</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/棠梨煎雪/">棠梨煎雪</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/10/Android开发中，实现对Home按键的监听/">Android开发中，实现对Home按键的监听</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/15/相信未来/">相信未来</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/『前端学习笔记（四）』/">『前端学习笔记（四）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/22/『前端学习笔记（三）』/">『前端学习笔记（三）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/『前端学习笔记（二）』/">『前端学习笔记（二）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/20/『前端学习笔记（一）』/">『前端学习笔记（一）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/TextView显示html文本/">TextView显示html文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/Android开发中的一些小技巧/">Android开发中的一些小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/TextView中部分文本点击可跳转/">TextView中部分文本点击可跳转</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/json数据转换成数组/">json数据转换成数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/未选择的路/">未选择的路</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/18/Android横竖屏切换时不销毁当前Activity/">Android横竖屏切换时不销毁当前Activity</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/13/WebView小结/">WebView小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/记一次Android8-0安装更新遇到的坑/">记一次Android8.0安装更新遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/EventBus使用笔记/">EventBus使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/ButterKnife依赖注入框架配置/">ButterKnife依赖注入框架配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/ARouter使用笔记/">ARouter使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/23/范式说明（转载）/">范式说明（转载）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/往事如烟/">往事如烟</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 山禾以谓
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+		
+		<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("06/21/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+  <!--      
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+         -->
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
+<script type="text/javascript" color=0,104,183 opacity=1 zindex=-1 count=50 src="/resources/particle.js"></script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":100,"height":200,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
