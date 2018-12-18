@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="山禾以蔚" />
+
+
+
+<meta name="description" content="Android动画之视图动画 Android动画主要有：     动画种类 说明     视图动画（View动画，补间（Tween）动画） 视图动画在Android古老的版本中已经有了，使用简单，效果丰富，缺点是不具备交互性，当某个元素发生视图动画后，其响应事件的位置还依然在动画前的地方   属性动画(Property 动画) Android3.0以后推出，功能强大可以自定义任何类型和属性的动画">
+<meta name="keywords" content="Android,技术,动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android动画（一）">
+<meta property="og:url" content="http://yoursite.com/2018/12/18/Android动画（一）/index.html">
+<meta property="og:site_name" content="山禾以蔚">
+<meta property="og:description" content="Android动画之视图动画 Android动画主要有：     动画种类 说明     视图动画（View动画，补间（Tween）动画） 视图动画在Android古老的版本中已经有了，使用简单，效果丰富，缺点是不具备交互性，当某个元素发生视图动画后，其响应事件的位置还依然在动画前的地方   属性动画(Property 动画) Android3.0以后推出，功能强大可以自定义任何类型和属性的动画">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-18T05:39:31.120Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android动画（一）">
+<meta name="twitter:description" content="Android动画之视图动画 Android动画主要有：     动画种类 说明     视图动画（View动画，补间（Tween）动画） 视图动画在Android古老的版本中已经有了，使用简单，效果丰富，缺点是不具备交互性，当某个元素发生视图动画后，其响应事件的位置还依然在动画前的地方   属性动画(Property 动画) Android3.0以后推出，功能强大可以自定义任何类型和属性的动画">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="山禾以蔚" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Android动画（一） | 山禾以蔚</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: false,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?71b138b713396442e9dbe50e51f0a779";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="https://avatars1.githubusercontent.com/u/21188545?s=460&amp;v=4" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">山禾以蔚</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">临渊羡鱼，不如退而结网</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/2933035235/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/people/141220427/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/b0199aa97173" title="简书"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARouter/">ARouter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android8-0适配/">Android8.0适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ButterKnife/">ButterKnife</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventBus/">EventBus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/">Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TextView/">TextView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView相关/">WebView相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web前端/">Web前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/横竖屏切换/">横竖屏切换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/歌词/">歌词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/现代诗/">现代诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/范式/">范式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗歌/">诗歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高中/">高中</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">专注于Android</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">山禾以蔚</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="https://avatars1.githubusercontent.com/u/21188545?s=460&amp;v=4" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">山禾以蔚</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">临渊羡鱼，不如退而结网</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/2933035235/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/people/141220427/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/b0199aa97173" title="简书"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Android动画（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/18/Android动画（一）/" class="article-date">
+      <time datetime="2018-12-18T05:34:50.000Z" itemprop="datePublished">2018-12-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android动画（一）
+    </h1>
+  
+
+		
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Android动画之视图动画"><a href="#Android动画之视图动画" class="headerlink" title="Android动画之视图动画"></a>Android动画之视图动画</h1><ul>
+<li>Android动画主要有：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>动画种类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>视图动画（View动画，补间（Tween）动画）</td>
+<td>视图动画在Android古老的版本中已经有了，使用简单，效果丰富，缺点是不具备交互性，当某个元素发生视图动画后，其响应事件的位置还依然在动画前的地方</td>
+</tr>
+<tr>
+<td>属性动画(Property 动画)</td>
+<td>Android3.0以后推出，功能强大可以自定义任何类型和属性的动画</td>
+</tr>
+<tr>
+<td>帧动画（Frame动画，Drawable动画）</td>
+<td>专门用来一个一个的显示Drawable的resources，就像放幻灯片一样</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="视图动画"><a href="#视图动画" class="headerlink" title="视图动画"></a>视图动画</h2><ul>
+<li>平移动画（TranslateAnimation）</li>
+<li>旋转动画（RotateAnimation）</li>
+<li>缩放动画（ScaleAnimation）</li>
+<li>渐变动画（AlphaAnimation）</li>
+<li>动画集合（AnimationSet）</li>
+</ul>
+<h3 id="视图动画的实现方式"><a href="#视图动画的实现方式" class="headerlink" title="视图动画的实现方式"></a>视图动画的实现方式</h3><ul>
+<li>视图动画的实现方式主要有两种，一种是xml实现，首先在res/anim目录下定义动画的xml文件，之后再在代码中用AnimationUtils.loadAnimation()加载</li>
+<li>代码实现，直接new对应的动画实例来实现动画</li>
+</ul>
+<h4 id="xml方式来实现视图动画"><a href="#xml方式来实现视图动画" class="headerlink" title="xml方式来实现视图动画"></a>xml方式来实现视图动画</h4><h5 id="在res-anim文件夹分别定义渐变、平移、旋转、缩放四个动画文件："><a href="#在res-anim文件夹分别定义渐变、平移、旋转、缩放四个动画文件：" class="headerlink" title="在res/anim文件夹分别定义渐变、平移、旋转、缩放四个动画文件："></a>在res/anim文件夹分别定义渐变、平移、旋转、缩放四个动画文件：</h5><ul>
+<li><strong>渐变动画，名称为alpha.xml</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;alpha xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:startOffset=&quot;1000&quot;</span><br><span class="line">    android:fromAlpha=&quot;1.0&quot;</span><br><span class="line">    android:toAlpha=&quot;0.0&quot;</span><br><span class="line">    android:duration=&quot;2000&quot;&gt;</span><br><span class="line">&lt;/alpha&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>startOffset：表示动画开始的延迟时间，点开后1000毫秒（1秒）后开始执行，单位是毫秒。</li>
+<li>fromAlpha：表示动画开始的透明度（1.0表示完全不透明，0.0表示完全透明）</li>
+<li>toAlpha：表示动画结束的透明度（1.0表示完全不透明，0.0表示完全透明）</li>
+<li>duration：表示动画持续的时间，单位为毫秒</li>
+<li><p><strong>平移动画，名称为translate.xml</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;translate xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:duration=&quot;3000&quot;</span><br><span class="line">    android:fromXDelta=&quot;0&quot;</span><br><span class="line">    android:fromYDelta=&quot;0&quot;</span><br><span class="line">    android:toXDelta=&quot;100%p&quot;</span><br><span class="line">    android:toYDelta=&quot;100%p&quot;&gt;</span><br><span class="line">&lt;/translate&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fromXDelta：表示动画开始时，x轴坐标</p>
+</li>
+<li>fromYDelta：表示动画开始时，y轴坐标</li>
+<li>toXDelta：表示动画结束时，x轴坐标</li>
+<li>toYDelta：表示动画结束时，y轴坐标</li>
+</ul>
+<blockquote>
+<p>关于toXDelta，toYDelta的值，需要注意的是，可以设置三种类型的值，例如设置50：表示50个像素<br>50%：表示自身大小的一半，记住这里是可以设置百分号的，他等于0.5，如果设置0.5表示绝对值0.5<br>50%p：表示父元素大小的一半，p是相对于父元素</p>
+</blockquote>
+<ul>
+<li><p><strong>缩放动画，名称为scale.xml</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;scale xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:duration=&quot;3000&quot;</span><br><span class="line">    android:fromXScale=&quot;1&quot;</span><br><span class="line">    android:fromYScale=&quot;1&quot;</span><br><span class="line">    android:toXScale=&quot;2&quot;</span><br><span class="line">    android:toYScale=&quot;2&quot;</span><br><span class="line">    android:pivotX=&quot;50%&quot;</span><br><span class="line">    android:pivotY=&quot;0%&quot;&gt;</span><br><span class="line">&lt;/scale&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fromXScale，fromYScale：表示动画开始时x,y的缩放大小</p>
+</li>
+<li>toXScale，toYScale：表示动画结束时x,y的缩放大小</li>
+<li>1表示本身，数值越大，缩放比例越大</li>
+<li>pivotX，piovtY：缩放的中心坐标位置，可以设置值与平移动画可以设置的类似<blockquote>
+<p>50： 表示50个像素，是绝对值<br>50%： 表示自身中心位置<br>50%p ：表示父元素的中心位置，p表示相对于父元素</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><strong>旋转动画，名称为rotate.xml</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;rotate xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:duration=&quot;3000&quot;</span><br><span class="line">    android:fromDegrees=&quot;0&quot;</span><br><span class="line">    android:toDegrees=&quot;360&quot;</span><br><span class="line">    android:pivotX=&quot;50%&quot;</span><br><span class="line">    android:pivotY=&quot;50%&quot;&gt;</span><br><span class="line">&lt;/rotate&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>fromDegrees：表示动画开始的角度</li>
+<li>toDegrees：表示动画结束的角度，正数为顺时针，负数为逆时针</li>
+<li>pivotX，pivotY：表示旋转的中心坐标位置，设置方式与缩放相似</li>
+</ul>
+<h5 id="在java代码中引用"><a href="#在java代码中引用" class="headerlink" title="在java代码中引用"></a>在java代码中引用</h5><ul>
+<li>xml文件定义好后，我们就需要在代码中进行使用，可以先定义一个View,之后在界面中find出来，之后view设置动画。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 旋转动画</span><br><span class="line"> */</span><br><span class="line">private void rotate() &#123;</span><br><span class="line">    Animation rotate = AnimationUtils.loadAnimation(this, R.anim.rotate);</span><br><span class="line">    ivImg.startAnimation(rotate);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 缩放动画</span><br><span class="line"> */</span><br><span class="line">private void scale() &#123;</span><br><span class="line">    Animation scale = AnimationUtils.loadAnimation(this, R.anim.scale);</span><br><span class="line">    ivImg.startAnimation(scale);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 平移动画</span><br><span class="line"> */</span><br><span class="line">private void translate() &#123;</span><br><span class="line">    Animation translate = AnimationUtils.loadAnimation(this, R.anim.translate);</span><br><span class="line">    ivImg.startAnimation(translate);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 渐变动画</span><br><span class="line"> */</span><br><span class="line">private void alpha() &#123;</span><br><span class="line">    Animation alpha = AnimationUtils.loadAnimation(this, R.anim.alpha);</span><br><span class="line">    ivImg.startAnimation(alpha);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Java代码来实现"><a href="#Java代码来实现" class="headerlink" title="Java代码来实现"></a>Java代码来实现</h4><ul>
+<li>接下来我们用代码来实现这个四种动画</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 旋转动画</span><br><span class="line"> */</span><br><span class="line">private void rotate()&#123;</span><br><span class="line">    RotateAnimation rotate = new RotateAnimation(0,360, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);</span><br><span class="line">    rotate.setDuration(3000);</span><br><span class="line">    ivImg.startAnimation(rotate);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 缩放动画</span><br><span class="line"> */</span><br><span class="line">private void scale()&#123;</span><br><span class="line">    ScaleAnimation scale = new ScaleAnimation(1, 2, 1, 2, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);</span><br><span class="line">    scale.setDuration(3000);</span><br><span class="line">    ivImg.startAnimation(scale);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 平移动画</span><br><span class="line"> */</span><br><span class="line">private void translate()&#123;</span><br><span class="line">    TranslateAnimation translate = new TranslateAnimation(0, 200, 0, 0);</span><br><span class="line">    translate.setDuration(3000);</span><br><span class="line">    ivImg.startAnimation(translate);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 渐变动画</span><br><span class="line"> */</span><br><span class="line">private void alpha()&#123;</span><br><span class="line">    AlphaAnimation alpha = new AlphaAnimation(1.0f, 0.0f);</span><br><span class="line">    alpha.setDuration(3000);</span><br><span class="line">    ivImg.startAnimation(alpha);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="给动画设置监听事件"><a href="#给动画设置监听事件" class="headerlink" title="给动画设置监听事件"></a>给动画设置监听事件</h5><ul>
+<li>动画我们已经实现了，但是如果你需要在动画的执行过程中，做某些操作怎么办呐？比如在动画开始的时候提示一下动画的开始，在动画的结束时，我们提示动画的结束，这我们又能怎么做呐？</li>
+<li>无论是rotate、scale、translate、alpha他们都有一个监听事件，如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">rotate.setAnimationListener(new Animation.AnimationListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onAnimationStart(Animation animation) &#123;</span><br><span class="line">        //动画开始</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onAnimationEnd(Animation animation) &#123;</span><br><span class="line">        //动画结束</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onAnimationRepeat(Animation animation) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>根据不同的状态做相应的操作</li>
+</ul>
+<h4 id="组合动画"><a href="#组合动画" class="headerlink" title="组合动画"></a>组合动画</h4><ul>
+<li>串行动画</li>
+<li>并行动画</li>
+<li>即串行又并行动画</li>
+</ul>
+<h5 id="xml方式实现组合动画"><a href="#xml方式实现组合动画" class="headerlink" title="xml方式实现组合动画"></a>xml方式实现组合动画</h5><ul>
+<li><strong>定义一个flay.xml文件</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;translate</span><br><span class="line">        android:duration=&quot;3000&quot;</span><br><span class="line">        android:fromXDelta=&quot;0&quot;</span><br><span class="line">        android:fromYDelta=&quot;0&quot;</span><br><span class="line">        android:toXDelta=&quot;0&quot;</span><br><span class="line">        android:toYDelta=&quot;-300&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;rotate</span><br><span class="line">        android:duration=&quot;3000&quot;</span><br><span class="line">        android:fromDegrees=&quot;0&quot;</span><br><span class="line">        android:pivotX=&quot;50%&quot;</span><br><span class="line">        android:pivotY=&quot;50%&quot;</span><br><span class="line">        android:startOffset=&quot;3000&quot;</span><br><span class="line">        android:toDegrees=&quot;-45&quot; /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;scale</span><br><span class="line">        android:duration=&quot;3000&quot;</span><br><span class="line">        android:fromXScale=&quot;1&quot;</span><br><span class="line">        android:fromYScale=&quot;1&quot;</span><br><span class="line">        android:pivotX=&quot;50%&quot;</span><br><span class="line">        android:pivotY=&quot;50%&quot;</span><br><span class="line">        android:startOffset=&quot;3000&quot;</span><br><span class="line">        android:toXScale=&quot;2&quot;</span><br><span class="line">        android:toYScale=&quot;2&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;alpha</span><br><span class="line">        android:duration=&quot;3000&quot;</span><br><span class="line">        android:fromAlpha=&quot;1.0&quot;</span><br><span class="line">        android:startOffset=&quot;3000&quot;</span><br><span class="line">        android:toAlpha=&quot;0.0&quot; /&gt;</span><br><span class="line">&lt;/set&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>代码加载上面的xml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private void Anim() &#123;</span><br><span class="line">    Animation animation = AnimationUtils.loadAnimation(this, R.anim.flay);</span><br><span class="line">    ivImg.startAnimation(animation);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Java代码中实现组合动画"><a href="#Java代码中实现组合动画" class="headerlink" title="Java代码中实现组合动画"></a>Java代码中实现组合动画</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">private void anim() &#123;</span><br><span class="line">    AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);</span><br><span class="line">    alphaAnimation.setDuration(3000);</span><br><span class="line"></span><br><span class="line">    TranslateAnimation translateAnimation = new TranslateAnimation(0, 200, 0, 0);</span><br><span class="line">    translateAnimation.setDuration(3000);</span><br><span class="line"></span><br><span class="line">    ScaleAnimation scaleAnimation = new ScaleAnimation(1, 2, 1, 2, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);</span><br><span class="line">    scaleAnimation.setDuration(3000);</span><br><span class="line"></span><br><span class="line">    //true表示是否公用插值器</span><br><span class="line">    AnimationSet animationSet = new AnimationSet(true);</span><br><span class="line">    animationSet.addAnimation(alphaAnimation);</span><br><span class="line">    animationSet.addAnimation(translateAnimation);</span><br><span class="line">    animationSet.addAnimation(scaleAnimation);</span><br><span class="line">    ivImg.startAnimation(animationSet);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="插值器（Interpolator）"><a href="#插值器（Interpolator）" class="headerlink" title="插值器（Interpolator）"></a>插值器（Interpolator）</h4><ul>
+<li>通俗易懂的说，Interpolator负责控制动画变化的速率，使得基本的动画效果能够以匀速、加速、减速、抛物线速率等各种速率变化。</li>
+</ul>
+<h5 id="在xml中设置"><a href="#在xml中设置" class="headerlink" title="在xml中设置"></a>在xml中设置</h5><ul>
+<li>在res/anim文件夹下，创建一个名为scale_interpolator.xml的文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;scale xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:duration=&quot;3000&quot;</span><br><span class="line">    android:fromXScale=&quot;0.0&quot;</span><br><span class="line">    android:fromYScale=&quot;0.0&quot;</span><br><span class="line">    android:interpolator=&quot;@android:anim/overshoot_interpolator&quot;</span><br><span class="line">    android:pivotX=&quot;50%&quot;</span><br><span class="line">    android:pivotY=&quot;50%&quot;</span><br><span class="line">    android:toXScale=&quot;2&quot;</span><br><span class="line">    android:toYScale=&quot;2&quot;&gt;</span><br><span class="line">&lt;/scale&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在java代码中引用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private void Anim() &#123;</span><br><span class="line">     Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale_interpolator);</span><br><span class="line">     ivImg.startAnimation(animation);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="直接在Java代码中设置插值器"><a href="#直接在Java代码中设置插值器" class="headerlink" title="直接在Java代码中设置插值器"></a>直接在Java代码中设置插值器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private void Anim2() &#123;</span><br><span class="line">    //创建透明度动画的对象以及设置动画效果</span><br><span class="line">    AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);</span><br><span class="line">    alphaAnimation.setDuration(3000);</span><br><span class="line">    //创建对应插值器类对象</span><br><span class="line">    OvershootInterpolator overshootInterpolator = new OvershootInterpolator();</span><br><span class="line">    //给动画设置插值器</span><br><span class="line">    alphaAnimation.setInterpolator(overshootInterpolator);</span><br><span class="line">    //播放动画</span><br><span class="line">    ivImg.startAnimation(alphaAnimation);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="插值器的类型"><a href="#插值器的类型" class="headerlink" title="插值器的类型"></a>插值器的类型</h5><ul>
+<li>Android内置了9种插值器的类型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>作用</th>
+<th>资源ID</th>
+<th>对应的java类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>动画加速进行</td>
+<td>@android:anim/accelerate_interpolator</td>
+<td>AccelerateInterpolator</td>
+</tr>
+<tr>
+<td>快速完成动画，超出再回到结束样式</td>
+<td>@android:anim/overshoot_interpolator</td>
+<td>OvershootInterpolator</td>
+</tr>
+<tr>
+<td>先加速再减速</td>
+<td>@android:anim/accelerate_decelerate_interpolator</td>
+<td>AccelerateDecelerateInterpolator</td>
+</tr>
+<tr>
+<td>先退后再加速前进</td>
+<td>@android:anim/anticipate_interpolator</td>
+<td>AnticipateInterpolator</td>
+</tr>
+<tr>
+<td>先退后再加速前进，超出终点后再回终点</td>
+<td>@android:anim/anticipate_overshoot_interpolator</td>
+<td>AnticipateOvershootInterpolator</td>
+</tr>
+<tr>
+<td>最后阶段弹球效果</td>
+<td>@android:anim/bounce_interpolator</td>
+<td>BounceInterpolator</td>
+</tr>
+<tr>
+<td>周期运动</td>
+<td>@android:anim/cycle_interpolator</td>
+<td>CycleInterpolator</td>
+</tr>
+<tr>
+<td>减速</td>
+<td>@android:anim/decelerate_interpolator</td>
+<td>DecelerateInterpolator</td>
+</tr>
+<tr>
+<td>匀速</td>
+<td>@android:anim/linear_interpolator</td>
+<td>LinearInterpolator</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>使用时：<ul>
+<li>当在XML文件设置插值器时，只需传入对应的插值器资源ID即可</li>
+<li>当在Java代码设置插值器时，只需创建对应的插值器对象即可</li>
+<li>系统默认的插值器是AccelerateDecelerateInterpolator，即先加速后减速</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/12/18/Android动画（一）/">Android动画（一）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">山禾以蔚</a></p>
+        <p><span>发布时间:</span>2018-12-18, 13:34:50</p>
+        <p><span>最后更新:</span>2018-12-18, 13:39:31</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/12/18/Android动画（一）/" title="Android动画（一）">http://yoursite.com/2018/12/18/Android动画（一）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/12/18/Android动画（一）/　　作者: 山禾以蔚" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/11/29/Rxjava2-0教程（九）/">
+                    Rxjava2.0教程（九）
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android动画之视图动画"><span class="toc-number">1.</span> <span class="toc-text">Android动画之视图动画</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#视图动画"><span class="toc-number">1.1.</span> <span class="toc-text">视图动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#视图动画的实现方式"><span class="toc-number">1.1.1.</span> <span class="toc-text">视图动画的实现方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#xml方式来实现视图动画"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">xml方式来实现视图动画</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#在res-anim文件夹分别定义渐变、平移、旋转、缩放四个动画文件："><span class="toc-number">1.1.1.1.1.</span> <span class="toc-text">在res/anim文件夹分别定义渐变、平移、旋转、缩放四个动画文件：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在java代码中引用"><span class="toc-number">1.1.1.1.2.</span> <span class="toc-text">在java代码中引用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java代码来实现"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Java代码来实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#给动画设置监听事件"><span class="toc-number">1.1.1.2.1.</span> <span class="toc-text">给动画设置监听事件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组合动画"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">组合动画</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#xml方式实现组合动画"><span class="toc-number">1.1.1.3.1.</span> <span class="toc-text">xml方式实现组合动画</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Java代码中实现组合动画"><span class="toc-number">1.1.1.3.2.</span> <span class="toc-text">Java代码中实现组合动画</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插值器（Interpolator）"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">插值器（Interpolator）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#在xml中设置"><span class="toc-number">1.1.1.4.1.</span> <span class="toc-text">在xml中设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#直接在Java代码中设置插值器"><span class="toc-number">1.1.1.4.2.</span> <span class="toc-text">直接在Java代码中设置插值器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插值器的类型"><span class="toc-number">1.1.1.4.3.</span> <span class="toc-text">插值器的类型</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Android动画（一）　| 山禾以蔚　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+	
+		<section id="comments" style="margin: 2em; padding: 2em; background: rgba(255, 255, 255, 0.5)">
+    <div id="vcomment" class="comment"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@1.2.0-beta1/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+        el: '#vcomment',
+        notify: '13517217687@163.com',
+        verify: 'false',
+        app_id: "0Vk6y1rIHiNeTroPPN7y3LpJ-gzGzoHsz",
+        app_key: "8Qqw6MW3FLfXKi06zeNyC8Vy",
+        placeholder: "Just do it !",
+        avatar: "wavatar"
+      });
+    </script>
+</section>
+	
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/11/29/Rxjava2-0教程（九）/" title="下一篇: Rxjava2.0教程（九）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/18/Android动画（一）/">Android动画（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/Rxjava2-0教程（九）/">Rxjava2.0教程（九）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/Rxjava2-0教程（八）/">Rxjava2.0教程（八）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/Rxjava2-0教程（七）/">Rxjava2.0教程（七）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/Rxjava2-0教程（六）/">Rxjava2.0教程（六）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/Rxjava2-0教程（五）/">Rxjava2.0教程（五）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/Rxjava2-0教程（四）/">Rxjava2.0教程（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/27/Rxjava2-0教程（三）/">Rxjava2.0教程（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/24/Rxjava2-0教程（二）/">Rxjava2.0教程（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/24/Rxjava2-0教程（一）/">Rxjava2.0教程（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/写在二十七岁/">写在二十七岁</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/棠梨煎雪/">棠梨煎雪</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/10/Android开发中，实现对Home按键的监听/">Android开发中，实现对Home按键的监听</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/15/相信未来/">相信未来</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/『前端学习笔记（四）』/">『前端学习笔记（四）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/22/『前端学习笔记（三）』/">『前端学习笔记（三）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/『前端学习笔记（二）』/">『前端学习笔记（二）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/20/『前端学习笔记（一）』/">『前端学习笔记（一）』</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/TextView显示html文本/">TextView显示html文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/Android开发中的一些小技巧/">Android开发中的一些小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/TextView中部分文本点击可跳转/">TextView中部分文本点击可跳转</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/json数据转换成数组/">json数据转换成数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/未选择的路/">未选择的路</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/18/Android横竖屏切换时不销毁当前Activity/">Android横竖屏切换时不销毁当前Activity</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/13/WebView小结/">WebView小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/记一次Android8-0安装更新遇到的坑/">记一次Android8.0安装更新遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/EventBus使用笔记/">EventBus使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/ButterKnife依赖注入框架配置/">ButterKnife依赖注入框架配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/ARouter使用笔记/">ARouter使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/23/范式说明（转载）/">范式说明（转载）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/往事如烟/">往事如烟</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 山禾以蔚
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+		
+		<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("06/21/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+  <!--      
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+         -->
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
+<script type="text/javascript" color=0,104,183 opacity=1 zindex=-1 count=50 src="/resources/particle.js"></script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":100,"height":200,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
