@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="缘由:无意间打开了我的loft博客，竟然发现了一篇以前的博客，时间是2011年的高考前后，内容是摘取当时的数篇日记，文章有浓浓的应试作文风格…">
-<meta name="keywords" content="随笔,回忆,高中">
+<meta name="description" content="Android属性动画(Property)ObjectAnimator类ObjectAnimator类提供了ofFloat()方法来实现我们的动画效果，方法中包含三个参数Object target,String propertyName,float…valuesObject target第一个参数是我们动画作用的对象String propertyName是动画是何种属性，移动、旋转、还是渐变等，t">
+<meta name="keywords" content="技术,Android,动画,属性动画">
 <meta property="og:type" content="article">
-<meta property="og:title" content="往事如烟">
-<meta property="og:url" content="http://yoursite.com/2018/06/21/往事如烟/index.html">
+<meta property="og:title" content="Android动画（二）">
+<meta property="og:url" content="http://yoursite.com/2018/12/22/Android动画（二）/index.html">
 <meta property="og:site_name" content="山禾以蔚">
-<meta property="og:description" content="缘由:无意间打开了我的loft博客，竟然发现了一篇以前的博客，时间是2011年的高考前后，内容是摘取当时的数篇日记，文章有浓浓的应试作文风格…">
+<meta property="og:description" content="Android属性动画(Property)ObjectAnimator类ObjectAnimator类提供了ofFloat()方法来实现我们的动画效果，方法中包含三个参数Object target,String propertyName,float…valuesObject target第一个参数是我们动画作用的对象String propertyName是动画是何种属性，移动、旋转、还是渐变等，t">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-18T01:33:01.879Z">
+<meta property="og:updated_time" content="2018-12-22T05:45:12.976Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="往事如烟">
-<meta name="twitter:description" content="缘由:无意间打开了我的loft博客，竟然发现了一篇以前的博客，时间是2011年的高考前后，内容是摘取当时的数篇日记，文章有浓浓的应试作文风格…">
+<meta name="twitter:title" content="Android动画（二）">
+<meta name="twitter:description" content="Android属性动画(Property)ObjectAnimator类ObjectAnimator类提供了ofFloat()方法来实现我们的动画效果，方法中包含三个参数Object target,String propertyName,float…valuesObject target第一个参数是我们动画作用的对象String propertyName是动画是何种属性，移动、旋转、还是渐变等，t">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>往事如烟 | 山禾以蔚</title>
+<title>Android动画（二） | 山禾以蔚</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -258,11 +258,11 @@ var _hmt = _hmt || [];
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-往事如烟" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Android动画（二）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/21/往事如烟/" class="article-date">
-      <time datetime="2018-06-21T01:37:58.000Z" itemprop="datePublished">2018-06-21</time>
+      <a href="/2018/12/22/Android动画（二）/" class="article-date">
+      <time datetime="2018-12-22T05:38:49.000Z" itemprop="datePublished">2018-12-22</time>
 </a>
 
 
@@ -277,7 +277,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      往事如烟
+      Android动画（二）
     </h1>
   
 
@@ -289,7 +289,7 @@ var _hmt = _hmt || [];
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/回忆/">回忆</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高中/">高中</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/属性动画/">属性动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -299,31 +299,70 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
           
-        <blockquote>
-<p>缘由:无意间打开了我的loft博客，竟然发现了一篇以前的博客，时间是2011年的高考前后，内容是摘取当时的数篇日记，文章有浓浓的应试作文风格…</p>
-</blockquote>
+        <h1 id="Android属性动画-Property"><a href="#Android属性动画-Property" class="headerlink" title="Android属性动画(Property)"></a>Android属性动画(Property)</h1><h2 id="ObjectAnimator类"><a href="#ObjectAnimator类" class="headerlink" title="ObjectAnimator类"></a>ObjectAnimator类</h2><p>ObjectAnimator类提供了ofFloat()方法来实现我们的动画效果，方法中包含三个参数Object target,String propertyName,float…values</p><br><p>Object target第一个参数是我们动画作用的对象</p><br><p>String propertyName是动画是何种属性，移动、旋转、还是渐变等，translationX表示水平方向移动，translationY表示垂直方向移动，rotation表示旋转</p><br><p>float…values 接收两个两float类型的常量，第一个float常量表示起始位置，第二float常量表示位移的距离或者旋转的角度等值</p>
+
+
 <a id="more"></a>
-<p>&nbsp;&nbsp;岁月伴随着迷茫来到了二十岁来到了一个新的驿站，伴随又一个彷徨又相思又迷茫的暑假的结束，仰望星空不仅为时光匆匆而哀叹，过去的事，过去的人，“物是人非事事休，欲与泪先流”。<br></p>
-<ul>
-<li>2011年6月4日 星期六   阴 高考倒计时2天</li>
+<p>水平X轴 移动200F</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator.ofFloat(ivImg, &quot;translationX&quot;, 0F, 200F).setDuration(2000).start();</span><br></pre></td></tr></table></figure><br><br><p>水平Y轴移动200F</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator.ofFloat(ivImg, &quot;translationY&quot;, 0F, 200F).setDuration(2000).start();</span><br></pre></td></tr></table></figure><br><br><p>旋转360度</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator.ofFloat(ivImg, &quot;rotation&quot;, 0F, 360F).setDuration(2000).start();</span><br></pre></td></tr></table></figure><br><br><p>多个动画属性同时作用</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator.ofFloat(ivImg, &quot;translationX&quot;, 0F, 360F).setDuration(2000).start();</span><br><span class="line">                ObjectAnimator.ofFloat(ivImg, &quot;translationY&quot;, 0F, 360F).setDuration(2000).start();</span><br><span class="line">                ObjectAnimator.ofFloat(ivImg, &quot;rotation&quot;, 0F, 360F).setDuration(2000).start();</span><br></pre></td></tr></table></figure><br><br><p>多个动画属性同时作用(相对于上面的写法，更高效)</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PropertyValuesHolder p1 = PropertyValuesHolder.ofFloat(&quot;rotation&quot;, 0, 360F);</span><br><span class="line">                PropertyValuesHolder p2 = PropertyValuesHolder.ofFloat(&quot;translationX&quot;, 0, 360F);</span><br><span class="line">                PropertyValuesHolder p3 = PropertyValuesHolder.ofFloat(&quot;translationY&quot;, 0, 360F);</span><br><span class="line">                ObjectAnimator.ofPropertyValuesHolder(ivImg, p1, p2, p3).setDuration(1000).start();</span><br></pre></td></tr></table></figure>
+<h3 id="AnimatorSet用法"><a href="#AnimatorSet用法" class="headerlink" title="AnimatorSet用法"></a>AnimatorSet用法</h3><p>AnimatorSet作用多各动画属性的时候，可以有选择的改变每个动画的先后执行顺序<br><br></p><p>同时执行效果:</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator animator1 = ObjectAnimator.ofFloat(ivImg, &quot;rotation&quot;, 0F, 360F);</span><br><span class="line">ObjectAnimator animator2 = ObjectAnimator.ofFloat(ivImg, &quot;translationX&quot;, 0F, 360F);</span><br><span class="line">ObjectAnimator animator3 = ObjectAnimator.ofFloat(ivImg, &quot;translationY&quot;, 0F, 360F);</span><br><span class="line">AnimatorSet set = new AnimatorSet();</span><br><span class="line">//动画效果作用在一起</span><br><span class="line">set.playTogether(animator1, animator2, animator3);</span><br><span class="line">set.setDuration(1000);</span><br><span class="line">set.start();</span><br></pre></td></tr></table></figure><br><br><p>依次执行的效果:</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator anim1 = ObjectAnimator.ofFloat(ivImg, &quot;rotation&quot;, 0F, 360F);</span><br><span class="line">ObjectAnimator anim2 = ObjectAnimator.ofFloat(ivImg, &quot;translationX&quot;, 0F, 360F);</span><br><span class="line">ObjectAnimator anim3 = ObjectAnimator.ofFloat(ivImg, &quot;translationY&quot;, 0F, 360F);</span><br><span class="line">AnimatorSet animatorSet = new AnimatorSet();</span><br><span class="line">//动画依次执行</span><br><span class="line">animatorSet.playSequentially(anim1, anim2, anim3);</span><br><span class="line">animatorSet.setDuration(1000);</span><br><span class="line">animatorSet.start();</span><br></pre></td></tr></table></figure><br><br><p>自定义顺序:</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator a1 = ObjectAnimator.ofFloat(ivImg, &quot;rotation&quot;, 0F, 360F);</span><br><span class="line"> ObjectAnimator a2 = ObjectAnimator.ofFloat(ivImg, &quot;translationX&quot;, 0F, 360F);</span><br><span class="line"> ObjectAnimator a3 = ObjectAnimator.ofFloat(ivImg, &quot;translationY&quot;, 0F, 360F);</span><br><span class="line"> AnimatorSet animator = new AnimatorSet();</span><br><span class="line"> //自定义动画顺序</span><br><span class="line"> animator.play(a2).with(a3);</span><br><span class="line"> animator.play(a1).after(a2);</span><br><span class="line"> animator.setDuration(1000);</span><br><span class="line"> animator.start();</span><br></pre></td></tr></table></figure><br><br><p>动画的监听事件</p><br><p>ObjectAnimator的监听事件有两种，一种是Animator.AnimatorListener()，另一种是AnimatorListenerAdapter()，第一种监听事件要重新父类的onAnimationStart，onAnimationEnd，onAnimationCancel，onAnimationRepeat的全部方法，有时候我们只需要用到其中某一个方法，这种情况下，就显得不太简洁，而AnimatorListenerAdapter()则很好的解决了这个问题，不用重写全部，只需要选择需要重写的方法，代码如下:</p>
+
+<p>Animator.AnimatorListener()</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator animator = ObjectAnimator.ofFloat(view, &quot;alpha&quot;, 0F, 1F);</span><br><span class="line">animator.setDuration(1000);</span><br><span class="line">animator.start();</span><br><span class="line">//animator 的监听事件</span><br><span class="line">animator.addListener(new Animator.AnimatorListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onAnimationStart(Animator animator) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onAnimationEnd(Animator animator) &#123;</span><br><span class="line">        //动画结束的监听</span><br><span class="line">        Toast.makeText(Main3Activity.this, &quot;end&quot;, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onAnimationCancel(Animator animator) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onAnimationRepeat(Animator animator) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><br><br><p>AnimatorListenerAdapter()</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator animator = ObjectAnimator.ofFloat(view, &quot;alpha&quot;, 0F, 1F);</span><br><span class="line">animator.setDuration(1000);</span><br><span class="line">animator.start();</span><br><span class="line">        animator.addListener(new AnimatorListenerAdapter() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onAnimationEnd(Animator animation) &#123;</span><br><span class="line">        super.onAnimationEnd(animation);</span><br><span class="line">        //动画结束的监听</span><br><span class="line">        Toast.makeText(Main3Activity.this, &quot;end&quot;, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h2><h3 id="ObjectAnimator"><a href="#ObjectAnimator" class="headerlink" title="ObjectAnimator"></a>ObjectAnimator</h3><h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ul>
+<li>translationX\translationY<ul>
+<li>X轴\Y轴方向移动的距离</li>
 </ul>
-<p>&nbsp;&nbsp;时光匆匆，坐在书桌前，看着手中的毕业相片感慨万千，在高考压力之余不禁又想到要毕业了。 三年高中时光，弹指一挥间，匆匆流逝。词人说：“多情自古伤离别”。<br><br>&nbsp;&nbsp;三年中，只是平凡众人中的一个，不是老师家长们眼中的佼佼者。不突出，不平庸，不善表达。下一次写周记的时候，已经是人生的转折点了，那将是面临另一个人生，珍惜现在，沉着应对，把握每分每秒。明天也是在学校的最后一天了，回忆起往昔，有快乐，有痛苦，有成功，有挫折，有风雨，有彩虹，生活像一杯酒，品他，才能体会人生苦辣，是一扇窗，打开他，才能自由的飞翔。“青春不是年华而是心境，青春不是桃面、丹唇、柔膝而是深沉的意志，恢弘的想象，炙热的情感…青春气贯长虹。勇气压倒怯弱，进取压倒苟安”喜欢这句名言，就像每个人年轻过，年轻给人以锐气，给人以蓬勃。当年届花甲之时，也许会在某些时候，或在蒙蒙的细雨中，或在寂静的夜里，暮然回想起，曾在自己的岁月记忆之中，有过这样一段时光，或许有冲动无畏、鲁莽、无知、轻率。生命之光在这一刻涌动，成长岁月中，美好的回忆在这一刻封存，伤感情结交织着人生的挑战，即将走向人生另一条更广阔的路。前方的路会怎样，迷茫又充满希望，遥远又尽在咫尺，只因为“凡是遥远的地方，对我们都有一种诱惑，不是诱惑于美丽就是诱惑于传说”我们都在寻找，哪怕这远方的风景并不尽如人意，哪怕那是一片子虚乌有的桃花源。天下没有不散的宴席，就让这段时光留到回忆的岁月吧！“月下飞仙境湖渡，踏踏波声似白鹭。欲把愁心与明月，谁人解的浔阳处。”我欲乘风归去转朱阁，照无眠，高考似战场，“醉卧沙场君莫笑，古来征战几人回”面对后天的高考，沉着应对，在考场中发挥自己，书写自己！<br></p>
-<ul>
-<li>2011年6月5日  星期天  阴    倒计时1天</li>
+</li>
+<li>rotation、rotationX\rotationY<ul>
+<li>沿中心点旋转\沿X轴翻转\沿Y轴翻转</li>
 </ul>
-<p>&nbsp;&nbsp;今天是高考前的最后一天，同学们陆陆续续回到教室去搬自己的课桌椅回去，昨天,自己已经将课本都带回家了，来到了教室，人走的走，桌子搬的搬，已不再是像往日的那个坐满人的教室了，不再显得拥挤，地上随处的纸屑，只有墙上的值日表、课程表，墙上依稀可见的字迹是被坐在靠墙壁的同学无聊之时留下的，头上的电风扇此时停止了转动，仿佛为陪伴过我们那个刚刚过去的炎热又压抑的六月而此时此刻得到满意的休息，为下一个六月作好着准备。从学校到家十几分钟的路途，可是从学校回到了家里，课座椅搬回家的那一刻，内心的思绪就整个的变化了，才真实的感觉到了毕业，内心就涌现出一个个念头，我想，昔日的三年级八班不再有我了，那个教室里再也没有属于我的一角了，思绪随着记忆展开…这里曾经是学习的地方，这里曾经让我欢喜，让我忧，而从现在开始，这里的所有属于我的将变得一无所有了，随着时间的流逝，不久后，连自己也会忘得干干净净吧，为了不让岁月的尘土掩盖了美好的回忆，以将他记录封存下来，也许多少年后，或亦将有感于斯文吧！人生路漫漫，美好的中学时光一去不返了，没有谁值得思恋，但就是内心不免些许感伤吧，哪怕只为昔日校园洒过汗水的操场、昔日食堂坐过的椅子，昔日校园走过的小道。物是人非事事休，欲与泪先流，时光太匆匆，过去的日子像风抖落的枫叶，落叶无情而人有情，落叶萧萧，人生如梦。轻轻的我走了，正如我轻轻的来，挥一挥衣袖，不带走一片云彩。此情可待成追忆，只是当时已惘然！路在脚下，背起三年的行囊，去接受人生的洗礼吧，问君能有几多愁，恰似一江春水向东流。晓来谁染霜林醉，总是离人泪，此去今年，前方路途迷茫，雾太浓…<br></p>
-<ul>
-<li>2011年6月11日    星期六   天气 阴</li>
+</li>
+<li>scaleX\scaleY<ul>
+<li>沿X轴\Y轴翻转</li>
 </ul>
-<p>&nbsp;&nbsp;转眼间，高考已经过去九天了，在这漫长的九天里，每天晚上都睡不着，内心有种说不出的感觉，怅然若失，不知道为什么这么痛苦，晚上就算睡着了也在做梦，做的全部都是上学的梦，有初中，有高中，其中有一个梦场地是初中，而人物却是高中的，毕竟这两个学校自己一共呆过七年吧，翻翻初中写过的日记，从零七年到如今，让自己有对年少时光的幼稚的想法及思想说不出的感觉，是痛恨？是想笑？是回忆？还是感伤？而现在，这九天时间里，可以说是虚度青春，每天晚上睡不着，而白天十一点起来，有时下午还要睡，其他时间就是吃饭了，总之、吃、睡，加上看电视就是我生活的全部，有时夜晚睡不着之时，又不想这么浑浑噩噩的过，而想有所作为，有所计划，但是到了第二天又是老样子了，每天都不出门，呆在家，在家呆着实在无聊就决定出去走走，记得这天下着雨，自己勇敢的出了家门，在县里书店，超市，以及这么多天没来过的学校，徘徊在院墙外，转了一圈回来。走在街上自己提心吊胆的貌似怕见到同学，因为自己也不知道说什么好。正因为这样，自己才会选择雨天出来，因为人少的缘故。回到家，自己又到屋前面的网吧上网，这个离家几十米之遥的网吧，以前因为上学没来过，但高考过后，爸妈就同意我来了，生平第一次来网吧，第一次上网，连开机还是网管鄙视而又不耐烦教的（开玩笑）。回到现在，只是希望高考分数早点出来，六月二十五，既激动又害怕，希望有一个相对理想点的分数吧。每天这样的日子，没有目标，没有计划，惰性占据着全身心，内心一股无名的惆怅和失落，像突然离开学校的失落折磨着内心，自己究竟思恋着什么呢？虽然曾经的上学时光并不快乐，并不时常美好，更多的是苦楚和压力，剪不断、理还乱、是离愁，别是一番滋味在心头！久久难眠，醒来又重复着梦中的思恋苦楚，反反复复，无休无止，衣带渐宽终不悔，为伊消得人憔悴！ <br></p>
-<ul>
-<li>2011年6月30日   星期四       晴</li>
+</li>
+<li>X\Y<ul>
+<li>移动到X\Y轴坐标点</li>
 </ul>
-<p>&nbsp;&nbsp;今天中午，妈妈在超市上班，恰逢里面的水果打折，就称了水果叫我带回去，下午烈日炎炎的太阳，烤的街上的行人纷纷避之而不及，路过二中，看到高一、二的都还在上课，不禁感慨回忆，进而想到我的高中呢？转瞬即逝，许多东西往往是过去后，才知道后悔，流逝后才知道珍惜，以前，唉！只能说没有好好的珍惜，“沉舟侧畔千帆过，病树前头万木春”过去就让过去吧，一届一届的走过，新的高三代替旧的高三，并且总是在不断的重复着，时间总是在流逝的，不会因为个人而停止匆匆的脚步，学校是每个我们的人生中留下过的一个瞬间短促的驿站，留下过最美好回忆的驿站。那么何处是停泊的港湾？时间啊！你为什么流逝的如此之快，子在川上日；不舍昼夜，天若有情天亦老，流星划过的一瞬，历史长河，留给我们的只是那“古今多少事，都付笑谈中”对月当空，洒脱如“对酒当歌，人生几何，思念如“但愿人长久，千里共婵娟”的思念， 惆怅如“无言独上西楼，月如钩”。古往今来，高挂天空的月亮是唯一没有变的，我们所看到的月亮是不是某时某刻古人他们所看到的呢？冥冥之中，是否我们与他们双目对视呢？“江畔何人初见月？江月何年初照人？人生代代无穷已，江月年年只相似。不知江月待何人，但见长江送流水。白云一片去悠悠，春枫浦上不胜愁。”当处在过程之中，只想着结果，当结果来到时，却发现结果并不是那么的迷人，于是倍加怀恋曾经的过程，曾经的岁月！<br></p>
-<ul>
-<li>2011年8月1日    7月31日        阴</li>
+</li>
+<li>alpha<ul>
+<li>渐变透明度变化</li>
 </ul>
-<p>&nbsp;&nbsp;夜未眠，看看以前写过的零碎回忆，当翻开12月29日这篇周记的时候，往事历历在目。那个寒冷的冬天，路灯下的操场上，我仿佛看到了一个在寒风中，围绕着操场一圈又一圈跑过的倔强的的身影。昏黄的路灯照在跑道上的情景，看到了初中部教学楼顶上在那个灯光的映忖下，一阵阵寒风吹过枫树沙沙作响的声音，在那个人的耳际徘徊，至今留在那个人的海里，久久不能忘怀，那个寒冬天未亮，霜未落，只有与影子相伴的操场上，那种过往一排排的枫树的一瞬，那样的时间里光景里，给他留下了最为宝贵的思绪。<br><br>&nbsp;&nbsp;寂寞伴随着他走过那段青春的岁月，他只能惆怅，无能为力，抓不住时间的尾巴，谁道人生无再少，门前流水尚能西。流水无情，而人有情，回忆叠着感伤并着时间的洗涤随风而散，此去今年，往事如烟……</p>
+</li>
+</ul>
+<h4 id="常用方法、类"><a href="#常用方法、类" class="headerlink" title="常用方法、类"></a>常用方法、类</h4><ul>
+<li>ValueAnimator<ul>
+<li>数值发生器，可以实现很多很灵活的动画效果</li>
+</ul>
+</li>
+<li>ObjectAnimator<ul>
+<li>ValueAnimator的子类，封装了ValueAnimator，让我们更轻松的使用动画框架</li>
+</ul>
+</li>
+<li>AnimatorUpdateListener，AnimatorListenerAdapter<ul>
+<li>动画的监听事件</li>
+</ul>
+</li>
+<li>PropertyValuesHolder<ul>
+<li>控制动画的显示效果、速度相关</li>
+</ul>
+</li>
+<li>AnimatorSet<ul>
+<li>控制动画显示的顺序</li>
+</ul>
+</li>
+<li>TypeEvaluators<ul>
+<li>值计算器，控制值的变化规律和变化状态</li>
+</ul>
+</li>
+<li>Interpolators<ul>
+<li>差值计算器，控制值的变化规律和变化状态</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -332,13 +371,13 @@ var _hmt = _hmt || [];
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/21/往事如烟/">往事如烟</a></p>
+        <p><span>本文标题:</span><a href="/2018/12/22/Android动画（二）/">Android动画（二）</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">山禾以蔚</a></p>
-        <p><span>发布时间:</span>2018-06-21, 09:37:58</p>
-        <p><span>最后更新:</span>2018-07-18, 09:33:01</p>
+        <p><span>发布时间:</span>2018-12-22, 13:38:49</p>
+        <p><span>最后更新:</span>2018-12-22, 13:45:12</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/21/往事如烟/" title="往事如烟">http://yoursite.com/2018/06/21/往事如烟/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/21/往事如烟/　　作者: 山禾以蔚" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/12/22/Android动画（二）/" title="Android动画（二）">http://yoursite.com/2018/12/22/Android动画（二）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/12/22/Android动画（二）/　　作者: 山禾以蔚" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -350,17 +389,40 @@ var _hmt = _hmt || [];
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/23/范式说明（转载）/">
-                    范式说明（转载）
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/12/18/Android动画（一）/">
+                    Android动画（一）
                 </a>
             </div>
-        
         
     </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android属性动画-Property"><span class="toc-number">1.</span> <span class="toc-text">Android属性动画(Property)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ObjectAnimator类"><span class="toc-number">1.1.</span> <span class="toc-text">ObjectAnimator类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AnimatorSet用法"><span class="toc-number">1.1.1.</span> <span class="toc-text">AnimatorSet用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.2.</span> <span class="toc-text">总结:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ObjectAnimator"><span class="toc-number">1.2.1.</span> <span class="toc-text">ObjectAnimator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常用属性"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">常用属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常用方法、类"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">常用方法、类</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -378,7 +440,7 @@ var _hmt = _hmt || [];
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"往事如烟　| 山禾以蔚　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Android动画（二）　| 山禾以蔚　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -416,15 +478,15 @@ var _hmt = _hmt || [];
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/23/范式说明（转载）/" title="上一篇: 范式说明（转载）">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/12/18/Android动画（一）/" title="下一篇: Android动画（一）">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
