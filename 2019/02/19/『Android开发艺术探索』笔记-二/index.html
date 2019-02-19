@@ -6,16 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 技术 | 山禾以蔚</title>
+  <title>『Android开发艺术探索』笔记(二) | 山禾以蔚</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="生活，随笔，Android">
-<meta property="og:type" content="website">
-<meta property="og:title" content="山禾以蔚">
-<meta property="og:url" content="http://yoursite.com/tags/技术/page/2/index.html">
+  <meta name="description" content="『Android开发艺术探索』笔记之View的滑动View的滑动实现方式有三种；  通过View本身提供的scrollTo/scrollBy方法来实现滑动； 通过动画给View施加平移效果来实现滑动； 通过改变View的LayoutParams使得View重新布局从而实现滑动。">
+<meta name="keywords" content="技术,自定义View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="『Android开发艺术探索』笔记(二)">
+<meta property="og:url" content="http://yoursite.com/2019/02/19/『Android开发艺术探索』笔记-二/index.html">
 <meta property="og:site_name" content="山禾以蔚">
+<meta property="og:description" content="『Android开发艺术探索』笔记之View的滑动View的滑动实现方式有三种；  通过View本身提供的scrollTo/scrollBy方法来实现滑动； 通过动画给View施加平移效果来实现滑动； 通过改变View的LayoutParams使得View重新布局从而实现滑动。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/%E8%87%AA%E5%AE%9A%E4%B9%89View/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190219095933.jpg">
+<meta property="og:updated_time" content="2019-02-19T05:50:52.919Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="山禾以蔚">
+<meta name="twitter:title" content="『Android开发艺术探索』笔记(二)">
+<meta name="twitter:description" content="『Android开发艺术探索』笔记之View的滑动View的滑动实现方式有三种；  通过View本身提供的scrollTo/scrollBy方法来实现滑动； 通过动画给View施加平移效果来实现滑动； 通过改变View的LayoutParams使得View重新布局从而实现滑动。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/dondurma/MygithubPic/master/%E8%87%AA%E5%AE%9A%E4%B9%89View/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190219095933.jpg">
   
     <link rel="alternative" href="/atom.xml" title="山禾以蔚" type="application/atom+xml">
   
@@ -171,36 +177,85 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-『Android开发艺术探索』笔记-二" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      『Android开发艺术探索』笔记(二)
+    </h1>
+  
+
+        
+        <a href="/2019/02/19/『Android开发艺术探索』笔记-二/" class="archive-article-date">
+  	<time datetime="2019-02-19T05:48:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
+</a>
+        
+
+      </header>
     
+		
+		<!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#『Android开发艺术探索』笔记之View的滑动"><span class="toc-number">1.</span> <span class="toc-text">『Android开发艺术探索』笔记之View的滑动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用scrollTo-scrollBy"><span class="toc-number">1.1.</span> <span class="toc-text">使用scrollTo/scrollBy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用动画"><span class="toc-number">1.2.</span> <span class="toc-text">使用动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#View动画"><span class="toc-number">1.2.1.</span> <span class="toc-text">View动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性动画"><span class="toc-number">1.2.2.</span> <span class="toc-text">属性动画</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改变布局参数"><span class="toc-number">1.3.</span> <span class="toc-text">改变布局参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三种滑动方式的对比"><span class="toc-number">1.4.</span> <span class="toc-text">三种滑动方式的对比</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      
+<!-- 目录内容结束 -->
+		
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="『Android开发艺术探索』笔记之View的滑动"><a href="#『Android开发艺术探索』笔记之View的滑动" class="headerlink" title="『Android开发艺术探索』笔记之View的滑动"></a>『Android开发艺术探索』笔记之View的滑动</h1><p>View的滑动实现方式有三种；</p>
+<ol>
+<li>通过View本身提供的scrollTo/scrollBy方法来实现滑动；</li>
+<li>通过动画给View施加平移效果来实现滑动；</li>
+<li>通过改变View的LayoutParams使得View重新布局从而实现滑动。</li>
+</ol>
+<a id="more"></a>
+<h2 id="使用scrollTo-scrollBy"><a href="#使用scrollTo-scrollBy" class="headerlink" title="使用scrollTo/scrollBy"></a>使用scrollTo/scrollBy</h2><p>&nbsp;为了实现View的滑动，View提供了专门的方法来实现这个功能，那就是scrollTo和scrollBy，我们先来看看这两个方法的实现，如下所示:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public void scrollTo(int x,int y)&#123;</span><br><span class="line">     if(mScrollX!=x||mScrollY!=y)&#123;</span><br><span class="line">          int oldX=mScrollX;</span><br><span class="line">          int oldY=mScrollY;</span><br><span class="line">          mScrollX=x;</span><br><span class="line">          mScrollY=y;</span><br><span class="line">          invalidateParentCaches();</span><br><span class="line">          onScrollChanged(mScrollX,mScrollY,oldX,oldY);</span><br><span class="line">          if(!awakenScrollBars())&#123;</span><br><span class="line">              postInvalidateOnAnimation();</span><br><span class="line">          &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void scrollBy(int x,int y)&#123;</span><br><span class="line">    scrollTo(mScrollX+x,mScrollY+y);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp;从上面的源码可以看出，scrollBy实际上也是使用了scrollTo方法，它实现了基于当前位置的相对滑动，而scrollTo则实现了基于所传递参数的绝对滑动，而scrollTo则实现了基于所传递参数的绝对滑动，这个不难理解。利用scrollTo和scrollBy来实现View滑动，这不是一件困难的事，但是我们要明白滑动过程中View内部的两个属性mScrollX和mScrollY的改变规则，这两个属性可以通过getScrollX和getScrollY方法分别得到。<br><br>&nbsp;在滑动过程中，mScrollX的值总是等于View左边缘和View内容左边缘在水平方向的距离，而mScrollY的值总是等于View上边缘和View内容上边缘在竖直方向的距离。<br><br>&nbsp;View边缘是指View的位置，又四个顶点组成，而View内容边缘是指View中的内容的边缘，scrollTo和scrollBy只能改变View内容的位置而不能改变View在布局中的位置。<br><br>&nbsp;mScrollX和mScrollY的单位为像素，并且当View左边缘在View内容左边缘的右边时，mScrollX为正值，反之为负值；当View上边缘在View内容上边缘的下边时，mScrollY为正值，反之为负值。换句话说，如果从左向右滑动，那么mScrollX为负值，反之为正值；如果从上往下滑动，那么mScrollY为负值，反之为正值。<br><br>&nbsp;为了更好地理解这个问题，下面举个例子，如下图，在图中假设水平和竖直方向的滑动距离都为100像素，针对图中各种滑动情况，都给出了对应的mScrollX和mScrollY的值。根据上面的分析，可以知道，使用scrollTo和scrollBy来实现View的滑动，只能将View的内容进行移动，并不能将View本身进行移动，也就是说，不管怎么滑动，也不能将当前View滑动到附近View所在区域。<br></p>
+<p><img src="https://raw.githubusercontent.com/dondurma/MygithubPic/master/%E8%87%AA%E5%AE%9A%E4%B9%89View/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190219095933.jpg" alt="https://raw.githubusercontent.com/dondurma/MygithubPic/master/%E8%87%AA%E5%AE%9A%E4%B9%89View/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190219095933.jpg"></p>
+<h2 id="使用动画"><a href="#使用动画" class="headerlink" title="使用动画"></a>使用动画</h2><p>&nbsp;通过使用动画，我们能让一个View进行平移，而平移就是一种滑动。使用动画来移动View,主要是操作View的translationX和translationY属性，即可以采用传统的View动画，也可以采用属性动画，如果采用属性动画的话，为了兼容3.0以下的版本，需要采用开源动画库nineoldandroids<br></p>
+<h3 id="View动画"><a href="#View动画" class="headerlink" title="View动画"></a>View动画</h3><p>&nbsp;采用View动画的代码，如下所示。此动画可以在100ms内将一个View从原始位置向右下角移动100个像素。<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">android:fillAfter=&quot;true&quot;</span><br><span class="line">android:zAdustment=&quot;normal&quot;&gt;</span><br><span class="line">&lt;translate</span><br><span class="line">    android:duration=&quot;100&quot;</span><br><span class="line">    android:fromXDelta=&quot;0&quot;</span><br><span class="line">    android:fromYDelta=&quot;0&quot;</span><br><span class="line">    android:interpolator=&quot;@android:anim/linear_interpolator&quot;</span><br><span class="line">    android:toXDelta=&quot;100&quot;</span><br><span class="line">    android:toYDelta=&quot;100&quot;/&gt;</span><br><span class="line">&lt;/set&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="属性动画"><a href="#属性动画" class="headerlink" title="属性动画"></a>属性动画</h3><p>&nbsp;如果采用属性动画的话，就更简单了，以下代码可以将一个View在100ms内从原始位置向右平移100像素。<br><br><code>ObjectAnimator.ofFloat(targetView,&quot;translationX&quot;,0,100).setDuration(100).start();</code></p>
+<h2 id="改变布局参数"><a href="#改变布局参数" class="headerlink" title="改变布局参数"></a>改变布局参数</h2><p>&nbsp;改变布局参数，即改变LayoutParams。这个就比较好理解了，比如我们想把一个Button向右平移100px,我们只需要将这个Button的LayoutParams里的marginLeft参数值增加100px即可，是不是很简单呢？还有一种情形，为了达到移动Button的目的，我们可以在Button的左边放置一个空的View,这个空的View默认宽度为0，当我们需要向右移动Button时，只需要重新设置空View的宽度即可，当空View的宽度增大时(假设Button的父容器是水平方向的LinearLayout),Button就被自动挤向右边，即实现了向右平移的效果。如何重新设置一个View的LayoutParams呢？很简单，如下所示。<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MarginLayoutParams params=(MarginLayoutParams)mButton1.getLayoutParams();</span><br><span class="line">params.with+=100;</span><br><span class="line">params.leftMargin+=100;</span><br><span class="line">mButton1.requestLayout();</span><br><span class="line">//或者mButton1.setLayoutParams(params);</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp;通过改变LayoutParams的方式去实现View的滑动同样是一种很灵活的方法，需要根据不同情况去做不同的处理。<br></p>
+<h2 id="三种滑动方式的对比"><a href="#三种滑动方式的对比" class="headerlink" title="三种滑动方式的对比"></a>三种滑动方式的对比</h2><ul>
+<li>scrollTo/scrollBy:操作简单，适合对View内容的滑动；</li>
+<li>动画:操作简单，主要适用于没有交互的View和实现复杂的动画效果；</li>
+<li>改变布局参数:操作稍微复杂，适用于有交互的View;</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/27/Rxjava2-0教程（三）/" class="archive-article-date">
-  	<time datetime="2018-11-27T06:41:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/27/Rxjava2-0教程（三）/">Rxjava2.0教程（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -210,519 +265,96 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Rxjava</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自定义View</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Rxjava//" class="article-tag-list-link color2">Rxjava</a>
+        			<a href="/categories/View的事件体系//" class="article-tag-list-link color5">View的事件体系</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/24/Rxjava2-0教程（二）/" class="archive-article-date">
-  	<time datetime="2018-11-24T09:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-24</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/18/『Android开发艺术探索』笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">『Android开发艺术探索』笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/24/Rxjava2-0教程（二）/">Rxjava2.0教程（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Rxjava</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Rxjava//" class="article-tag-list-link color2">Rxjava</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/24/Rxjava2-0教程（一）/" class="archive-article-date">
-  	<time datetime="2018-11-24T09:13:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/24/Rxjava2-0教程（一）/">Rxjava2.0教程（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Rxjava</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Rxjava//" class="article-tag-list-link color2">Rxjava</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/10/Android开发中，实现对Home按键的监听/" class="archive-article-date">
-  	<time datetime="2018-11-10T08:42:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/10/Android开发中，实现对Home按键的监听/">Android开发中，实现对Home按键的监听</a>
-    </h1>
-  
+	
+	
+	
+		<section id="comments" style="margin: 2em; padding: 2em; background: rgba(255, 255, 255, 0.5)">
+    <div id="vcomment" class="comment"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@1.2.0-beta1/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+        el: '#vcomment',
+        notify: '13517217687@163.com',
+        verify: 'false',
+        app_id: "0Vk6y1rIHiNeTroPPN7y3LpJ-gzGzoHsz",
+        app_key: "8Qqw6MW3FLfXKi06zeNyC8Vy",
+        placeholder: "Just do it !",
+        avatar: "wavatar"
+      });
+    </script>
+</section>
+	
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/28/『前端学习笔记（四）』/" class="archive-article-date">
-  	<time datetime="2018-08-28T08:59:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/28/『前端学习笔记（四）』/">『前端学习笔记（四）』</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web前端//" class="article-tag-list-link color1">Web前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/22/『前端学习笔记（三）』/" class="archive-article-date">
-  	<time datetime="2018-08-22T08:19:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/22/『前端学习笔记（三）』/">『前端学习笔记（三）』</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web前端//" class="article-tag-list-link color1">Web前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/21/『前端学习笔记（二）』/" class="archive-article-date">
-  	<time datetime="2018-08-21T03:28:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/21/『前端学习笔记（二）』/">『前端学习笔记（二）』</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web前端//" class="article-tag-list-link color1">Web前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/20/『前端学习笔记（一）』/" class="archive-article-date">
-  	<time datetime="2018-08-20T07:52:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/20/『前端学习笔记（一）』/">『前端学习笔记（一）』</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web前端//" class="article-tag-list-link color1">Web前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/26/TextView显示html文本/" class="archive-article-date">
-  	<time datetime="2018-07-26T08:18:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/26/TextView显示html文本/">TextView显示html文本</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">TextView</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/24/TextView中部分文本点击可跳转/" class="archive-article-date">
-  	<time datetime="2018-07-24T07:49:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/TextView中部分文本点击可跳转/">TextView中部分文本点击可跳转</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">TextView</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/技术/">&laquo; Prev</a><a class="page-number" href="/tags/技术/">1</a><span class="page-number current">2</span><a class="page-number" href="/tags/技术/page/3/">3</a><a class="extend next" rel="next" href="/tags/技术/page/3/">Next &raquo;</a>
-    </nav>
+  
+	
+
+
+
+  
+
   
 
 
@@ -768,9 +400,9 @@ setInterval("createtime()",250);
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: false,
