@@ -390,6 +390,10 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+
+  
 
 
 
@@ -736,6 +740,36 @@
   
 
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: 13517217687@163.com,
+    notify: false,
+    appId: '0Vk6y1rIHiNeTroPPN7y3LpJ-gzGzoHsz',
+    appKey: '8Qqw6MW3FLfXKi06zeNyC8Vy',
+    placeholder: 'Just go go',
+    avatar: 'wavatar',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
 
 
   
